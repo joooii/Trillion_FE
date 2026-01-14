@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'SUITE-Medium';
+  src: url('/fonts/SUITE-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SUITE-SemiBold';
+  src: url('/fonts/SUITE-SemiBold.woff2') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -8,8 +24,48 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  --color-text-lightgray:#717374;
+  --color-text-darkgray:#333333;
+  --color-text-inverse:#F5F1EB;
+
+  --font-suite-medium: 'SUITE-Medium', sans-serif;
+  --font-suite-semibold: 'SUITE-SemiBold', sans-serif;
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-primary-50: #ffecf2;
+  --color-primary-100: #FFD1E0;
+  --color-primary-200:#FFA4C5;
+  --color-primary-300:#EF90B5;
+  --color-primary-400:#FF469B;
+  --color-primary-500:#E30084;
+  --color-primary-600:#C40071;
+  --color-primary-700:#9B0058;
+  --color-primary-800:#6F003E;
+  --color-primary-900:#420022;
+
+  --color-secondary-50:#EFF0F8;
+  --color-secondary-100:#D6DAED;
+  --color-secondary-200:#B1B8DD;
+  --color-secondary-300:#8F9ACE;
+  --color-secondary-400:#6F7FC0;
+  --color-secondary-500:#5566A8;
+  --color-secondary-600:#435085;
+  --color-secondary-700:#313C66;
+  --color-secondary-800:#212948;
+  --color-secondary-900:#141A31;
+
+  --color-error-100:#FFCCCC;
+  --color-error-200:#FF9999;
+  --color-error-300:#FF6666;
+  --color-error-400:#FF3333;
+  --color-error-500:#FF0000;
+  --color-error-600:#CC0000;
+  --color-error-700:#990000;
+  --color-error-800:#660000;
+  --color-error-900:#330000;
+
 }
 
 @media (prefers-color-scheme: dark) {
