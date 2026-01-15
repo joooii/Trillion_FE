@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/app/globals.css";
 import TabBar from "@/components/common/TabBar";
+import Header from "@/components/common/Header";
 
 export const metadata: Metadata = {
   title: {
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="font-sans antialiased">
+        <Header/>
         {/* 메인 콘텐츠 - 탭바 높이만큼 padding */}
         <main className="min-h-screen pb-20">
           {children}
