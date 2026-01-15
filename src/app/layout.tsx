@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="font-sans antialiased">
-        <Header/>
+        <Header back text=""/>
         {/* 메인 콘텐츠 - 탭바 높이만큼 padding */}
         <main className="min-h-screen pb-20">
           {children}
