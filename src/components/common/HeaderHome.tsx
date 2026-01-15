@@ -1,5 +1,3 @@
-"server-only";
-
 import Image from "next/image";
 import LogoMini from "@/assets/images/logo_mini.svg";
 

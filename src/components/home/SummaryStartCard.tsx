@@ -1,5 +1,3 @@
-"server-only";
-
 import Button from "@/components/common/Button";
 import { ChevronRight, MessageSquare } from "lucide-react";
 import Link from "next/link";

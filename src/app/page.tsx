@@ -1,5 +1,3 @@
-"server-only";
-
 import type { Metadata } from "next";
 import HeaderHome from "@/components/common/HeaderHome";
 import ContentSection from "@/components/home/ContentSection";

@@ -1,21 +1,19 @@
-"server-only";
-
 import Image, { StaticImageData } from "next/image";
 import { ChevronRight } from "lucide-react";
 
-interface HelpCardProps {
+interface HelperCardProps {
   image: StaticImageData;
   title: string;
   description: string;
   href?: string;
 }
 
-export default function HelpCard({
+export default function HelperCard({
   image,
   title,
   description,
   href,
-}: HelpCardProps) {
+}: HelperCardProps) {
   return (
     <a
       href={href}

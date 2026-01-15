@@ -1,5 +1,3 @@
-"server-only";
-
 import Image from "next/image";
 import YouTubeIcon from "@/assets/images/youtube.svg";
 import { StaticImageData } from "next/image";

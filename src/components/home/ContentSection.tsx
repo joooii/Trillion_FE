@@ -1,5 +1,3 @@
-"server-only";
-
 import YoutubePlayer from "@/components/home/YoutubePlayer";
 
 export default function ContentSection() {
