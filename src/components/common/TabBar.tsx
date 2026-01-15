@@ -17,7 +17,7 @@ export default function TabBar() {
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50">
       <div className="max-w-screen-lg mx-auto">
-        <div className="flex items-end justify-around h-16 px-4 relative">
+        <div className="flex items-end justify-around h-[63px] px-4 relative">
           {navItems.map(({ href, label, icon: Icon, isCenter }) => {
             const isActive = pathname === href;
 
