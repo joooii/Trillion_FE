@@ -12,7 +12,7 @@ export default function BenefitCategory({
   categoryItem,
   children,
 }: BenefitCategoryProps) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
     <>
