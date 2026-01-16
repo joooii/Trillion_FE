@@ -3,7 +3,7 @@ import YoutubePlayer from "@/components/home/YoutubePlayer";
 export default function ContentSection() {
   return (
     <div className="mt-[35px]">
-      <p className="text-lg font-semibold ml-[29px] mb-2.5 text-text-darkgray">
+      <p className="text-lg font-semibold ml-[29px] mb-[10px] text-text-darkgray">
         콘텐츠 바로가기
       </p>
       {/* 유튜브 썸네일 자리 */}

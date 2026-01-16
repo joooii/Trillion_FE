@@ -7,7 +7,7 @@ export default function SummaryStartCard() {
     <div className="relative z-10 mx-auto w-[335px] h-[169px] rounded-[10px] bg-white shadow-card flex flex-col">
       <div className="flex gap-4 mt-[23px] ml-4">
         <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary-500/10">
-          <MessageSquare className="w-5 h-5 stroke-primary-500" />
+          <MessageSquare className="w-6 h-6 stroke-primary-500" />
         </div>
 
         <div className="flex flex-col gap-1">
