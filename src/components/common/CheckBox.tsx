@@ -1,6 +1,8 @@
 // src/components/common/CheckBox.tsx
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
+import check from '@/assets/images/checkbox.svg';
+
 
 interface CheckboxProps {
   checked: boolean;
@@ -28,7 +30,7 @@ export default function Checkbox({
         >
           {checked ? (
             <Image
-              src="/assets/images/checkbox.svg"
+              src={check}
               alt="checked"
               width={18}
               height={18}
