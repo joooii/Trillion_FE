@@ -52,8 +52,8 @@ export default function LoginCheckPage() {
 
   return (
     <div className="min-h-screen bg-text-inverse flex flex-col">
-      <div className="flex-1 px-[29px] pt-8 pb-6">
-        <div className="flex items-center gap-3 mb-[61px]">
+      <div className="flex-1 px-[29px] pt-[57px] pb-6">
+        <div className="flex items-center justify-center gap-2 mb-[61px]">
           <div className="w-10 h-10">
             <Image
               src={logo}
@@ -68,7 +68,7 @@ export default function LoginCheckPage() {
           </h1>
         </div>
 
-        <div className="mb-8">
+        <div className="mb-4">
           <h2 className="text-lg font-semibold text-text-darkgray">
             서비스 사용을 위해 약관에 동의해주세요.
           </h2>
@@ -116,7 +116,7 @@ export default function LoginCheckPage() {
         <button
           onClick={handleStart}
           disabled={!ageAgreed || !termsAgreed || !privacyAgreed}
-          className="w-full py-4 rounded-xl font-suite-semibold text-white text-base transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+          className="w-full py-4 rounded-xl font-semibold text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed"
           style={{
             backgroundColor: (ageAgreed && termsAgreed && privacyAgreed) ? '#E30084' : '#E30084',
           }}
