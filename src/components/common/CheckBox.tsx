@@ -40,7 +40,7 @@ export default function Checkbox({
 
         <label
           onClick={() => onChange(!checked)}
-          className="text-base font-suite-regular text-text-darkgray cursor-pointer select-none"
+          className="text-base text-text-darkgray cursor-pointer select-none"
         >
           {required && <span className="text-primary-500">[필수] </span>}
           {label}

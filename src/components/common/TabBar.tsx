@@ -50,7 +50,7 @@ export default function TabBar() {
                   strokeWidth={2}
                 />
                 <span
-                  className={`text-xs font-suite-medium transition-colors ${isActive ? "text-primary-500" : "text-gray-400"}`}
+                  className={`text-xs font-medium transition-colors ${isActive ? "text-primary-500" : "text-gray-400"}`}
                 >
                   {label}
                 </span>
