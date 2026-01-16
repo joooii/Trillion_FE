@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Checkbox from '@/components/common/CheckBox';
 import logo from '@/assets/images/logo.svg';
+import Button from '@/components/common/Button';
 
 export default function LoginCheckPage() {
   const router = useRouter();
@@ -119,13 +120,13 @@ export default function LoginCheckPage() {
       <div className="flex-1" />
 
       <div className="w-full max-w-[335px]">
-        <button
+        <Button
           onClick={handleStart}
           disabled={!ageAgreed || !termsAgreed || !privacyAgreed}
-          className="w-full py-4 rounded-xl font-semibold text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed bg-primary-500 shadow-btn"
+          className="!w-full py-4 rounded-xl shadow-btn"
         >
           SO:U+ 시작하기
-        </button>
+        </Button>
       </div>
     </div>
   );
