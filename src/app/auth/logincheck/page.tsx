@@ -53,13 +53,13 @@ export default function LoginCheckPage() {
   return (
     <div className="min-h-screen bg-text-inverse flex flex-col">
       <div className="flex-1 px-6 pt-12 pb-6">
-        <div className="flex items-center gap-3 mb-8">
-          <div className="w-12 h-12">
+        <div className="flex items-center gap-3 mb-[61px]">
+          <div className="w-10 h-10">
             <Image
               src={logo}
               alt="SO:U+ 로고"
-              width={48}
-              height={48}
+              width={40}
+              height={40}
               className="w-full h-full"
             />
           </div>
@@ -69,10 +69,10 @@ export default function LoginCheckPage() {
         </div>
 
         <div className="mb-8">
-          <h2 className="text-lg font-suite-semibold text-text-darkgray mb-2">
+          <h2 className="text-lg font-semibold text-text-darkgray">
             서비스 사용을 위해 약관에 동의해주세요.
           </h2>
-          <p className="text-sm font-suite-medium text-text-lightgray">
+          <p className="text-lg font-semibold text-text-darkgray">
             서비스 이용에 필수적인 약관들이에요.
           </p>
         </div>
