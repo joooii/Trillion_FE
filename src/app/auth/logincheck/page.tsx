@@ -83,6 +83,7 @@ export default function LoginCheckPage() {
             onChange={handleAllAgree}
             label="서비스 이용 약관 전체 동의"
             className="border-b border-gray-300"
+            labelClassName = 'text-text-darkgray font-semibold'
           />
 
           <Checkbox
@@ -90,6 +91,7 @@ export default function LoginCheckPage() {
             onChange={(checked) => handleIndividualChange(setAgeAgreed, checked)}
             label="만 14세 이상입니다"
             required
+            labelClassName = 'text-text-lightgray'
           />
 
           <Checkbox
@@ -99,6 +101,7 @@ export default function LoginCheckPage() {
             required
             hasLink
             onLinkClick={openTermsLink}
+            labelClassName = 'text-text-lightgray'
           />
 
           <Checkbox
@@ -108,6 +111,7 @@ export default function LoginCheckPage() {
             required
             hasLink
             onLinkClick={openPrivacyLink}
+            labelClassName = 'text-text-lightgray'
           />
         </div>
       </div>
@@ -118,10 +122,7 @@ export default function LoginCheckPage() {
         <button
           onClick={handleStart}
           disabled={!ageAgreed || !termsAgreed || !privacyAgreed}
-          className="w-full py-4 rounded-xl font-semibold text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed"
-          style={{
-            backgroundColor: '#E30084',
-          }}
+          className="w-full py-4 rounded-xl font-semibold text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed bg-primary-500 shadow-btn"
         >
           SO:U+ 시작하기
         </button>

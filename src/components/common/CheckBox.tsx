@@ -12,6 +12,7 @@ interface CheckboxProps {
   hasLink?: boolean;
   onLinkClick?: () => void;
   className?: string;
+  labelClassName?: string;
 }
 
 export default function Checkbox({
@@ -22,6 +23,7 @@ export default function Checkbox({
   hasLink = false,
   onLinkClick,
   className = '',
+  labelClassName = 'text-text-darkgray',
 }: CheckboxProps) {
   return (
     <div className={`flex items-center justify-between py-4 last:border-b-0 ${className}`}>
@@ -44,7 +46,7 @@ export default function Checkbox({
 
         <label
           onClick={() => onChange(!checked)}
-          className="text-text-lightgray cursor-pointer select-none"
+          className={`text-base cursor-pointer select-none ${labelClassName}`}
         >
           {required && <span className="text-primary-500">[필수] </span>}
           {label}
