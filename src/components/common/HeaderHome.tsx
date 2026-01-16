@@ -35,7 +35,9 @@ export default function HeaderHome({
           <p className="text-[25px] font-extrabold leading-none">{title}</p>
         </div>
 
-        <p className={`mt-2 font-medium ${!isHome && "text-text-lightgray"}`}>
+        <p
+          className={`mt-2 font-medium ${!isHome ? "text-text-lightgray" : ""}`}
+        >
           {description}
         </p>
       </div>
