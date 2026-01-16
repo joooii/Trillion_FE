@@ -52,7 +52,7 @@ export default function LoginCheckPage() {
 
   return (
     <div className="min-h-screen bg-text-inverse flex flex-col">
-      <div className="flex-1 px-6 pt-12 pb-6">
+      <div className="flex-1 px-[29px] pt-8 pb-6">
         <div className="flex items-center gap-3 mb-[61px]">
           <div className="w-10 h-10">
             <Image
@@ -63,7 +63,7 @@ export default function LoginCheckPage() {
               className="w-full h-full"
             />
           </div>
-          <h1 className="text-2xl font-suite-extrabold text-text-darkgray">
+          <h1 className="text-[28px] font-suite-extrabold text-text-darkgray">
             SO:U+
           </h1>
         </div>
@@ -77,7 +77,7 @@ export default function LoginCheckPage() {
           </p>
         </div>
 
-        <div className="bg-white rounded-xl p-6 shadow-sm">
+        <div className="rounded-xl">
           <Checkbox
             checked={allAgreed}
             onChange={handleAllAgree}
