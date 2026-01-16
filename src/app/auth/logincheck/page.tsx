@@ -78,10 +78,11 @@ export default function LoginCheckPage() {
         </div>
 
         <div className="rounded-xl">
-          <Checkbox
+          <Checkbox 
             checked={allAgreed}
             onChange={handleAllAgree}
             label="서비스 이용 약관 전체 동의"
+            className= "border-b text-text-darkgray"
           />
 
           <Checkbox

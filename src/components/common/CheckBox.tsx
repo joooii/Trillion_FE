@@ -11,6 +11,7 @@ interface CheckboxProps {
   required?: boolean;
   hasLink?: boolean;
   onLinkClick?: () => void;
+  className?: string;
 }
 
 export default function Checkbox({
@@ -20,9 +21,10 @@ export default function Checkbox({
   required = false,
   hasLink = false,
   onLinkClick,
+  className = '',
 }: CheckboxProps) {
   return (
-    <div className="flex items-center justify-between py-4 border-b border-gray-200 last:border-b-0">
+    <div className={`flex items-center justify-between py-4 last:border-b-0 ${className}`}>
       <div className="flex items-center gap-2 flex-1">
         <button
           onClick={() => onChange(!checked)}
@@ -42,7 +44,7 @@ export default function Checkbox({
 
         <label
           onClick={() => onChange(!checked)}
-          className="text-base text-text-darkgray cursor-pointer select-none"
+          className="text-text-lightgray cursor-pointer select-none"
         >
           {required && <span className="text-primary-500">[필수] </span>}
           {label}
