@@ -10,6 +10,16 @@ export const metadata: Metadata = {
 };
 
 export default function OnboardPage() {
+
+  const handleKakakoLogin = () => { 
+    const REST_API_KEY = process.env.KAKAO_REST_API_KEY;
+    const REDIRECT_URI = process.env.KAKAO_REDIRECT_URI;
+
+    const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+
+    window.location.href = kakaoAuthUrl;
+  }
+
   return (
     <div className="min-h-screen bg-text-inverse flex flex-col items-center justify-between px-6 py-8">
       <div className="flex-1" />
@@ -37,7 +47,7 @@ export default function OnboardPage() {
       <div className="flex-1" />
 
       <div className="w-full max-w-[335px] flex flex-col items-center gap-4">
-        <Link href="/auth/logincheck" className="w-full">
+        <button onClick={handleKakakoLogin} className="w-full">
           <Image
             src={kakaoButtonImage}
             alt="카카오 로그인"
@@ -45,7 +55,7 @@ export default function OnboardPage() {
             height={54}
             className="w-full h-auto"
           />
-        </Link>
+        </button>
 
         <div className="flex flex-col items-center gap-2">
           <p className="text-xs font-suite-medium text-text-lightgray text-center">
