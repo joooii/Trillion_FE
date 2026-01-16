@@ -1,20 +1,20 @@
-import Header from "@/components/common/Header";
 import type { Metadata } from "next";
-
+import HeaderHome from "@/components/common/HeaderHome";
+import ContentSection from "@/components/home/ContentSection";
+import HelperSection from "@/components/home/HelperSection";
+import SummaryStartCard from "@/components/home/SummaryStartCard";
 
 export const metadata: Metadata = {
-  title: "홈",
+  title: "Home",
 };
 
 export default function HomePage() {
   return (
-    <div className="p-6">
-      <Header back text="홈"/>
-      <div className="space-y-4">
-        <div className="p-4 bg-white rounded-lg shadow-sm border border-gray-100">
-          <p className="text-text-lightgray">홈 페이지입니다.</p>
-        </div>
-      </div>
+    <div className="pt-[139px] w-[393px] mx-auto">
+      <HeaderHome />
+      <SummaryStartCard />
+      <ContentSection />
+      <HelperSection />
     </div>
   );
 }
