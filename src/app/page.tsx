@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <div className="pt-[139px] w-[393px] mx-auto">
-      <HeaderHome />
+      <HeaderHome title="SO:U+" description="안녕하세요, 김소유님" isHome />
       <SummaryStartCard />
       <ContentSection />
       <HelperSection />
