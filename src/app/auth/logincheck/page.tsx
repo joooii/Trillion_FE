@@ -43,7 +43,7 @@ export default function LoginCheckPage() {
   };
 
   const openTermsLink = () => {
-    window.open('https://www.notion.so/YOUR_TERMS_URL', '_blank');
+    window.open('https://www.notion.so/2e8b3190d600806bbc49c659069629d3', '_blank');
   };
 
   const openPrivacyLink = () => {
@@ -51,9 +51,9 @@ export default function LoginCheckPage() {
   };
 
   return (
-    <div className="min-h-screen bg-text-inverse flex flex-col">
-      <div className="flex-1 px-[29px] pt-[57px] pb-6">
-        <div className="flex items-center justify-center gap-2 mb-[61px]">
+    <div className="min-h-screen bg-text-inverse flex flex-col items-center px-[29px] pt-[57px] pb-[73px]">
+      <div className="w-full max-w-[335px] flex flex-col gap-8">
+        <div className="flex items-center justify-center gap-2">
           <div className="w-10 h-10">
             <Image
               src={logo}
@@ -68,7 +68,7 @@ export default function LoginCheckPage() {
           </h1>
         </div>
 
-        <div className="mb-4">
+        <div className="flex flex-col gap-1">
           <h2 className="text-lg font-semibold text-text-darkgray">
             서비스 사용을 위해 약관에 동의해주세요.
           </h2>
@@ -77,12 +77,12 @@ export default function LoginCheckPage() {
           </p>
         </div>
 
-        <div className="rounded-xl">
+        <div className="flex flex-col">
           <Checkbox 
             checked={allAgreed}
             onChange={handleAllAgree}
             label="서비스 이용 약관 전체 동의"
-            className= "border-b text-text-darkgray"
+            className="border-b border-gray-300"
           />
 
           <Checkbox
@@ -112,13 +112,15 @@ export default function LoginCheckPage() {
         </div>
       </div>
 
-      <div className="px-6 pb-8">
+      <div className="flex-1" />
+
+      <div className="w-full max-w-[335px]">
         <button
           onClick={handleStart}
           disabled={!ageAgreed || !termsAgreed || !privacyAgreed}
           className="w-full py-4 rounded-xl font-semibold text-white transition-all disabled:opacity-40 disabled:cursor-not-allowed"
           style={{
-            backgroundColor: (ageAgreed && termsAgreed && privacyAgreed) ? '#E30084' : '#E30084',
+            backgroundColor: '#E30084',
           }}
         >
           SO:U+ 시작하기
