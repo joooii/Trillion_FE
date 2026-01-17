@@ -1,24 +1,16 @@
-// src/app/onboard/page.tsx
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
-import type { Metadata } from "next";
 import logoImage from "@/assets/images/logo.svg";
 import kakaoButtonImage from "@/assets/images/btn_login_kakao.svg";
 
-export const metadata: Metadata = {
-  title: "온보딩",
-};
-
 export default function OnboardPage() {
-
-  const handleKakakoLogin = () => { 
-    const REST_API_KEY = process.env.KAKAO_REST_API_KEY;
-    const REDIRECT_URI = process.env.KAKAO_REDIRECT_URI;
-
-    const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-
-    window.location.href = kakaoAuthUrl;
-  }
+  const handleKakaoLogin = () => { 
+    const redirectUri = encodeURIComponent('http://localhost:3000/auth/logincheck');
+    
+    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/oauth2/authorization/kakao?redirect_uri=${redirectUri}`;
+  };
 
   return (
     <div className="min-h-screen bg-text-inverse flex flex-col items-center justify-between px-6 py-8">
@@ -47,7 +39,7 @@ export default function OnboardPage() {
       <div className="flex-1" />
 
       <div className="w-full max-w-[335px] flex flex-col items-center gap-4">
-        <button onClick={handleKakakoLogin} className="w-full">
+        <button onClick={handleKakaoLogin} className="w-full">
           <Image
             src={kakaoButtonImage}
             alt="카카오 로그인"
@@ -72,7 +64,7 @@ export default function OnboardPage() {
               개인정보 처리방침
             </Link>
             <Link
-              href="https://www.notion.so/2e8b3190d600806bbc49c659069629d3?source=copy_link"
+              href="https://www.notion.so/2e8b3190d600806bbc49c659069629d3"
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs font-suite-medium text-text-lightgray underline hover:text-text-darkgray transition-colors"
