@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased bg-text-inverse">
         <main className="min-h-screen pb-20">{children}</main>
 
         {/* 하단 탭바 */}
