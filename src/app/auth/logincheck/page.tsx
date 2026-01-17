@@ -1,6 +1,6 @@
 'use client';
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Checkbox from '@/components/common/CheckBox';
 import logo from '@/assets/images/logo.svg';
@@ -8,10 +8,22 @@ import Button from '@/components/common/Button';
 
 export default function LoginCheckPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const kakaoId = searchParams.get('kakaoId');
+  const nickname = searchParams.get('nickname');
+
   const [allAgreed, setAllAgreed] = useState(false);
   const [ageAgreed, setAgeAgreed] = useState(false);
   const [termsAgreed, setTermsAgreed] = useState(false);
   const [privacyAgreed, setPrivacyAgreed] = useState(false);
+
+  useEffect(() => {
+    if (!kakaoId) {
+      alert('카카오 로그인이 필요합니다!');
+      router.push('/onboard');
+    }
+  }, [kakaoId, router]);
 
   const handleAllAgree = (checked: boolean) => {
     setAllAgreed(checked);
@@ -35,13 +47,35 @@ export default function LoginCheckPage() {
     }, 0);
   };
 
-  const handleStart = () => {
-    if (ageAgreed && termsAgreed && privacyAgreed) {
+  const handleStart = async () => {
+  if (!ageAgreed || !termsAgreed || !privacyAgreed) { 
+    alert('필수 약관에 모두 동의하셔야 서비스 이용 가능합니다!');
+    return;
+  }
+  
+  try { 
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`, {  // ✅ NEXT_PUBLIC_API_URL
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        kakaoId,
+        nickname,
+      }),
+    });
+    
+    if (response.ok) {
       router.push('/');
-    } else {
-      alert('필수 약관에 모두 동의해주세요.');
-    }
-  };
+    } else { 
+      alert('회원가입 실패했습니다');
+    } 
+  } catch (error) {
+    console.error('회원가입 에러', error);
+    alert('오류가 발생했습니다!');
+  }
+};
 
   const openTermsLink = () => {
     window.open('https://www.notion.so/2e8b3190d600806bbc49c659069629d3', '_blank');
