@@ -1,4 +1,5 @@
 'use client';
+
 import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
@@ -47,35 +48,35 @@ export default function LoginCheckPage() {
     }, 0);
   };
 
-  const handleStart = async () => {
-  if (!ageAgreed || !termsAgreed || !privacyAgreed) { 
-    alert('필수 약관에 모두 동의하셔야 서비스 이용 가능합니다!');
-    return;
-  }
-  
-  try { 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`, {  // ✅ NEXT_PUBLIC_API_URL
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
-      body: JSON.stringify({
-        kakaoId,
-        nickname,
-      }),
-    });
+  const handleStart = async () => { 
+    if (!ageAgreed || !termsAgreed || !privacyAgreed) { 
+      alert('필수 약관에 모두 동의하셔야 서비스 이용 가능합니다!');
+      return;
+    }
     
-    if (response.ok) {
-      router.push('/');
-    } else { 
-      alert('회원가입 실패했습니다');
-    } 
-  } catch (error) {
-    console.error('회원가입 에러', error);
-    alert('오류가 발생했습니다!');
-  }
-};
+    try { 
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          kakaoId,
+          nickname,
+        }),
+      });
+      
+      if (response.ok) {
+        router.push('/');
+      } else { 
+        alert('회원가입 실패했습니다');
+      }
+    } catch (error) { 
+      console.error('회원가입 에러', error);
+      alert('오류가 발생했습니다!');
+    }
+  };
 
   const openTermsLink = () => {
     window.open('https://www.notion.so/2e8b3190d600806bbc49c659069629d3', '_blank');
@@ -118,7 +119,7 @@ export default function LoginCheckPage() {
             onChange={handleAllAgree}
             label="서비스 이용 약관 전체 동의"
             className="border-b border-gray-300"
-            labelClassName = 'text-text-darkgray font-semibold'
+            labelClassName='text-text-darkgray font-semibold'
           />
 
           <Checkbox
@@ -126,7 +127,7 @@ export default function LoginCheckPage() {
             onChange={(checked) => handleIndividualChange(setAgeAgreed, checked)}
             label="만 14세 이상입니다"
             required
-            labelClassName = 'text-text-lightgray'
+            labelClassName='text-text-lightgray'
           />
 
           <Checkbox
@@ -136,7 +137,7 @@ export default function LoginCheckPage() {
             required
             hasLink
             onLinkClick={openTermsLink}
-            labelClassName = 'text-text-lightgray'
+            labelClassName='text-text-lightgray'
           />
 
           <Checkbox
@@ -146,7 +147,7 @@ export default function LoginCheckPage() {
             required
             hasLink
             onLinkClick={openPrivacyLink}
-            labelClassName = 'text-text-lightgray'
+            labelClassName='text-text-lightgray'
           />
         </div>
       </div>
