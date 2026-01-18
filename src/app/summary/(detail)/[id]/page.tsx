@@ -1,5 +1,5 @@
 import AiInfoCard from "@/components/summary/detail/AiInfoCard";
-import ConclusionSectionProps from "@/components/summary/detail/ConclusionSection";
+import ConclusionSection from "@/components/summary/detail/ConclusionSection";
 import SummaryHeader from "@/components/summary/detail/SummaryHeader";
 import TopicSection from "@/components/summary/detail/TopicCard";
 import { SummaryDetail } from "@/types/summaryDetail";
@@ -115,7 +115,7 @@ export default function SummaryDetailPage() {
         ))}
       </div>
       {/* 결론 */}
-      <ConclusionSectionProps conclusions={summary.conclusions} />
+      <ConclusionSection conclusions={summary.conclusions} />
 
       {/* ai 요약 정보 */}
       <AiInfoCard />

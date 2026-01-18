@@ -10,7 +10,7 @@ interface QuestionCardProps {
 }
 
 export default function QuestionCard({ question }: QuestionCardProps) {
-  const [isSummaryOpen, setIsSummaryOpen] = useState<Boolean>(true);
+  const [isSummaryOpen, setIsSummaryOpen] = useState<Boolean>(false);
 
   return (
     <div className="bg-[#f5f1eb] p-5 rounded-[14px]">
