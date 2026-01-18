@@ -98,6 +98,21 @@
   /* Shadow */
   --shadow-card: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
   --shadow-btn: 1px 3px 7px 0px rgba(0, 0, 0, 0.1);
+
+  /* Gradient */
+  --gradient-success-diagonal: linear-gradient(77deg, #212948 0%, #e30084 100%);
+  --gradient-pending-diagonal: linear-gradient(
+    -77deg,
+    #212948 0%,
+    #2f385f 50%,
+    #4a5278 100%
+  );
+  --gradient-error-diagonal: linear-gradient(
+    -67deg,
+    #d14b4b 0%,
+    #b23a3a 50%,
+    #7a2323 100%
+  );
 }
 
 @media (prefers-color-scheme: dark) {
@@ -109,4 +124,17 @@
 
 body {
   color: var(--foreground);
+}
+
+.bg-success-gradient {
+  background: var(--gradient-success-diagonal);
+  color: #ffffff;
+}
+.bg-pending-gradient {
+  background: var(--gradient-pending-diagonal);
+  color: #ffffff;
+}
+.bg-error-gradient {
+  background: var(--gradient-error-diagonal);
+  color: #ffffff;
 }
