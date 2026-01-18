@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
         if (!tokenResponse.ok) {
             throw new Error('토큰 요청 실패');
         }
-        const accessToken = tokenData.accessToken;
+        const accessToken = tokenData.access_token;
 
         const userResponse = await fetch('https://kapi.kakao.com/v2/user/me', {
             headers: {
