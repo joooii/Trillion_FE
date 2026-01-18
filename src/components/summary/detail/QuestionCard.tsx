@@ -10,15 +10,18 @@ interface QuestionCardProps {
 }
 
 export default function QuestionCard({ question }: QuestionCardProps) {
-  const [isSummaryOpen, setIsSummaryOpen] = useState<Boolean>(false);
+  const [isSummaryOpen, setIsSummaryOpen] = useState<boolean>(false);
 
   return (
     <div className="bg-[#f5f1eb] p-5 rounded-[14px]">
-      <div
-        className={`flex items-center transition-all duration-200 flex ${
+      <button
+        type="button"
+        className={`flex w-full items-center transition-all duration-200 ${
           isSummaryOpen ? "mb-[21px]" : "mb-0"
         }`}
         onClick={() => setIsSummaryOpen(!isSummaryOpen)}
+        aria-expanded={isSummaryOpen}
+        aria-controls="question-answers"
       >
         <div className="bg-summary-primary-gradient w-[20px] h-[20px] rounded-full flex justify-center items-center mr-[10px]">
           <p className="text-xs font-bold text-white">Q</p>
@@ -31,9 +34,10 @@ export default function QuestionCard({ question }: QuestionCardProps) {
             isSummaryOpen ? "rotate-180" : "rotate-0"
           }`}
         />
-      </div>
+      </button>
 
       <div
+        id="question-answers"
         className={`
           overflow-hidden transition-all duration-200 ease-out
           ${

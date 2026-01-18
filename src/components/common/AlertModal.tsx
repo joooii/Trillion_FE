@@ -1,3 +1,5 @@
+"use client";
+
 import { CircleAlert } from "lucide-react";
 import Button from "@/components/common/Button";
 
@@ -6,6 +8,8 @@ interface AlertModalProps {
   text?: string;
   cancelButtonText?: string;
   confirmButtonText?: string;
+  onCancel?: () => void;
+  onConfirm?: () => void;
 }
 
 export default function AlertModal({
@@ -13,6 +17,8 @@ export default function AlertModal({
   text,
   cancelButtonText,
   confirmButtonText,
+  onCancel,
+  onConfirm,
 }: AlertModalProps) {
   return (
     <div className="fixed inset-0 flex justify-center items-center">
@@ -26,11 +32,14 @@ export default function AlertModal({
         <div className="flex flex-row gap-4">
           <Button
             size="xs"
+            onClick={onCancel}
             className="bg-white border border-[0.3px] border-secondary-800 active:bg-primary-50 text-secondary-800"
           >
             {cancelButtonText}
           </Button>
-          <Button size="xs">{confirmButtonText}</Button>
+          <Button size="xs" onClick={onConfirm}>
+            {confirmButtonText}
+          </Button>
         </div>
       </div>
     </div>

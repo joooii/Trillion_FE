@@ -22,8 +22,8 @@ export default function TopicSection({
         </p>
       </div>
 
-      {topic.questions.map((question, questioinIdx) => (
-        <QuestionCard key={questioinIdx} question={question} />
+      {topic.questions.map((question, questionIdx) => (
+        <QuestionCard key={questionIdx} question={question} />
       ))}
     </section>
   );
