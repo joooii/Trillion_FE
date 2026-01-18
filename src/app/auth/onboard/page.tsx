@@ -7,7 +7,7 @@ import kakaoButtonImage from "@/assets/images/btn_login_kakao.svg";
 
 export default function OnboardPage() {
   const handleKakaoLogin = () => { 
-    const redirectUri = encodeURIComponent('http://localhost:3000/auth/logincheck');
+  const redirectUri = encodeURIComponent(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/logincheck`);
     
     window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/oauth2/authorization/kakao?redirect_uri=${redirectUri}`;
   };
