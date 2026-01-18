@@ -1,13 +1,14 @@
 "use client";
 import { cn } from "@/utils/cn";
 
-type ButtonSize = "small" | "medium" | "large";
+type ButtonSize = "xs" | "small" | "medium" | "large";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
 }
 
 const sizeVariants: Record<ButtonSize, string> = {
+  xs: "w-[110px] h-[36px] font-semibold text-sm",
   small: "w-[160px] h-[40px] font-suite-semibold text-base",
   medium: "w-[303px] h-[48px] font-suite-medium text-base",
   large: "w-[335px] h-[55px] font-suite-semibold text-lg",
