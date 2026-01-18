@@ -1,19 +1,40 @@
 import type { Metadata } from "next";
-import Header from "@/components/common/Header";
+import SummaryCard from "@/components/summary/SummaryCard";
+import { SummaryCardData } from "@/store/summary";
+import AlertModal from "@/components/common/AlertModal";
 
 export const metadata: Metadata = {
-  title: "요약",
+  title: "상담 요약",
 };
 
-export default function SummaryPage() {
+const mockData: SummaryCardData[] = [
+  {
+    id: 1,
+    title: "온라인 결제 시스템 도입",
+    date: "2025.07.30",
+    status: "pending",
+    content: "QR 코드 기반 결제 시스템 도입 희망...",
+  },
+  {
+    id: 2,
+    title: "온라인 결제 시스템 도입",
+    date: "2025.07.30",
+    status: "success",
+    content: "QR 코드 기반 결제 시스템 도입",
+  },
+  {
+    id: 3,
+    date: "2025.07.30",
+    status: "error",
+  },
+];
+
+export default function ChatPage() {
   return (
-    <div className="p-6">
-      <Header back text="요약"/>
-      <div className="space-y-4">
-        <div className="p-4 bg-white rounded-lg shadow-sm border border-gray-100">
-          <p className="text-text-lightgray">요약 페이지입니다.</p>
-        </div>
-      </div>
+    <div className="flex flex-col gap-y-3 mb-8">
+      {mockData.map((item) => (
+        <SummaryCard key={item.id} {...item} />
+      ))}
     </div>
   );
 }

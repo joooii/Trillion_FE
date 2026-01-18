@@ -12,10 +12,10 @@ export default function ChatPage() {
       {/* 네모 박스 */}
       <ChatInputContainer />
       {/* 버튼 */}
-      <div className="mt-4 flex flex-row">
+      <div className="mt-4 flex flex-row gap-[11px]">
         <Button
           size="small"
-          className="text-secondary-800 bg-white mr-[11px] active:bg-primary-50"
+          className="text-secondary-800 bg-white active:bg-primary-50"
         >
           취소
         </Button>

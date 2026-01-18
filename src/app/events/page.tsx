@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function BenefitsPage() {
   return (
-    <div className="pt-[155px] pb-8 flex justify-center">
+    <div className="relative z-20 pb-8 flex justify-center">
       <div className="w-[335px] min-h-[584px] rounded-[10px] shadow-card py-[12px] bg-white">
         <BenefitCategory categoryItem="멤버십">
           <div className="ml-[29px] mr-[18px] grid grid-cols-2 gap-y-2 gap-x-6">
