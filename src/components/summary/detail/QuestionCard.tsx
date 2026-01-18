@@ -20,8 +20,6 @@ export default function QuestionCard({ question }: QuestionCardProps) {
           isSummaryOpen ? "mb-[21px]" : "mb-0"
         }`}
         onClick={() => setIsSummaryOpen(!isSummaryOpen)}
-        aria-expanded={isSummaryOpen}
-        aria-controls="question-answers"
       >
         <div className="bg-summary-primary-gradient w-[20px] h-[20px] rounded-full flex justify-center items-center mr-[10px]">
           <p className="text-xs font-bold text-white">Q</p>
@@ -37,7 +35,6 @@ export default function QuestionCard({ question }: QuestionCardProps) {
       </button>
 
       <div
-        id="question-answers"
         className={`
           overflow-hidden transition-all duration-200 ease-out
           ${
