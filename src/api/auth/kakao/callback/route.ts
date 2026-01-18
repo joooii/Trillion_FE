@@ -11,15 +11,15 @@ export async function GET(request: NextRequest) {
     }
 
     try {
-        const tokenResponse = await fetch('https://kauth.kakao.com/oatuh/token', {
+        const tokenResponse = await fetch('https://kauth.kakao.com/oauth/token', {
             method: 'POST',
             headers: {
-                'Content-Type': 'applicaiton/x-www-form-urlencoded',
+                'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: new URLSearchParams({
                 grant_type: 'authorization_code',
-                cliend_id: process.env.KAKAO_REST_API_KEY!,
-                redirect_url: process.env.KAKAO_REDIRECT_URI!,
+                client_id: process.env.KAKAO_REST_API_KEY!,
+                redirect_uri: process.env.KAKAO_REDIRECT_URI!,
                 code: code,
             }),
         });
