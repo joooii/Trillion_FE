@@ -7,6 +7,8 @@ import Checkbox from '@/components/common/CheckBox';
 import logo from '@/assets/images/logo.svg';
 import Button from '@/components/common/Button';
 
+export const dynamic = 'force-dynamic';
+
 export default function LoginCheckPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
