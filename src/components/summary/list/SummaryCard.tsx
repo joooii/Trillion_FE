@@ -1,9 +1,9 @@
 import Badge from "@/components/common/Badge";
-import ErrorContent from "@/components/summary/ErrorContent";
-import SummaryContent from "@/components/summary/SummaryContent";
-import { SummaryCardData } from "@/store/summary";
+import { SummaryCardData } from "@/types/summaryList";
 import { Calendar, ChevronRight } from "lucide-react";
 import Link from "next/link";
+import ErrorContent from "@/components/summary/list/ErrorContent";
+import SummaryContent from "@/components/summary/list/SummaryContent";
 
 export default function SummaryCard({
   id,

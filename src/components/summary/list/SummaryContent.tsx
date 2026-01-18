@@ -1,4 +1,4 @@
-import { SummaryStatus } from "@/store/summary";
+import { SummaryStatus } from "@/types/summaryList";
 import { Calendar } from "lucide-react";
 
 interface SummaryContentProps {

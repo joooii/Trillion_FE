@@ -1,3 +1,5 @@
+// 요약 list 관련 type
+
 export type SummaryStatus = "pending" | "success" | "error";
 
 export interface SummaryCardData {
