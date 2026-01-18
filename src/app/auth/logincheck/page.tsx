@@ -1,15 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Checkbox from '@/components/common/CheckBox';
 import logo from '@/assets/images/logo.svg';
 import Button from '@/components/common/Button';
 
-export const dynamic = 'force-dynamic';
-
-export default function LoginCheckPage() {
+function LoginCheckContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -166,5 +164,17 @@ export default function LoginCheckPage() {
         </Button>
       </div>
     </div>
+  );
+}
+
+export default function LoginCheckPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-text-inverse flex items-center justify-center">
+        <div className="text-text-darkgray">Loading...</div>
+      </div>
+    }>
+      <LoginCheckContent />
+    </Suspense>
   );
 }
