@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ChatInputContainer from "@/components/chat/ChatInputContainer";
-import Button from "@/components/common/Button";
+import ChatActionButtons from "@/components/chat/ChatActionButtons";
 
 export const metadata: Metadata = {
   title: "채팅",
@@ -11,18 +11,8 @@ export default function ChatPage() {
     <div className="pt-[96px] flex flex-col items-center">
       {/* 네모 박스 */}
       <ChatInputContainer />
-      {/* 버튼 */}
-      <div className="mt-4 flex flex-row gap-[11px]">
-        <Button
-          size="small"
-          className="text-secondary-800 bg-white active:bg-gray-100"
-        >
-          취소
-        </Button>
-        <Button size="small" className="">
-          요약 시작
-        </Button>
-      </div>
+      {/* 취소, 요약 시작 버튼 */}
+      <ChatActionButtons />
     </div>
   );
 }

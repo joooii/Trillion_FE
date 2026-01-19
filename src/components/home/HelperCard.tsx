@@ -17,6 +17,7 @@ export default function HelperCard({
   return (
     <a
       href={href}
+      target="_blank"
       className="w-[170px] h-[186px] rounded-[10px] bg-white shadow-card flex flex-col items-center justify-center text-center text-text-darkgray"
     >
       <Image
