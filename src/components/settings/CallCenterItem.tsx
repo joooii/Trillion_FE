@@ -15,6 +15,7 @@ export default function CallCenterItem({ icon, label }: CallCenterItemProps) {
     <a
       href={`tel:${CALL_NUMBER.replace(/-/g, "")}`}
       className="h-[48px] flex items-center w-full"
+      target="_blank"
     >
       <Image
         src={icon}

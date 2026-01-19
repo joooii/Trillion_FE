@@ -22,6 +22,7 @@ export default function BenefitsPage() {
               <a
                 key={item.label}
                 href={item.href}
+                target="_blank"
                 className="text-sm text-text-lightgray"
               >
                 - {item.label}
@@ -35,6 +36,7 @@ export default function BenefitsPage() {
               <a
                 key={item.label}
                 href={item.href}
+                target="_blank"
                 className="text-sm text-text-lightgray"
               >
                 - {item.label}
@@ -49,6 +51,7 @@ export default function BenefitsPage() {
               <a
                 key={item.label}
                 href={item.href}
+                target="_blank"
                 className="text-sm text-text-lightgray"
               >
                 - {item.label}
@@ -62,6 +65,7 @@ export default function BenefitsPage() {
               <a
                 key={item.label}
                 href={item.href}
+                target="_blank"
                 className="text-sm text-text-lightgray"
               >
                 - {item.label}
@@ -75,6 +79,7 @@ export default function BenefitsPage() {
               <a
                 key={item.label}
                 href={item.href}
+                target="_blank"
                 className="text-sm text-text-lightgray"
               >
                 - {item.label}

@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import AlertModal from "@/components/common/AlertModal";
+import { useRouter } from "next/navigation";
 
 export default function AccountActions() {
+  const router = useRouter();
   const [isOpenWithdrawModal, setIsOpenWithdrawModal] =
     useState<boolean>(false);
 
@@ -11,6 +13,7 @@ export default function AccountActions() {
     try {
       // TODO: 회원 로그아웃 API
       console.log("로그아웃 성공");
+      router.push("/auth/onboard");
     } catch (error) {
       console.error("로그아웃 실패", error);
     }
@@ -20,7 +23,7 @@ export default function AccountActions() {
     try {
       // TODO: 회원 탈퇴 API
       console.log("회원 탈퇴 처리 예정");
-      // /auth/onboard로 리다이렉트 처리
+      router.push("/auth/onboard");
     } catch (error) {
       console.error("회원 탈퇴 실패", error);
     } finally {
