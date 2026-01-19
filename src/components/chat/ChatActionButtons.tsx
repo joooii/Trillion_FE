@@ -21,13 +21,10 @@ export default function ChatActionButtons() {
     setIsSummarizing(true);
 
     try {
-      // TODO: 요약 시작 API 호출
-      //   await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/counsel/summary`, {
-      //     method: "POST",
-      //     credentials: "include",
-      //   });
-
-      // 요약 완료 -> 이동
+      // fetch(`${`process.env.NEXT_PUBLIC_API_URL`}/api/counsel/summary`, {
+      //   method: "POST",
+      //   credentials: "include",
+      // });
       router.push("/summary");
     } catch (error) {
       console.error("요약 실패", error);
@@ -47,13 +44,12 @@ export default function ChatActionButtons() {
   }, [showErrorToast]);
 
   return (
-    <>
+    <div className="relative w-full flex flex-col items-center">
       {showErrorToast && (
-        <div className="fixed top-[80px] left-1/2 -translate-x-1/2 z-50">
+        <div className="absolute bottom-[50px]">
           <ErrorToast onClose={() => setShowErrorToast(false)} />
         </div>
       )}
-
       <div className="mt-4 flex flex-row gap-[11px]">
         <Button
           size="small"
@@ -71,6 +67,6 @@ export default function ChatActionButtons() {
           {isSummarizing ? "요약 중..." : "요약 시작"}
         </Button>
       </div>
-    </>
+    </div>
   );
 }
