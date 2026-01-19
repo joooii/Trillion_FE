@@ -6,6 +6,11 @@ import Policy from "@/assets/images/policy.svg";
 import Privacy from "@/assets/images/privacy.svg";
 import { User } from "lucide-react";
 import AccountActions from "@/components/settings/AccountActions";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "설정",
+};
 
 export default function SettingsPage() {
   return (

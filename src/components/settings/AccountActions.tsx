@@ -9,7 +9,7 @@ export default function AccountActions() {
 
   const handleLogout = async () => {
     try {
-      // TODO: 회원 탈퇴 API
+      // TODO: 회원 로그아웃 API
       console.log("로그아웃 성공");
     } catch (error) {
       console.error("로그아웃 실패", error);
@@ -48,7 +48,7 @@ export default function AccountActions() {
       {isOpenWithdrawModal && (
         <AlertModal
           title="정말 탈퇴하시겠어요?"
-          text={"탈퇴 버튼 선택 시,계정은 삭제되며\n 복구되지 않습니다."}
+          text={"탈퇴 버튼 선택 시, 계정은 삭제되며\n 복구되지 않습니다."}
           cancelButtonText="취소"
           confirmButtonText="탈퇴하기"
           onCancel={() => setIsOpenWithdrawModal(false)}
