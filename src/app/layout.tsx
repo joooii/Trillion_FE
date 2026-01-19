@@ -21,7 +21,7 @@ export default function RootLayout({
         <main className="min-h-screen pb-20">{children}</main>
 
         {/* 하단 탭바 */}
-        {/* <TabBar /> */}
+        <TabBar />
       </body>
     </html>
   );
