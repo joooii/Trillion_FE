@@ -15,7 +15,7 @@ export default function TabBar() {
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50">
+    <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-[393px] bg-white border-t border-gray-200 z-50">
       <div className="max-w-screen-lg mx-auto">
         <div className="flex items-end justify-around h-[63px] px-4 relative">
           {navItems.map(({ href, label, icon: Icon, isCenter }) => {
@@ -50,7 +50,7 @@ export default function TabBar() {
                   strokeWidth={2}
                 />
                 <span
-                  className={`text-xs font-suite-medium transition-colors ${isActive ? "text-primary-500" : "text-gray-400"}`}
+                  className={`text-xs font-medium transition-colors ${isActive ? "text-primary-500" : "text-gray-400"}`}
                 >
                   {label}
                 </span>

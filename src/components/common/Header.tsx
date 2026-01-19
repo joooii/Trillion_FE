@@ -28,7 +28,7 @@ export default function Header({back = false, text}: HeaderProps){
               )}
             </div>    
             <div className="flex-1 text-center">
-              <span className="text-xl font-suite-extrabold text-text-darkgray">
+              <span className="text-xl font-extrabold text-text-darkgray">
                 {text}
               </span>
             </div>    

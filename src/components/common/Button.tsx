@@ -8,9 +8,9 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const sizeVariants: Record<ButtonSize, string> = {
-  small: "w-[160px] h-[40px] font-suite-semibold text-base",
-  medium: "w-[303px] h-[48px] font-suite-medium text-base", 
-  large: "w-[335px] h-[55px] font-suite-semibold text-lg",  
+  small: "w-[160px] h-[40px] font-semibold text-base",
+  medium: "w-[303px] h-[48px] font-medium text-base", 
+  large: "w-[335px] h-[55px] font-semibold text-lg",  
 };
 
 export default function Button({
