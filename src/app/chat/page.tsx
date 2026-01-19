@@ -15,7 +15,7 @@ export default function ChatPage() {
       <div className="mt-4 flex flex-row gap-[11px]">
         <Button
           size="small"
-          className="text-secondary-800 bg-white active:bg-primary-50"
+          className="text-secondary-800 bg-white active:bg-gray-100"
         >
           취소
         </Button>
