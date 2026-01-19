@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import logoImage from "@/assets/images/logo.svg";
 import kakaoButtonImage from "@/assets/images/btn_login_kakao.svg";
 
@@ -18,20 +18,20 @@ export default function OnboardPage() {
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API_URL}/api/users/member/profile`,
           {
-            method: 'GET',
-            credentials: 'include',
+            method: "GET",
+            credentials: "include",
           }
         );
 
         if (response.ok) {
           // 이미 로그인됨 → 홈으로 리디렉션
-          router.push('/');
+          router.push("/");
         } else {
           // 로그인 안 됨 → 로그인 페이지 표시
           setIsChecking(false);
         }
       } catch (error) {
-        console.error('인증 확인 에러:', error);
+        console.error("인증 확인 에러:", error);
         setIsChecking(false);
       }
     };
@@ -39,8 +39,10 @@ export default function OnboardPage() {
     checkAuthStatus();
   }, [router]);
 
-  const handleKakaoLogin = () => { 
-    const redirectUri = encodeURIComponent(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/logincheck`);
+  const handleKakaoLogin = () => {
+    const redirectUri = encodeURIComponent(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/auth/logincheck`
+    );
     window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/oauth2/authorization/kakao?redirect_uri=${redirectUri}`;
   };
 
