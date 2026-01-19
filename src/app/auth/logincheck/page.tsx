@@ -1,7 +1,7 @@
 'use client';
 
-import { Suspense, useEffect, useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { Suspense, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Checkbox from '@/components/common/CheckBox';
 import logo from '@/assets/images/logo.svg';
@@ -9,22 +9,11 @@ import Button from '@/components/common/Button';
 
 function LoginCheckContent() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const kakaoId = searchParams.get('kakaoId');
-  const nickname = searchParams.get('nickname');
 
   const [allAgreed, setAllAgreed] = useState(false);
   const [ageAgreed, setAgeAgreed] = useState(false);
   const [termsAgreed, setTermsAgreed] = useState(false);
   const [privacyAgreed, setPrivacyAgreed] = useState(false);
-
-  useEffect(() => {
-    if (!kakaoId) {
-      alert('카카오 로그인이 필요합니다!');
-      router.push('/onboard');
-    }
-  }, [kakaoId, router]);
 
   const handleAllAgree = (checked: boolean) => {
     setAllAgreed(checked);
@@ -55,17 +44,13 @@ function LoginCheckContent() {
     }
     
     try { 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({
-          kakaoId,
-          nickname,
-        }),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/users/auth/logincheck`,
+        {
+          method: 'POST',
+          credentials: 'include', // 쿠키 자동 전송
+        }
+      );
       
       if (response.ok) {
         router.push('/');
