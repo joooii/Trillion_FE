@@ -10,11 +10,18 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <div className="pt-[139px] w-[393px] mx-auto">
-      <HeaderHome title="SO:U+" description="안녕하세요, 김소유님" isHome />
-      <SummaryStartCard />
-      <ContentSection />
-      <HelperSection />
+    <div className="flex flex-col items-center">
+      <HeaderHome 
+        title="SO:U+" 
+        description="안녕하세요, 김소유님" 
+        isHome 
+        isScrollable={true}
+      />
+      <div className="w-[393px] -mt-4">
+        <SummaryStartCard />
+        <ContentSection />
+        <HelperSection />
+      </div>
     </div>
   );
 }
