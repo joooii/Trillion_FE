@@ -4,7 +4,7 @@ import { StaticImageData } from "next/image";
 
 interface YoutubePlayerProps {
   href: string;
-  thumbnail?: StaticImageData | string;
+  thumbnail: string; // ← StaticImageData를 굳이 받을 필요 없음
   ariaLabel?: string;
 }
 
