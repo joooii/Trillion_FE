@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "@/app/globals.css";
+import "./globals.css";
 import TabBar from "@/components/common/TabBar";
 
 export const metadata: Metadata = {
@@ -19,7 +19,9 @@ export default function RootLayout({
     <html lang="ko">
       <body className="font-sans antialiased bg-text-inverse">
         <main className="min-h-screen pb-20">{children}</main>
-        <TabBar />
+
+        {/* 하단 탭바 */}
+        {/* <TabBar /> */}
       </body>
     </html>
   );
