@@ -98,6 +98,52 @@
   /* Shadow */
   --shadow-card: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
   --shadow-btn: 1px 3px 7px 0px rgba(0, 0, 0, 0.1);
+  /* 결과 요약 내용 카드 */
+  --shadow-content-card: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+
+  /* Gradient */
+  --gradient-success-diagonal: linear-gradient(77deg, #212948 0%, #e30084 100%);
+  --gradient-pending-diagonal: linear-gradient(
+    -77deg,
+    #212948 0%,
+    #2f385f 50%,
+    #4a5278 100%
+  );
+  --gradient-error-diagonal: linear-gradient(
+    -67deg,
+    #d14b4b 0%,
+    #b23a3a 50%,
+    #7a2323 100%
+  );
+
+  /* summary 관련 */
+  --gradient-summary-date-diagonal: linear-gradient(
+    -45deg,
+    rgba(227, 0, 132, 0.2) 0%,
+    rgba(33, 41, 72, 0.2) 100%
+  );
+  --gradient-summary-primary-diagonal: linear-gradient(
+    -45deg,
+    #e30084 0%,
+    #ff1493 100%
+  );
+  --gradient-summary-secondary-diagonal: linear-gradient(
+    -45deg,
+    #212948 0%,
+    #4a5278 100%
+  );
+
+  --gradient-summary-conclusion-diagonal: linear-gradient(
+    170deg,
+    #ffffff 0%,
+    #f5f1eb 100%
+  );
+
+  --gradient-summary-ai-diagonal: linear-gradient(
+    -45deg,
+    rgba(227, 0, 132, 0.05) 0%,
+    rgba(33, 41, 72, 0.05) 100%
+  );
 }
 
 @media (prefers-color-scheme: dark) {
@@ -109,4 +155,35 @@
 
 body {
   color: var(--foreground);
+}
+
+.bg-success-gradient {
+  background: var(--gradient-success-diagonal);
+  color: #ffffff;
+}
+.bg-pending-gradient {
+  background: var(--gradient-pending-diagonal);
+  color: #ffffff;
+}
+.bg-error-gradient {
+  background: var(--gradient-error-diagonal);
+  color: #ffffff;
+}
+
+.bg-summary-date-gradient {
+  background: var(--gradient-summary-date-diagonal);
+}
+.bg-summary-primary-gradient {
+  background: var(--gradient-summary-primary-diagonal);
+  color: #ffffff;
+}
+.bg-summary-secondary-gradient {
+  background: var(--gradient-summary-secondary-diagonal);
+  color: #ffffff;
+}
+.bg-summary-conclusion-gradient {
+  background: var(--gradient-summary-conclusion-diagonal);
+}
+.bg-summary-ai-gradient {
+  background: var(--gradient-summary-ai-diagonal);
 }

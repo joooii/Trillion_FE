@@ -1,16 +1,15 @@
 "use client";
-import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 
 interface HeaderProps {
-    back? : boolean;
-    text? : string;
+  back?: boolean;
+  text?: string;
 }
 
-export default function Header({back = false, text}: HeaderProps){
-    const handleBack = () => {
-        window.history.back();
-    };
+export default function Header({ back = false, text }: HeaderProps) {
+  const handleBack = () => {
+    window.history.back();
+  };
 
     return (
         <header className = "fixed top-0 left-1/2 -translate-x-1/2 w-[393px] pt-[53px] bg-text-inverse z-40">
@@ -36,4 +35,5 @@ export default function Header({back = false, text}: HeaderProps){
           </div>
         </header>
       );
+
 }
