@@ -30,6 +30,8 @@ export default function ChatActionButtons() {
       console.error("요약 실패", error);
       setShowErrorToast(true);
       setIsSummarizing(false);
+    } finally {
+      setIsSummarizing(false);
     }
   };
 
