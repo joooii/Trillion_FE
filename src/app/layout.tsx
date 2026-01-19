@@ -8,6 +8,9 @@ export const metadata: Metadata = {
     template: "%s | SO:U+",
   },
   description: "쉽게 이해하는 고객 상담 요약 서비스",
+  icons: {
+      icon : "/src/app/favicon.ico"
+    },
 };
 
 export default function RootLayout({
