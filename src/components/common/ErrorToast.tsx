@@ -12,7 +12,7 @@ export default function ErrorToast({
   onClose,
 }: ErrorToastProps) {
   return (
-    <div className="w-[361px] h-[44px] rounded-[10px] bg-[#FFECEC] py-[10px] px-[11px] flex items-center shadow-card">
+    <div className="w-[361px] h-[44px] rounded-[10px] bg-[#FFECEC] py-[10px] pl-[15px] pr-[11px] flex items-center shadow-card">
       <CircleX className="w-[24px] h-[24px] stroke-error-500 ml-[4px]" />
 
       <p className="text-base text-error-600 ml-[9px]">{message}</p>

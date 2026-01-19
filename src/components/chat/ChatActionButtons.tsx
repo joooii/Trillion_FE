@@ -8,7 +8,7 @@ import ErrorToast from "@/components/common/ErrorToast";
 export default function ChatActionButtons() {
   const router = useRouter();
   const [isSummarizing, setIsSummarizing] = useState<boolean>(false);
-  const [showErrorToast, setShowErrorToast] = useState<boolean>(true);
+  const [showErrorToast, setShowErrorToast] = useState<boolean>(false);
 
   const handleCancel = () => {
     if (isSummarizing) return;
@@ -38,11 +38,11 @@ export default function ChatActionButtons() {
   useEffect(() => {
     if (!showErrorToast) return;
 
-    // const timer = setTimeout(() => {
-    //   setShowErrorToast(false);
-    // }, 3000);
+    const timer = setTimeout(() => {
+      setShowErrorToast(false);
+    }, 3000);
 
-    // return () => clearTimeout(timer);
+    return () => clearTimeout(timer);
   }, [showErrorToast]);
 
   return (
