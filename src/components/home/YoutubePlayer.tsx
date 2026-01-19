@@ -1,18 +1,12 @@
 import Image from "next/image";
 import YouTubeIcon from "@/assets/images/youtube.svg";
-import { StaticImageData } from "next/image";
-
-interface YoutubePlayerProps {
-  href: string;
-  thumbnail: string; // ← StaticImageData를 굳이 받을 필요 없음
-  ariaLabel?: string;
-}
+import { Youtube } from "@/types/youtube";
 
 export default function YoutubePlayer({
   href,
   thumbnail,
   ariaLabel = "유튜브 영상으로 이동",
-}: YoutubePlayerProps) {
+}: Youtube) {
   return (
     <a
       href={href}
