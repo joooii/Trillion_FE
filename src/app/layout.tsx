@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import TabBar from "@/components/common/TabBar";
+import Providers from "@/app/providers";
 
 export const metadata: Metadata = {
   title: {
@@ -9,8 +10,8 @@ export const metadata: Metadata = {
   },
   description: "쉽게 이해하는 고객 상담 요약 서비스",
   icons: {
-      icon : "/src/app/favicon.ico"
-    },
+    icon: "/src/app/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -21,10 +22,12 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="font-sans antialiased bg-text-inverse">
-        <main className="min-h-screen pb-20">{children}</main>
+        <Providers>
+          <main className="min-h-screen pb-20">{children}</main>
 
-        {/* 하단 탭바 */}
-        <TabBar />
+          {/* 하단 탭바 */}
+          <TabBar />
+        </Providers>
       </body>
     </html>
   );
