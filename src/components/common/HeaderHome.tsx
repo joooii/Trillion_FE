@@ -5,16 +5,22 @@ interface HeaderHomeProps {
   title: string;
   description: string;
   isHome?: boolean;
+  isScrollable?: boolean; // 추가!
 }
 
 export default function HeaderHome({
   title,
   description,
   isHome = false,
+  isScrollable = false, // 기본값: 고정
 }: HeaderHomeProps) {
   return (
     <header
-      className={`fixed top-0 left-1/2 -translate-x-1/2 w-[393px] pt-[65px] z-10 ${isHome ? "bg-primary-500" : "bg-text-inverse"}`}
+      className={`
+        ${isScrollable ? "" : "fixed top-0 left-1/2 -translate-x-1/2 z-10"} 
+        w-[393px] pt-[65px] 
+        ${isHome ? "bg-primary-500" : "bg-text-inverse"}
+      `}
     >
       <div
         className={`h-[90px] flex flex-col px-4 pl-6 ${isHome ? "text-white" : "text-text-darkgray"}`}
