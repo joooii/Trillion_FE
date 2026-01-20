@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import TabBar from "@/components/common/TabBar";
 import Providers from "@/app/providers";
 
 export const metadata: Metadata = {
@@ -23,10 +22,7 @@ export default function RootLayout({
     <html lang="ko">
       <body className="font-sans antialiased bg-text-inverse">
         <Providers>
-          <main className="min-h-screen pb-20">{children}</main>
-
-          {/* 하단 탭바 */}
-          <TabBar />
+          <main className="min-h-screen">{children}</main>
         </Providers>
       </body>
     </html>

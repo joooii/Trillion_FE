@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import SummaryCard from "@/components/summary/list/SummaryCard";
 import { SummaryCardData } from "@/types/summaryList";
-// import AlertModal from "@/components/common/AlertModal";
 
 export const metadata: Metadata = {
   title: "상담 요약",
