@@ -1,4 +1,3 @@
-import "@/app/globals.css";
 import TabBar from "@/components/common/TabBar";
 
 export default function WithTabLayout({
