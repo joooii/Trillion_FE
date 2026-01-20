@@ -19,7 +19,8 @@ export default function HomePage() {
       />
       <div className="w-[393px] -mt-4">
         <SummaryStartCard />
-        <ContentSection />
+        {/* <ContentSection /> */}
+        {/* TODO: SummaryCard 컴포넌트 생성후 집어넣기*/}
         <HelperSection />
       </div>
     </div>
