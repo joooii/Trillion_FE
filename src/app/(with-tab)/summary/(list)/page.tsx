@@ -25,7 +25,7 @@ const mockData: SummaryCardData[] = [
   },
   {
     id: 3,
-    date: "2026.08.30",
+    date: "2025.08.30",
     status: "error",
     category: ChatCategory.ROAMING,
   },

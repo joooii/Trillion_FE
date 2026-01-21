@@ -43,7 +43,7 @@ export default function SummaryWrapper({ data }: SummaryWrapperProps) {
         <YearSelector year={year} onChange={setYear} />
       </div>
 
-      <div className="flex flex-col gap-y-3 mt-3">
+      <div className="flex flex-col gap-y-3">
         {yearFilteredData.length === 0 ? (
           <p className="text-center text-sm text-text-lightgray py-6">
             해당 연도의 상담 내역이 없습니다.

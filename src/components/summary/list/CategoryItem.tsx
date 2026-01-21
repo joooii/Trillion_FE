@@ -15,7 +15,7 @@ export default function CategoryItem({
     <button
       type="button"
       onClick={onClick}
-      className={`h-[30px] w-fit shrink-0 px-[12px] py-[7px] text-sm rounded-md flex items-center justify-center whitespace-nowrap border-[0.5px] border-secondary-800
+      className={`h-[30px] w-fit shrink-0 px-[12px] py-[7px] text-sm rounded-md flex items-center justify-center whitespace-nowrap border-[1px] border-secondary-800
         ${active ? "bg-secondary-800 text-white font-semibold " : "text-secondary-800"}`}
     >
       {label}
