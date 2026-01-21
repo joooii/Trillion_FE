@@ -1,3 +1,5 @@
+"use client";
+
 interface MonthSectionProps {
   month: number;
 }

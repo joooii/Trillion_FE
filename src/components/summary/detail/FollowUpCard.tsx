@@ -3,7 +3,7 @@
 import { MessageSquarePlus, Send } from "lucide-react";
 import { useState } from "react";
 
-export default function AiInfoCard() {
+export default function FollowUpCard() {
   const [isFollowUpChat, setIsFollowUpChat] = useState<boolean>(false);
   const [followUpText, setFollowUpText] = useState<string>("");
 
