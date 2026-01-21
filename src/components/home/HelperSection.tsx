@@ -5,7 +5,7 @@ import SelfGuide from "@/assets/images/self_guide.png";
 export default function HelperSection() {
   return (
     <div className="mt-[33px]">
-      <p className="ml-[29px] mb-[15px] text-lg font-semibold text-text-darkgray">
+      <p className="ml-[29px] mb-4 text-lg font-semibold text-text-darkgray">
         도움이 필요하신가요?
       </p>
 

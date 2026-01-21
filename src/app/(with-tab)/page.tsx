@@ -17,7 +17,7 @@ export default function HomePage() {
         isHome 
         isScrollable={true}
       />
-      <div className="w-[393px] -mt-4">
+      <div className="w-[393px] mt-9">
         <SummaryStartCard />
         {/* <ContentSection /> */}
         {/* TODO: SummaryCard 컴포넌트 생성후 집어넣기*/}
