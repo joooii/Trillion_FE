@@ -4,6 +4,7 @@ import { Question } from "@/types/summaryDetail";
 import { useState } from "react";
 import AnswerCard from "@/components/summary/detail/AnswerCard";
 import { ChevronDown } from "lucide-react";
+import HighlightedText from "./HighlightedText";
 
 interface QuestionCardProps {
   question: Question;
@@ -16,16 +17,16 @@ export default function QuestionCard({ question }: QuestionCardProps) {
     <div className="bg-[#f5f1eb] p-5 rounded-[14px]">
       <button
         type="button"
-        className={`flex w-full items-center transition-all duration-200 ${
+        className={`flex w-full items-start transition-all duration-200 ${
           isSummaryOpen ? "mb-[21px]" : "mb-0"
         }`}
         onClick={() => setIsSummaryOpen(!isSummaryOpen)}
       >
-        <div className="bg-summary-primary-gradient w-[20px] h-[20px] rounded-full flex justify-center items-center mr-[10px]">
+        <div className="bg-summary-primary-gradient w-[20px] h-[20px] rounded-full flex justify-center items-center mr-[10px] flex-shrink-0">
           <p className="text-xs font-bold text-white">Q</p>
         </div>
-        <p className="text-text-darkgray text-sm font-bold">
-          {question.question}
+        <p className="text-text-darkgray text-sm font-bold text-left">
+          <HighlightedText text={question.question} />
         </p>
         <ChevronDown
           className={`ml-auto w-4 h-4 text-text-lightgray transition-transform duration-200 ${

@@ -1,6 +1,7 @@
 import { Topic } from "@/types/summaryDetail";
 import QuestionCard from "@/components/summary/detail/QuestionCard";
 import { Lightbulb } from "lucide-react";
+import HighlightedText from "./HighlightedText";
 
 interface TopicCardProps {
   topic: Topic;
@@ -18,7 +19,7 @@ export default function TopicSection({
           <Lightbulb className="w-[20px] h-[20px] stroke-white stroke-[1.67px]" />
         </div>
         <p className="text-text-darkgray font-bold text-lg">
-          {topic.topic_title}
+          <HighlightedText text={topic.topic_title} />
         </p>
       </div>
 
