@@ -4,22 +4,22 @@ import Link from "next/link";
 import Summary from "@/components/home/Summary";
 import EmptyState from "@/components/home/EmptySummary";
 
-// const mockData: SummaryHome[] = [
-//   {
-//     id: 1,
-//     title: "온라인 결제 시스템 도입",
-//     date: "2025.07.30",
-//     content: "QR 코드 기반 결제 시스템 도입 희망",
-//   },
-//   {
-//     id: 2,
-//     title: "온라인 결제 시스템 도입",
-//     date: "2025.07.30",
-//     content: "QR 코드 기반 결제 시스템 도입",
-//   },
-// ];
+const mockData: SummaryHome[] = [
+  {
+    id: 1,
+    title: "온라인 결제 시스템 도입",
+    date: "2025.07.30",
+    content: "QR 코드 기반 결제 시스템 도입 희망",
+  },
+  {
+    id: 2,
+    title: "온라인 결제 시스템 도입",
+    date: "2025.07.30",
+    content: "QR 코드 기반 결제 시스템 도입",
+  },
+];
 
-const mockData: SummaryHome[] = [];
+//const mockData: SummaryHome[] = [];
 
 export default function SummaryList() { 
   return (
