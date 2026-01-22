@@ -19,7 +19,9 @@ export default function TabBar() {
       <div className="max-w-screen-lg mx-auto">
         <div className="flex items-end justify-around h-[63px] px-4 relative">
           {navItems.map(({ href, label, icon: Icon, isCenter }) => {
-            const isActive = pathname === href;
+            // const isActive = pathname === href;
+            const isActive =
+              href === "/" ? pathname === "/" : pathname.startsWith(href);
 
             // 중앙 원형 버튼
             if (isCenter) {
