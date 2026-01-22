@@ -1,18 +1,20 @@
 import Image from "next/image";
+import Link from "next/link";
+import { Settings } from "lucide-react";  // ← 수정
 import LogoMini from "@/assets/images/logo_mini.svg";
 
 interface HeaderHomeProps {
   title: string;
   description: string;
   isHome?: boolean;
-  isScrollable?: boolean; // 추가!
+  isScrollable?: boolean;
 }
 
 export default function HeaderHome({
   title,
   description,
   isHome = false,
-  isScrollable = false, // 기본값: 고정
+  isScrollable = false,
 }: HeaderHomeProps) {
   return (
     <header
@@ -25,20 +27,28 @@ export default function HeaderHome({
       <div
         className={`h-[90px] flex flex-col px-4 pl-6 ${isHome ? "text-white" : "text-text-darkgray"}`}
       >
-        <div className="flex items-center gap-2">
-          <div
-            className={`w-8 h-8 rounded-xl flex items-center justify-center ${isHome ? "bg-white/20" : "bg-primary-200"}`}
-          >
-            <Image
-              src={LogoMini}
-              alt="SO:U+ logo"
-              width={26}
-              height={26}
-              className="object-contain"
-            />
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div
+              className={`w-8 h-8 rounded-xl flex items-center justify-center ${isHome ? "bg-white/20" : "bg-primary-200"}`}
+            >
+              <Image
+                src={LogoMini}
+                alt="SO:U+ logo"
+                width={26}
+                height={26}
+                className="object-contain"
+              />
+            </div>
+
+            <p className="text-[25px] font-extrabold leading-none">{title}</p>
           </div>
 
-          <p className="text-[25px] font-extrabold leading-none">{title}</p>
+          {isHome && (
+            <Link href="/settings" className="mr-[10px]">
+              <Settings className="w-6 h-6 stroke-white" />
+            </Link>
+          )}
         </div>
 
         <p
