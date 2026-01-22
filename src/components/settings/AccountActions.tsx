@@ -20,7 +20,7 @@ export default function AccountActions() {
       );
       if (response.ok) { 
         console.log("로그아웃 성공");
-      router.push("/auth/onboard");
+        router.push("/auth/onboard");
       }
     } catch (error) {
       console.error("로그아웃 실패", error);
@@ -30,9 +30,17 @@ export default function AccountActions() {
 
   const handleWithdraw = async () => {
     try {
-      // TODO: 회원 탈퇴 API
-      console.log("회원 탈퇴 처리 예정");
-      router.push("/auth/onboard");
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/users/member/withdraw`,
+        {
+          method: 'POST',
+          credentials: 'include',
+        }
+      );
+      if (response.ok) { 
+        console.log("회원 탈퇴 처리 예정");
+        router.push("/auth/onboard");
+      }
     } catch (error) {
       console.error("회원 탈퇴 실패", error);
     } finally {
