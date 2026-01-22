@@ -5,7 +5,11 @@ import { useEffect, useState } from "react";
 import Button from "@/components/common/Button";
 import ErrorToast from "@/components/common/ErrorToast";
 
-export default function ChatActionButtons() {
+interface ChatActionButtonsProps {
+  chatId: number | string;
+}
+
+export default function ChatActionButtons({ chatId }: ChatActionButtonsProps) {
   const router = useRouter();
   const [isSummarizing, setIsSummarizing] = useState<boolean>(false);
   const [showErrorToast, setShowErrorToast] = useState<boolean>(false);
@@ -24,8 +28,8 @@ export default function ChatActionButtons() {
       // fetch(`${`process.env.NEXT_PUBLIC_API_URL`}/api/counsel/summary`, {
       //   method: "POST",
       //   credentials: "include",
-      // });
-      router.push("/summary");
+      // })
+      router.push(`/summary/${chatId}`);
     } catch (error) {
       console.error("요약 실패", error);
       setShowErrorToast(true);
