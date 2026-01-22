@@ -7,8 +7,7 @@ interface SummaryContentProps {
 export default function Summary({ content }: SummaryContentProps) {
   return (
     <div
-      className="w-[311px] rounded-[10px] p-3 flex flex-col gap-y-2"
-      style={{ background: 'var(--gradient-success-diagonal)' }}
+      className="w-[311px] rounded-[10px] p-3 flex flex-col gap-y-2 bg-success-gradient"
     >
       <div className="flex items-center gap-[3px]">
         <Calendar className="w-3 h-3 stroke-primary-500" />

@@ -187,3 +187,7 @@ body {
 .bg-summary-ai-gradient {
   background: var(--gradient-summary-ai-diagonal);
 }
+.bg-success-gradient {
+  background: var(--gradient-success-diagonal);
+  color: #ffffff;
+}
