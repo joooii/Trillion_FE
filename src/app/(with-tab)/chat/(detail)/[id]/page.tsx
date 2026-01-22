@@ -10,7 +10,6 @@ interface ChatDetailPageProps {
 export default async function ChatDetailPage({ params }: ChatDetailPageProps) {
   const { id } = await params;
 
-  // mock 대신 api 데이터 넣으면 됩니다
   const mockData = mockChatData.find((chat) => String(chat.id) === id);
 
   if (!mockData) {
