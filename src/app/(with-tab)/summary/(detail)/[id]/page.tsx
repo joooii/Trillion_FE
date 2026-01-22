@@ -1,6 +1,7 @@
 import AiInfoCard from "@/components/summary/detail/AiInfoCard";
 import ConclusionSection from "@/components/summary/detail/ConclusionSection";
 import SummaryHeader from "@/components/summary/detail/SummaryHeader";
+import { TermPopover } from "@/components/summary/detail/TermPopover";
 import TopicSection from "@/components/summary/detail/TopicCard";
 import { SummaryDetail } from "@/types/summaryDetail";
 

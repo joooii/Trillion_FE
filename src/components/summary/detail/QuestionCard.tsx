@@ -25,11 +25,11 @@ export default function QuestionCard({ question }: QuestionCardProps) {
         <div className="bg-summary-primary-gradient w-[20px] h-[20px] rounded-full flex justify-center items-center mr-[10px] flex-shrink-0">
           <p className="text-xs font-bold text-white">Q</p>
         </div>
-        <p className="text-text-darkgray text-sm font-bold text-left">
+        <div className="text-text-darkgray text-sm font-bold text-left">
           <HighlightedText text={question.question} />
-        </p>
+        </div>
         <ChevronDown
-          className={`ml-auto w-4 h-4 text-text-lightgray transition-transform duration-200 ${
+          className={`ml-auto w-4 h-4 text-text-lightgray transition-transform duration-200 shrink-0 ${
             isSummaryOpen ? "rotate-180" : "rotate-0"
           }`}
         />

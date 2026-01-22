@@ -12,17 +12,17 @@ export default function AnswerCard({ answer }: AnswerCardProps) {
         <div className="bg-summary-secondary-gradient w-[20px] h-[20px] rounded-full flex justify-center items-center mr-[10px] flex-shrink-0">
           <p className="text-xs font-bold text-white">A</p>
         </div>
-        <p className="text-text-darkgray text-sm font-bold">
+        <div className="text-text-darkgray text-sm font-bold">
           <HighlightedText text={answer.answer_summary} />
-        </p>
+        </div>
       </div>
       <div className="flex flex-col gap-[10px]">
         {answer.contents.map((content, idx) => {
           if (content.type === "mark-up-text") {
             return (
-              <p key={idx} className="text-xs text-text-darkgray ml-[20px]">
+              <div key={idx} className="text-xs text-text-darkgray ml-[20px]">
                 <HighlightedText text={content.content} />
-              </p>
+              </div>
             );
           }
 
@@ -57,7 +57,7 @@ export default function AnswerCard({ answer }: AnswerCardProps) {
                     rel="noopener noreferrer"
                     className="self-start text-xs text-secondary-600 underline underline-offset-2 transition-colors active:text-primary-500"
                   >
-                    <HighlightedText text={card.card_title} />
+                    {card.card_title}
                   </a>
                 ))}
               </div>

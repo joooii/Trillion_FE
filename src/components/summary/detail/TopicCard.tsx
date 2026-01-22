@@ -18,9 +18,9 @@ export default function TopicSection({
         <div className="w-[32px] h-[32px] rounded-[10px] bg-summary-primary-gradient flex justify-center items-center">
           <Lightbulb className="w-[20px] h-[20px] stroke-white stroke-[1.67px]" />
         </div>
-        <p className="text-text-darkgray font-bold text-lg">
+        <div className="text-text-darkgray font-bold text-lg">
           <HighlightedText text={topic.topic_title} />
-        </p>
+        </div>
       </div>
 
       {topic.questions.map((question, questionIdx) => (
