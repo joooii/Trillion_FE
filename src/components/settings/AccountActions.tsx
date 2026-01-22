@@ -11,11 +11,20 @@ export default function AccountActions() {
 
   const handleLogout = async () => {
     try {
-      // TODO: 회원 로그아웃 API
-      console.log("로그아웃 성공");
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/users/member/logout`,
+        {
+          method: 'POST',
+          credentials: 'include',
+        }
+      );
+      if (response.ok) { 
+        console.log("로그아웃 성공");
       router.push("/auth/onboard");
+      }
     } catch (error) {
       console.error("로그아웃 실패", error);
+      alert('오류가 발생했습니다.');
     }
   };
 
