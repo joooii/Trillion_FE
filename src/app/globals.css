@@ -103,7 +103,7 @@
 
   /* Gradient */
   --gradient-success-diagonal: linear-gradient(
-    -77deg,
+    77deg,
     #212948 0%,
     #2f385f 50%,
     #4a5278 100%

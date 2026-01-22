@@ -53,14 +53,12 @@ function SummaryCard({
   return (
     <Link href={`/summary/${id}`}>
       <div className="relative z-20 flex flex-col mx-auto w-[335px] min-h-[117px] rounded-[10px] shadow-card bg-white p-3 active:bg-gray-100 transition-all duration-200">
-        <div className="flex justify-between items-center">
-          <p className="text-text-darkgray">{title ?? "-"}</p>
+        <div className="flex justify-between items-center mb-3">
+          <div className="flex items-center gap-2">
+            <p className="text-text-darkgray">{title ?? "-"}</p>
+            <p className="text-sm text-text-lightgray">{date}</p>
+          </div>
           <ChevronRight className="w-6 h-4 stroke-text-lightgray" />
-        </div>
-
-        <div className="flex items-center mt-[2px] mb-[10px] gap-[3px]">
-          <Calendar className="w-2 h-2 stroke-text-lightgray" />
-          <p className="text-[8px] text-text-lightgray">{date}</p>
         </div>
 
         <Summary content={content ?? ""} />
