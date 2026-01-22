@@ -10,7 +10,7 @@ const mockData: SummaryCardData[] = [
   {
     id: 1,
     title: "온라인 결제 시스템 도입",
-    date: "2025.05.30",
+    date: "2025-05-30",
     status: "pending",
     content: "QR 코드 기반 결제 시스템 도입 희망...",
     category: ChatCategory.ROAMING,
@@ -18,14 +18,14 @@ const mockData: SummaryCardData[] = [
   {
     id: 2,
     title: "온라인 결제 시스템 도입",
-    date: "2025.05.30",
+    date: "2025-05-30",
     status: "success",
     content: "QR 코드 기반 결제 시스템 도입",
     category: ChatCategory.PLAN,
   },
   {
     id: 3,
-    date: "2025.08.30",
+    date: "2025-08-30",
     status: "error",
     category: ChatCategory.ROAMING,
   },
