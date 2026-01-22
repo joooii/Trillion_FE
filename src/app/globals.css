@@ -102,13 +102,13 @@
   --shadow-content-card: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
 
   /* Gradient */
-  --gradient-success-diagonal: linear-gradient(77deg, #212948 0%, #e30084 100%);
-  --gradient-pending-diagonal: linear-gradient(
+  --gradient-success-diagonal: linear-gradient(
     -77deg,
     #212948 0%,
     #2f385f 50%,
     #4a5278 100%
   );
+  --gradient-pending-diagonal: linear-gradient(77deg, #212948 0%, #e30084 100%);
   --gradient-error-diagonal: linear-gradient(
     -67deg,
     #d14b4b 0%,
