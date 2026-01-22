@@ -31,6 +31,6 @@ const mockData: SummaryCardData[] = [
   },
 ];
 
-export default function ChatPage() {
+export default function SummaryPage() {
   return <SummaryWrapper data={mockData} />;
 }
