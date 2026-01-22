@@ -3,6 +3,7 @@ import HeaderHome from "@/components/common/HeaderHome";
 import ContentSection from "@/components/home/ContentSection";
 import HelperSection from "@/components/home/HelperSection";
 import SummaryStartCard from "@/components/home/SummaryStartCard";
+import SummaryList from "@/components/home/SummaryList";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -20,6 +21,7 @@ export default function HomePage() {
       <div className="w-[393px] mt-9">
         <SummaryStartCard />
         {/* <ContentSection /> */}
+        <SummaryList/>
         {/* TODO: SummaryCard 컴포넌트 생성후 집어넣기*/}
         <HelperSection />
       </div>

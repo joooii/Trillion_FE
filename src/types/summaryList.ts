@@ -9,3 +9,10 @@ export interface SummaryCardData {
   date: string; // 상담 날짜
   content?: string; // 요약된 내용
 }
+
+export interface SummaryHome { 
+  id: number;
+  title?: string;
+  date: string;
+  content?: string;
+}
