@@ -1,8 +1,11 @@
+"use client";
+
 import { SummaryHome } from "@/types/summaryList";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import Summary from "@/components/home/Summary";
 import EmptyState from "@/components/home/EmptySummary";
+import { useEffect, useState } from "react";
 
 const mockData: SummaryHome[] = [
   {
@@ -19,14 +22,47 @@ const mockData: SummaryHome[] = [
   },
 ];
 
-//const mockData: SummaryHome[] = [];
+export default function SummaryList() {
+  const [nickname, setNickname] = useState<string>("김소유");
 
-export default function SummaryList() { 
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/users/member/profile`,
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
+
+        console.log("응답 상태:", response.status);
+        
+        if (response.ok) {
+          const result = await response.json();
+          console.log("응답 데이터 전체:", result);
+          console.log("result.data.nickname:", result.data?.nickname);
+          
+          if (result.data?.nickname) {
+            setNickname(result.data.nickname);
+          }
+        } else {
+          const errorText = await response.text();
+          console.error("응답 실패:", errorText);
+        }
+      } catch (error) {
+        console.error("API 호출 에러:", error);
+      }
+    };
+
+    fetchUserProfile();
+  }, []);
+
   return (
     <div className="pt-8">
       <div className="flex justify-between items-center mb-[15px] px-[29px]">
         <h2 className="text-lg font-bold text-text-darkgray">
-          김소유님의 요약내용
+          {nickname}님의 요약내용
         </h2>
         {mockData.length > 0 && (
           <Link 
