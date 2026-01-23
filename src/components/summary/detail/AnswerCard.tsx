@@ -1,4 +1,5 @@
 import { Answer } from "@/types/summaryDetail";
+import HighlightedText from "@/components/summary/detail/HighlightedText";
 
 interface AnswerCardProps {
   answer: Answer;
@@ -7,22 +8,21 @@ interface AnswerCardProps {
 export default function AnswerCard({ answer }: AnswerCardProps) {
   return (
     <>
-      <div className="flex items-center mb-[10px]">
-        <div className="bg-summary-secondary-gradient w-[20px] h-[20px] rounded-full flex justify-center items-center mr-[10px]">
+      <div className="flex items-start mb-[10px] ">
+        <div className="bg-summary-secondary-gradient w-[20px] h-[20px] rounded-full flex justify-center items-center mr-[10px] flex-shrink-0">
           <p className="text-xs font-bold text-white">A</p>
         </div>
-        <p className="text-text-darkgray text-sm font-bold">
-          {answer.answer_summary}
-        </p>
+        <div className="text-text-darkgray text-sm font-bold">
+          <HighlightedText text={answer.answer_summary} />
+        </div>
       </div>
-
       <div className="flex flex-col gap-[10px]">
         {answer.contents.map((content, idx) => {
           if (content.type === "mark-up-text") {
             return (
-              <p key={idx} className="text-xs text-text-darkgray ml-[20px]">
-                {content.content}
-              </p>
+              <div key={idx} className="text-xs text-text-darkgray ml-[20px]">
+                <HighlightedText text={content.content} />
+              </div>
             );
           }
 
@@ -37,7 +37,9 @@ export default function AnswerCard({ answer }: AnswerCardProps) {
                     <span className="w-[15px] h-[15px] rounded-full border border-secondary-800 text-secondary-800 text-[8px] flex items-center justify-center shrink-0">
                       {step.order}
                     </span>
-                    <span className="text-xs text-[#73757C]">{step.text}</span>
+                    <span className="text-xs text-[#73757C]">
+                      {<HighlightedText text={step.text} />}
+                    </span>
                   </li>
                 ))}
               </ol>
