@@ -34,25 +34,4 @@ export const userApi = {
 
     return result.data;
   },
-
-  updateProfile: async (data: { nickname: string }): Promise<UserProfile> => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/users/member/profile`,
-      {
-        method: "PUT",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error("프로필 업데이트에 실패했습니다");
-    }
-
-    const result: ApiResponse<UserProfile> = await response.json();
-    return result.data;
-  },
 };
