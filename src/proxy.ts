@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const PUBLIC_PATHS = ["/auth/onboard", "/auth/logincheck"];
+const PUBLIC_PATHS = ["/auth/onboard"];
 
 async function checkAuthentication(request: NextRequest) {
   const refreshToken = request.cookies.get("refreshToken");
@@ -41,5 +41,5 @@ export async function proxy(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/chat", "/summary", "/settings"],
+  matcher: ["/", "/chat", "/summary", "/settings", "/auth/logincheck"],
 };
