@@ -18,17 +18,17 @@ export default function HelperCard({
     <a
       href={href}
       target="_blank"
-      className="w-[170px] h-[186px] rounded-[10px] bg-white shadow-card flex flex-col items-center justify-center text-center text-text-darkgray"
+      className="w-[164px] h-[186px] rounded-[10px] bg-white shadow-card flex flex-col items-center justify-center text-center text-text-darkgray"
     >
       <Image
         src={image}
         alt={title}
-        width={79}
-        height={84}
+        width={78}
+        height={82}
         className="object-contain"
       />
 
-      <div className="mt-3">
+      <div className="mt-[13px]">
         <div className="flex items-center justify-center gap-1">
           <p className="text-[16px] font-semibold text-text-darkgray">
             {title}

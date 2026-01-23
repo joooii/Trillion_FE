@@ -1,4 +1,4 @@
-import AiInfoCard from "@/components/summary/detail/AiInfoCard";
+import FollowUpCard from "@/components/summary/detail/FollowUpCard";
 import ConclusionSection from "@/components/summary/detail/ConclusionSection";
 import SummaryHeader from "@/components/summary/detail/SummaryHeader";
 import { TermPopover } from "@/components/summary/detail/TermPopover";
@@ -125,8 +125,8 @@ export default function SummaryDetailPage() {
       {/* 결론 */}
       <ConclusionSection conclusions={summary.conclusions} />
 
-      {/* ai 요약 정보 */}
-      <AiInfoCard />
+      {/* 추가 질문 */}
+      <FollowUpCard />
     </div>
   );
 }
