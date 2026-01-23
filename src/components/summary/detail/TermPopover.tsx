@@ -65,10 +65,10 @@ export function TermPopover({
       <div className="relative w-[224px] bg-white rounded-[10px] ">
         <X
           className={
-            "absolute right-[6px] top-[7px] text-[var(--color-text-muted)]"
+            "absolute right-[6px] top-[7px] text-[var(--color-text-muted)] cursor-pointer"
           }
           size={10}
-          onClick={onClose}
+          onClick={() => onClose?.()}
         />
         <div className="column pr-[16.5px] pl-[13px] pt-[12px] pb-[13.5px]">
           <p
