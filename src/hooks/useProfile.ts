@@ -8,15 +8,14 @@ export function useUserProfile() {
   const { data, isLoading, error, isFetching, refetch } = useQuery({
     queryKey: queryKeys.user.profile(),
     queryFn: userApi.getProfile,
-    staleTime: 1 * 1000, // 1초
-    gcTime: 60 * 1000, // 60초
+    staleTime: 60 * 5 * 1000, // 5분
+    gcTime: 60 * 10 * 1000, // 10분
     refetchOnWindowFocus: false,
     retry: 1,
   });
 
   return {
     nickname: data?.nickname || "",
-    email: data?.email,
     isLoading,
     isFetching,
     error: error?.message || null,

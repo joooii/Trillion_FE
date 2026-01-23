@@ -1,6 +1,5 @@
 interface UserProfile {
   nickname: string;
-  email?: string;
 }
 
 interface ApiResponse<T> {
