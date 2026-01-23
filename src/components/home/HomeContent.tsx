@@ -11,7 +11,7 @@ export default function HomeContent() {
   const { nickname, isLoading } = useUserProfile();
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center mb-8">
       <HeaderHome 
         title="SO:U+" 
         description={isLoading ? "안녕하세요" : `안녕하세요, ${nickname}님`}
