@@ -16,8 +16,6 @@ async function checkAuthentication(request: NextRequest) {
 export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  console.log("=== Middleware 실행 ===", pathname);
-
   // 1. 내부 리소스 / 정적 파일 / API는 체크 제외
   if (
     pathname.startsWith("/_next") ||
