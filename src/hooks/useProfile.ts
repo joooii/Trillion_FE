@@ -1,47 +1,63 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-interface UserProfile {
-  nickname: string;
-  email?: string;
-}
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { queryKeys } from "@/lib/queryKeys";
+import { userApi } from "@/lib/api/user";
 
 export function useUserProfile() {
-  const [nickname, setNickname] = useState<string>("");
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const {
+    data,
+    isLoading,
+    error,
+    isFetching,
+    refetch,
+  } = useQuery({
+    queryKey: queryKeys.user.profile(),
+    queryFn: userApi.getProfile,
+    staleTime: 1 * 1000, // 1초 (max-age=1과 매칭)
+    gcTime: 60 * 1000, // 60초 (1 + 59 = 60초)
+    refetchOnWindowFocus: false, 
+    retry: 1,
+  });
 
-  useEffect(() => {
-    const fetchUserProfile = async () => {
-      try {
-        setIsLoading(true);
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/users/member/profile`,
-          {
-            method: "GET",
-            credentials: "include",
-          }
+  return {
+    nickname: data?.nickname || "",
+    email: data?.email,
+    isLoading,
+    isFetching, 
+    error: error?.message || null,
+    refetch,
+  };
+}
+
+export function useUpdateProfile() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: userApi.updateProfile,
+    onMutate: async (newProfile) => {
+      await queryClient.cancelQueries({
+        queryKey: queryKeys.user.profile(),
+      });
+
+      const previousProfile = queryClient.getQueryData(queryKeys.user.profile());
+
+      queryClient.setQueryData(queryKeys.user.profile(), newProfile);
+
+      return { previousProfile };
+    },
+    onError: (err, newProfile, context) => {
+      if (context?.previousProfile) {
+        queryClient.setQueryData(
+          queryKeys.user.profile(),
+          context.previousProfile
         );
-
-        if (response.ok) {
-          const result = await response.json();
-          if (result.data?.nickname) {
-            setNickname(result.data.nickname);
-          }
-        } else {
-          setError("프로필 정보를 불러올 수 없습니다");
-        }
-      } catch (err) {
-        setError("네트워크 오류가 발생했습니다");
-        console.error("프로필 조회 실패:", err);
-      } finally {
-        setIsLoading(false);
       }
-    };
-
-    fetchUserProfile();
-  }, []);
-
-  return { nickname, isLoading, error };
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.user.profile(),
+      });
+    },
+  });
 }
