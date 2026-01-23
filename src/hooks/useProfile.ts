@@ -14,8 +14,8 @@ export function useUserProfile() {
   } = useQuery({
     queryKey: queryKeys.user.profile(),
     queryFn: userApi.getProfile,
-    staleTime: 1 * 1000, // 1초 (max-age=1과 매칭)
-    gcTime: 60 * 1000, // 60초 (1 + 59 = 60초)
+    staleTime: 1 * 1000, // 1초 (max-age=1)
+    gcTime: 60 * 1000, // 60초 (max-age + stale-while~)
     refetchOnWindowFocus: false, 
     retry: 1,
   });
