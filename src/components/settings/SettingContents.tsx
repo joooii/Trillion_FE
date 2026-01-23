@@ -14,7 +14,6 @@ export default function SettingsContent() {
   const { nickname, isLoading } = useUserProfile();
 
   return (
-    <>
       <div className="flex flex-col items-center">
         <div className="w-[80px] h-[80px] rounded-2xl bg-secondary-800 flex items-center justify-center mb-[9px]">
           <User className="w-[50px] h-[50px] stroke-white" />
@@ -49,6 +48,5 @@ export default function SettingsContent() {
 
         <AccountActions />
       </div>
-    </>
   );
 }
