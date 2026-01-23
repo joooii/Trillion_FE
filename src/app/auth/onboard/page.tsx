@@ -14,7 +14,6 @@ export default function OnboardPage() {
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
-        // 이미 로그인되어 있는지 확인
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API_URL}/api/users/member/profile`,
           {
@@ -24,10 +23,8 @@ export default function OnboardPage() {
         );
 
         if (response.ok) {
-          // 이미 로그인됨 → 홈으로 리디렉션
           router.push("/");
         } else {
-          // 로그인 안 됨 → 로그인 페이지 표시
           setIsChecking(false);
         }
       } catch (error) {
@@ -40,13 +37,22 @@ export default function OnboardPage() {
   }, [router]);
 
   const handleKakaoLogin = () => {
+    console.log("=== 카카오 로그인 디버깅 시작 ===");
+    console.log("BASE_URL:", process.env.NEXT_PUBLIC_BASE_URL);
+    console.log("API_URL:", process.env.NEXT_PUBLIC_API_URL);
+    
     const redirectUri = encodeURIComponent(
       `${process.env.NEXT_PUBLIC_BASE_URL}/auth/logincheck`
     );
-    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/oauth2/authorization/kakao?redirect_uri=${redirectUri}`;
+    
+    const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}/oauth2/authorization/kakao?redirect_uri=${redirectUri}`;
+    
+    console.log("Redirect URI:", redirectUri);
+    console.log("이동할 URL:", fullUrl);
+    
+    window.location.href = fullUrl;
   };
 
-  // 로딩 중
   if (isChecking) {
     return (
       <div className="min-h-screen bg-text-inverse flex items-center justify-center">
