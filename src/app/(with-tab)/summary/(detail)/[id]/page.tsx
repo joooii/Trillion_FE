@@ -13,7 +13,7 @@ const mockData: SummaryDetail = {
       "유럽 3개국 방문 예정 고객 대상 {{해외로밍::해외에서도 내 휴대폰 번호를 그대로 사용할 수 있는 서비스}} 가입 상담",
     topics: [
       {
-        topic_title: "로밍 요금제 추천 및 가입",
+        topic_title: "{{로밍::로밍이다.}} 요금제 추천 및 가입",
         questions: [
           {
             question:

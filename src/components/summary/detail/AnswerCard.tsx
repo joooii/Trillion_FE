@@ -1,5 +1,5 @@
 import { Answer } from "@/types/summaryDetail";
-import HighlightedText from "./HighlightedText";
+import HighlightedText from "@/components/summary/detail/HighlightedText";
 
 interface AnswerCardProps {
   answer: Answer;

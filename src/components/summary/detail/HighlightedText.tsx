@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { TermPopover } from "./TermPopover";
+import { TermPopover } from "@/components/summary/detail/TermPopover";
 
 interface HighlightedTextProps {
   text: string;
@@ -17,10 +17,12 @@ export default function HighlightedText({ text }: HighlightedTextProps) {
   const [activeTerm, setActiveTerm] = useState<{
     word: string;
     meaning: string;
-    x: number;
-    y: number;
     targetElement: HTMLElement;
   } | null>(null);
+  const [position, setPosition] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
 
   useEffect(() => {
     if (!activeTerm) return;
@@ -29,15 +31,10 @@ export default function HighlightedText({ text }: HighlightedTextProps) {
       // 실시간으로 요소의 현재 위치 가져오기
       const rect = activeTerm.targetElement.getBoundingClientRect();
 
-      setActiveTerm((prev) =>
-        prev
-          ? {
-              ...prev,
-              x: rect.left + rect.width / 2,
-              y: rect.bottom,
-            }
-          : null
-      );
+      setPosition({
+        x: rect.left + rect.width / 2,
+        y: rect.bottom,
+      });
     };
 
     const handleClickOutside = (e: MouseEvent) => {
@@ -72,19 +69,21 @@ export default function HighlightedText({ text }: HighlightedTextProps) {
       word,
       meaning,
       // 글자 바로 아래에 띄우기 (스크롤 값 합산)
+      targetElement: e.currentTarget,
+    });
+    setPosition({
       x: rect.left + rect.width / 2,
       y: rect.bottom,
-      targetElement: e.currentTarget,
     });
   };
 
   return (
-    <>
+    <span>
       {result.map((part, index) => {
         if (part.meaning) {
           return (
             <span
-              className="inline-block bg-(--color-primary-200)/50 cursor-pointer"
+              className="inline-block bg-primary-200/50 cursor-pointer"
               onClick={(e) => {
                 // todo 뜻 popup 보여주기
                 handleTermClick(e, part.word, part.meaning!);
@@ -98,17 +97,16 @@ export default function HighlightedText({ text }: HighlightedTextProps) {
         return <span key={index}>{part.word}</span>;
       })}
       {activeTerm && (
-        <div ref={popoverRef} onMouseDown={(e) => e.stopPropagation()}>
-          <TermPopover
-            term={activeTerm.word}
-            meaning={activeTerm.meaning}
-            x={activeTerm.x}
-            y={activeTerm.y}
-            onClose={() => setActiveTerm(null)}
-          />
-        </div>
+        <TermPopover
+          ref={popoverRef}
+          term={activeTerm.word}
+          meaning={activeTerm.meaning}
+          x={position.x}
+          y={position.y}
+          onClose={() => setActiveTerm(null)}
+        />
       )}
-    </>
+    </span>
   );
 }
 

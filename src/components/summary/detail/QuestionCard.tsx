@@ -4,7 +4,7 @@ import { Question } from "@/types/summaryDetail";
 import { useState } from "react";
 import AnswerCard from "@/components/summary/detail/AnswerCard";
 import { ChevronDown } from "lucide-react";
-import HighlightedText from "./HighlightedText";
+import HighlightedText from "@/components/summary/detail/HighlightedText";
 
 interface QuestionCardProps {
   question: Question;
