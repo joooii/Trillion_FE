@@ -18,7 +18,7 @@ export const summaryListApi = {
       throw new Error("상담 요약 목록을 불러올 수 없습니다");
     }
 
-    const result: ApiResponse<SummaryCardData> = await response.json();
+    const result: ApiResponse<SummaryCardData[]> = await response.json();
 
     if (!Array.isArray(result.data)) {
       throw new Error("요약 데이터 형식이 올바르지 않습니다");

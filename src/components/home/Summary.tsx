@@ -4,7 +4,7 @@ import { Calendar } from "lucide-react";
 
 interface SummaryContentProps {
   summaryPreview: string;
-  status: Exclude<SummaryStatus, "error">;
+  status: Exclude<SummaryStatus, "FAILED">;
 }
 
 export default function Summary({

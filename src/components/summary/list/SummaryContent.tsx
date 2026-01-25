@@ -3,7 +3,7 @@ import { bgMap } from "@/utils/cardBgUtil";
 import { Calendar } from "lucide-react";
 
 interface SummaryContentProps {
-  status: Exclude<SummaryStatus, "error">;
+  status: Exclude<SummaryStatus, "FAILED">;
   summaryPreview: string;
 }
 
