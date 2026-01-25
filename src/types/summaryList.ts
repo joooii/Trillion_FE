@@ -1,6 +1,6 @@
 // 요약 list 관련 type
 
-export type SummaryStatus = "pending" | "success" | "error";
+export type SummaryStatus = "PENDING" | "COMPLETED" | "FAILED";
 
 export enum ChatCategory {
   ALL = "ALL",
@@ -11,14 +11,14 @@ export enum ChatCategory {
 // 연도에 따른 월
 export type Month = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 
-export interface SummaryHome { 
-  id: number;
+export interface SummaryHome {
+  counselId: number;
   title?: string;
   date: string;
-  content?: string;
+  summaryPreview?: string;
+  status: SummaryStatus;
 }
 
-export interface SummaryCardData extends SummaryHome { 
-  status: SummaryStatus;
+export interface SummaryCardData extends SummaryHome {
   category: ChatCategory;
 }

@@ -6,14 +6,14 @@ import ErrorContent from "@/components/summary/list/ErrorContent";
 import SummaryContent from "@/components/summary/list/SummaryContent";
 
 export default function SummaryCard({
-  id,
+  counselId,
   title,
   date,
   status,
-  content,
+  summaryPreview,
 }: SummaryCardData) {
   return (
-    <Link href={`/summary/${id}`}>
+    <Link href={`/summary/${counselId}`}>
       <div className="relative z-20 flex flex-col mx-auto w-[335px] min-h-[141px] rounded-[10px] shadow-card bg-white p-3 active:bg-gray-100 transition-all duration-200">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">
@@ -21,7 +21,7 @@ export default function SummaryCard({
             <Badge status={status} />
           </div>
 
-          {status !== "error" && (
+          {status !== "FAILED" && (
             <ChevronRight className="w-6 h-4 stroke-text-lightgray" />
           )}
         </div>
@@ -31,10 +31,13 @@ export default function SummaryCard({
           <p className="text-[8px] text-text-lightgray">{date}</p>
         </div>
 
-        {status === "error" ? (
+        {status === "FAILED" ? (
           <ErrorContent />
         ) : (
-          <SummaryContent status={status} content={content ?? ""} />
+          <SummaryContent
+            status={status}
+            summaryPreview={summaryPreview ?? ""}
+          />
         )}
       </div>
     </Link>
