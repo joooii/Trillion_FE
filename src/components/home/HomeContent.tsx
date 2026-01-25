@@ -1,7 +1,6 @@
 "use client";
 
 import HeaderHome from "@/components/common/HeaderHome";
-import ContentSection from "@/components/home/ContentSection";
 import HelperSection from "@/components/home/HelperSection";
 import SummaryStartCard from "@/components/home/SummaryStartCard";
 import SummaryList from "@/components/home/SummaryList";
@@ -12,10 +11,10 @@ export default function HomeContent() {
 
   return (
     <div className="flex flex-col items-center mb-8">
-      <HeaderHome 
-        title="SO:U+" 
+      <HeaderHome
+        title="SO:U+"
         description={isLoading ? "안녕하세요" : `안녕하세요, ${nickname}님`}
-        isHome 
+        isHome
         isScrollable={true}
       />
       <div className="w-[393px] mt-9">

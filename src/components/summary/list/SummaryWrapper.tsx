@@ -5,24 +5,25 @@ import CategorySection from "@/components/summary/list/CategorySection";
 import YearSelector from "@/components/summary/list/YearSelector";
 import MonthSection from "@/components/summary/list/MonthSection";
 import SummaryCard from "@/components/summary/list/SummaryCard";
-import { ChatCategory, SummaryCardData } from "@/types/summaryList";
+import { ChatCategory } from "@/types/summaryList";
+import { useSummaryList } from "@/hooks/useSummaryList";
 
-interface SummaryWrapperProps {
-  data: SummaryCardData[];
-}
+export default function SummaryWrapper() {
+  const { data, isLoading, error } = useSummaryList();
 
-export default function SummaryWrapper({ data }: SummaryWrapperProps) {
   const [category, setCategory] = useState<ChatCategory>(ChatCategory.ALL);
 
   // 데이터 연도
-  const getYear = (date?: string) => (date ? Number(date.split("-")[0]) : null);
+  const getYear = (date?: string) => (date ? Number(date.split(".")[0]) : null);
+  // FIXME: . -> - 로 데이터구조 바꾼 뒤 수정하기
 
   const initialYear = getYear(data[0]?.date) ?? new Date().getFullYear();
   const [year, setYear] = useState<number>(initialYear);
 
   // 데이터 월
   const getMonth = (date?: string) =>
-    date ? Number(date.split("-")[1]) : null;
+    date ? Number(date.split(".")[1]) : null;
+  // FIXME: . -> - 로 데이터구조 바꾼 뒤 수정하기
 
   let prevMonth: number | null = null;
 
@@ -35,6 +36,22 @@ export default function SummaryWrapper({ data }: SummaryWrapperProps) {
   const yearFilteredData = filteredData.filter(
     (item) => getYear(item.date) === year
   );
+
+  if (isLoading) {
+    return (
+      <p className="text-center text-sm text-text-lightgray py-6">
+        상담 내역을 불러오는 중입니다.
+      </p>
+    );
+  }
+
+  if (error) {
+    return (
+      <p className="text-center text-sm text-red-500 py-6">
+        상담 내역을 불러오지 못했습니다.
+      </p>
+    );
+  }
 
   return (
     <div className="mb-8 w-[335px]">
@@ -56,7 +73,7 @@ export default function SummaryWrapper({ data }: SummaryWrapperProps) {
             if (showMonth) prevMonth = month;
 
             return (
-              <div key={item.id}>
+              <div key={item.counselId}>
                 {showMonth && month && <MonthSection month={month} />}
                 <SummaryCard {...item} />
               </div>
