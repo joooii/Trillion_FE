@@ -7,6 +7,7 @@ import MonthSection from "@/components/summary/list/MonthSection";
 import SummaryCard from "@/components/summary/list/SummaryCard";
 import { ChatCategory } from "@/types/summaryList";
 import { useSummaryList } from "@/hooks/useSummaryList";
+import { CATEGORY_LABEL_MAP } from "@/utils/categoryLabelUtil";
 
 export default function SummaryWrapper() {
   const { data, isLoading, error } = useSummaryList();
@@ -14,26 +15,29 @@ export default function SummaryWrapper() {
   const [category, setCategory] = useState<ChatCategory>(ChatCategory.ALL);
 
   // 데이터 연도
-  const getYear = (date?: string) => (date ? Number(date.split(".")[0]) : null);
-  // FIXME: . -> - 로 데이터구조 바꾼 뒤 수정하기
+  const getYear = (date?: string) => (date ? Number(date.split("-")[0]) : null);
 
   const initialYear = getYear(data[0]?.date) ?? new Date().getFullYear();
   const [year, setYear] = useState<number>(initialYear);
 
   // 데이터 월
   const getMonth = (date?: string) =>
-    date ? Number(date.split(".")[1]) : null;
-  // FIXME: . -> - 로 데이터구조 바꾼 뒤 수정하기
+    date ? Number(date.split("-")[1]) : null;
 
   let prevMonth: number | null = null;
 
+  const selectedLabel = CATEGORY_LABEL_MAP[category];
   // 카테고리 별 데이터
   const filteredData =
     category === ChatCategory.ALL
-      ? data
-      : data.filter((item) => item.category === category);
+      ? [...data]
+      : data.filter((item) => item.category === selectedLabel);
 
-  const yearFilteredData = filteredData.filter(
+  const sortedData = filteredData.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
+  const yearFilteredData = sortedData.filter(
     (item) => getYear(item.date) === year
   );
 
