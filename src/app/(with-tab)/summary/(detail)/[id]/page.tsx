@@ -19,7 +19,7 @@ export default async function SummaryDetailPage({
 
   const data = await getSummaryDetailApi(counselId);
 
-  if (!data) {
+  if (!data || !data.summary) {
     return (
       <div className="flex h-[60vh] items-center justify-center text-gray-500 text-sm">
         아직 요약이 생성되지 않았어요.
