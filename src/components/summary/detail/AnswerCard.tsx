@@ -1,5 +1,6 @@
 import { Answer } from "@/types/summaryDetail";
 import HighlightedText from "@/components/summary/detail/HighlightedText";
+import MarkupTextRenderer from "@/components/summary/detail/MarkupTextRenderer";
 
 interface AnswerCardProps {
   answer: Answer;
@@ -21,7 +22,7 @@ export default function AnswerCard({ answer }: AnswerCardProps) {
           if (content.type === "mark-up-text") {
             return (
               <div key={idx} className="text-xs text-text-darkgray ml-[20px]">
-                <HighlightedText text={content.content} />
+                <MarkupTextRenderer content={content.content} />
               </div>
             );
           }
@@ -31,11 +32,11 @@ export default function AnswerCard({ answer }: AnswerCardProps) {
               <ol key={idx} className="ml-[12px] flex flex-col gap-[10px]">
                 {content.content.map((step) => (
                   <li
-                    key={step.order}
+                    key={step.step}
                     className="flex items-start p-[10px] w-[247px] min-h-[33px] border border-[#eee7dd] bg-[#fffefc] rounded-[10px] gap-[10px]"
                   >
-                    <span className="w-[15px] h-[15px] rounded-full border border-secondary-800 text-secondary-800 text-[8px] flex items-center justify-center shrink-0">
-                      {step.order}
+                    <span className="font-bold w-[15px] h-[15px] rounded-full border border-secondary-800 text-secondary-800 text-[8px] flex items-center justify-center shrink-0">
+                      {step.step}
                     </span>
                     <span className="text-xs text-[#73757C]">
                       {<HighlightedText text={step.text} />}

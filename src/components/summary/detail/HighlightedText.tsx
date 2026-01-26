@@ -10,7 +10,9 @@ interface HighlightedTextProps {
 interface TextParts {
   word: string;
   meaning?: string;
+  bold?: boolean;
 }
+
 export default function HighlightedText({ text }: HighlightedTextProps) {
   const result: TextParts[] = parseHighlightedText(text);
   const popoverRef = useRef<HTMLDivElement>(null);
@@ -80,21 +82,30 @@ export default function HighlightedText({ text }: HighlightedTextProps) {
   return (
     <span>
       {result.map((part, index) => {
-        if (part.meaning) {
+        const content = part.meaning ? (
+          <span
+            className="inline-block bg-primary-200/50 cursor-pointer"
+            onClick={(e) => {
+              // todo 뜻 popup 보여주기
+              handleTermClick(e, part.word, part.meaning!);
+            }}
+          >
+            {part.word}
+          </span>
+        ) : (
+          <span>{part.word}</span>
+        );
+
+        // bold 처리
+        if (part.bold) {
           return (
-            <span
-              className="inline-block bg-primary-200/50 cursor-pointer"
-              onClick={(e) => {
-                // todo 뜻 popup 보여주기
-                handleTermClick(e, part.word, part.meaning!);
-              }}
-              key={index}
-            >
-              {part.word}
-            </span>
+            <strong key={index} className="font-semibold">
+              {content}
+            </strong>
           );
         }
-        return <span key={index}>{part.word}</span>;
+
+        return <span key={index}>{content}</span>;
       })}
       {activeTerm && (
         <TermPopover
@@ -110,15 +121,58 @@ export default function HighlightedText({ text }: HighlightedTextProps) {
   );
 }
 
-function parseHighlightedText(text: string) {
-  // {{단어 :: 뜻}} 으로 들어온 텍스트 파싱
-  const textParts: TextParts[] = text.split(/{{|}}/g).map((part, index) => {
-    if (part.includes("::")) {
-      const [word, meaning] = part.split("::").map((str) => str.trim());
-      return { word, meaning };
-    } else {
-      return { word: part };
+function parseHighlightedText(text: string): TextParts[] {
+  const textParts: TextParts[] = [];
+
+  // **로 감싸진 부분과 완전한 {{...::...}} 패턴만 매칭
+  const regex = /(\*\*.*?\*\*|{{[^}]+::[^}]+}})/g;
+  let lastIndex = 0;
+  let match;
+
+  while ((match = regex.exec(text)) !== null) {
+    // 매칭 전 일반 텍스트
+    if (match.index > lastIndex) {
+      textParts.push({ word: text.slice(lastIndex, match.index) });
     }
-  });
+
+    const matched = match[0];
+
+    // ** bold 처리
+    if (matched.startsWith("**") && matched.endsWith("**")) {
+      const innerText = matched.slice(2, -2);
+
+      // bold 안에 완전한 {{...::...}} 있는지 확인
+      const termMatch = innerText.match(/^{{([^}]+)::([^}]+)}}$/);
+      if (termMatch) {
+        const [, word, meaning] = termMatch;
+        textParts.push({
+          word: word.trim(),
+          meaning: meaning.trim(),
+          bold: true,
+        });
+      } else {
+        textParts.push({ word: innerText, bold: true });
+      }
+    }
+    // 완전한 {{...::...}} 처리
+    else if (matched.startsWith("{{") && matched.endsWith("}}")) {
+      const innerText = matched.slice(2, -2);
+      if (innerText.includes("::")) {
+        const [word, meaning] = innerText.split("::").map((s) => s.trim());
+        textParts.push({ word, meaning });
+      } else {
+        // :: 없으면 일반 텍스트로 처리
+        textParts.push({ word: matched });
+      }
+    }
+
+    lastIndex = regex.lastIndex;
+  }
+
+  // 남은 텍스트
+  if (lastIndex < text.length) {
+    textParts.push({ word: text.slice(lastIndex) });
+  }
+
   return textParts;
 }

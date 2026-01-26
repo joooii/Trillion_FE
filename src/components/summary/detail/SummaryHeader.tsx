@@ -1,5 +1,5 @@
 import { Calendar } from "lucide-react";
-import HighlightedText from "./HighlightedText";
+import HighlightedText from "@/components/summary/detail/HighlightedText";
 
 interface SummaryHeaderProps {
   title: string;
