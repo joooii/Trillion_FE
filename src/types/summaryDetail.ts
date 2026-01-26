@@ -45,7 +45,13 @@ export interface SummaryDetail {
     counsel_title: string;
     topics: Topic[];
     conclusions: string[];
+    additional_questions?: AdditionalQuestion[];
   };
+}
+
+export interface AdditionalQuestion {
+  question: string;
+  answer: string;
 }
 
 export interface SummaryDetailApi {
@@ -57,6 +63,7 @@ export interface SummaryDetailApi {
         counsel_title: string;
         topics: Topic[];
         conclusions: string[];
+        additional_questions?: AdditionalQuestion[];
       };
     };
   };

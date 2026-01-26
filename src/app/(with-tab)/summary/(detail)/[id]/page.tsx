@@ -3,6 +3,7 @@ import ConclusionSection from "@/components/summary/detail/ConclusionSection";
 import SummaryHeader from "@/components/summary/detail/SummaryHeader";
 import TopicSection from "@/components/summary/detail/TopicCard";
 import { getSummaryDetailApi } from "@/lib/api/summaryDetail";
+import AdditionalQuestionSection from "@/components/summary/detail/AdditionalQuestionSection";
 
 export default async function SummaryDetailPage({
   params,
@@ -48,7 +49,14 @@ export default async function SummaryDetailPage({
       <ConclusionSection conclusions={data.summary.conclusions} />
 
       {/* 추가 질문 */}
-      <FollowUpCard />
+      {data.summary.additional_questions && (
+        <AdditionalQuestionSection
+          questions={data.summary.additional_questions}
+        />
+      )}
+
+      {/* 추가 질문 */}
+      <FollowUpCard counselId={counselId} />
     </div>
   );
 }
