@@ -6,6 +6,8 @@ export enum ChatCategory {
   ALL = "ALL",
   PLAN = "PLAN",
   ROAMING = "ROAMING",
+  BILLING = "BILLING",
+  SERVICE = "SERVICE",
 }
 
 // 연도에 따른 월
