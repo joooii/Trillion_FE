@@ -1,4 +1,5 @@
 import { ApiResponse } from "@/types/api";
+import { fetchWithAuth } from "./fetchwithAuth";
 
 interface UserProfile {
   nickname: string;
@@ -6,7 +7,7 @@ interface UserProfile {
 
 export const userApi = {
   getProfile: async (): Promise<UserProfile> => {
-    const response = await fetch(
+    const response = await fetchWithAuth(
       `${process.env.NEXT_PUBLIC_API_URL}/api/users/member/profile`,
       {
         method: "GET",
