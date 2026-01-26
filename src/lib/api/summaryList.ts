@@ -22,7 +22,7 @@ export const summaryListApi = {
       content: SummaryCardData[];
     }> = await response.json();
 
-    if (!Array.isArray(result.data.content)) {
+    if (!result.data || !Array.isArray(result.data.content)) {
       throw new Error("요약 데이터 형식이 올바르지 않습니다");
     }
 
