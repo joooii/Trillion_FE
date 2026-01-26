@@ -19,10 +19,7 @@ export async function getSummaryDetailApi(
         headers: {
           Cookie: cookieHeader,
         },
-        next: {
-          revalidate: 60,
-          tags: [`summary-${counselId}`],
-        },
+        cache: "no-store",
       }
     );
 
