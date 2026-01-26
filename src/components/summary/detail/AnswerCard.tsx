@@ -9,7 +9,7 @@ interface AnswerCardProps {
 export default function AnswerCard({ answer }: AnswerCardProps) {
   return (
     <>
-      <div className="flex items-start mb-[10px] ">
+      <div className="flex items-start mb-[10px]">
         <div className="bg-summary-secondary-gradient w-[20px] h-[20px] rounded-full flex justify-center items-center mr-[10px] flex-shrink-0">
           <p className="text-xs font-bold text-white">A</p>
         </div>
@@ -28,9 +28,13 @@ export default function AnswerCard({ answer }: AnswerCardProps) {
           }
 
           if (content.type === "step") {
+            const stepContent = Array.isArray(content.content)
+              ? content.content
+              : [content.content];
+
             return (
               <ol key={idx} className="ml-[12px] flex flex-col gap-[10px]">
-                {content.content.map((step) => (
+                {stepContent.map((step) => (
                   <li
                     key={step.step}
                     className="flex items-start p-[10px] w-[247px] min-h-[33px] border border-[#eee7dd] bg-[#fffefc] rounded-[10px] gap-[10px]"
@@ -39,7 +43,7 @@ export default function AnswerCard({ answer }: AnswerCardProps) {
                       {step.step}
                     </span>
                     <span className="text-xs text-[#73757C]">
-                      {<HighlightedText text={step.text} />}
+                      <HighlightedText text={step.text} />
                     </span>
                   </li>
                 ))}
