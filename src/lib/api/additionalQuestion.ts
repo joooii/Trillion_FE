@@ -1,3 +1,4 @@
+import { ApiResponse } from "@/types/api";
 import { AdditionalQuestion } from "@/types/summaryDetail";
 
 interface PostAdditionalQuestionParams {
@@ -24,6 +25,6 @@ export const postAdditionalQuestion = async ({
   if (!response.ok) {
     throw new Error("추가 질문 전송에 실패했습니다.");
   }
-
-  return response.json();
+  const result: ApiResponse<AdditionalQuestion> = await response.json();
+  return result.data;
 };

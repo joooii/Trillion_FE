@@ -56,7 +56,7 @@ export default function FollowUpCard({ counselId }: FollowUpCardProps) {
               onChange={(e) => setFollowUpText(e.target.value)}
               disabled={isPending}
               onKeyDown={(e) => {
-                if (e.key === "Enter") {
+                if (e.key === "Enter" && !e.nativeEvent.isComposing) {
                   e.preventDefault();
                   handleSendFollowUp();
                 }
