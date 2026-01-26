@@ -1,5 +1,5 @@
 // lib/api/user.ts
-import { fetchWithAuth } from "./fetchWithAuth";
+import { fetchWithAuth } from "./fetchAuth";
 
 interface UserProfile {
   nickname: string;
