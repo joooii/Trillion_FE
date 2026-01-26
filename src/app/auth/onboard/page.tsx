@@ -1,65 +1,21 @@
+// app/onboard/page.tsx
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import logoImage from "@/assets/images/logo.svg";
 import kakaoButtonImage from "@/assets/images/btn_login_kakao.svg";
 
 export default function OnboardPage() {
-  const router = useRouter();
-  const [isChecking, setIsChecking] = useState(true);
-
-  useEffect(() => {
-    const checkAuthStatus = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/users/member/profile`,
-          {
-            method: "GET",
-            credentials: "include",
-          }
-        );
-
-        if (response.ok) {
-          router.push("/");
-        } else {
-          setIsChecking(false);
-        }
-      } catch (error) {
-        console.error("인증 확인 에러:", error);
-        setIsChecking(false);
-      }
-    };
-
-    checkAuthStatus();
-  }, [router]);
-
   const handleKakaoLogin = () => {
-    console.log("=== 카카오 로그인 디버깅 시작 ===");
-    console.log("BASE_URL:", process.env.NEXT_PUBLIC_BASE_URL);
-    console.log("API_URL:", process.env.NEXT_PUBLIC_API_URL);
-    
     const redirectUri = encodeURIComponent(
       `${process.env.NEXT_PUBLIC_BASE_URL}/auth/logincheck`
     );
     
     const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}/oauth2/authorization/kakao?redirect_uri=${redirectUri}`;
     
-    console.log("Redirect URI:", redirectUri);
-    console.log("이동할 URL:", fullUrl);
-    
     window.location.href = fullUrl;
   };
-
-  if (isChecking) {
-    return (
-      <div className="min-h-screen bg-text-inverse flex items-center justify-center">
-        <p className="text-text-darkgray font-suite-medium">로딩 중...</p>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-text-inverse flex flex-col items-center justify-between px-6 py-8">
