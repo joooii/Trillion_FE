@@ -8,7 +8,7 @@ export interface MarkupContent {
 export interface StepContent {
   type: "step";
   content: {
-    order: number;
+    step: number;
     text: string;
   }[];
 }
@@ -45,5 +45,19 @@ export interface SummaryDetail {
     counsel_title: string;
     topics: Topic[];
     conclusions: string[];
+  };
+}
+
+export interface SummaryDetailApi {
+  counselId: number;
+  counselDate: string;
+  summaryJson: {
+    data: {
+      summary: {
+        counsel_title: string;
+        topics: Topic[];
+        conclusions: string[];
+      };
+    };
   };
 }
