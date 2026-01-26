@@ -7,7 +7,7 @@ async function checkAuthentication(request: NextRequest) {
   const accessToken = request.cookies.get("accessToken");
 
   // 둘 중 하나라도 없으면 인증 실패
-  if (!refreshToken || !accessToken) {
+  if (!refreshToken) {
     return false;
   }
   return true;
