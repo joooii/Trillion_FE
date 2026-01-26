@@ -7,6 +7,7 @@ import MonthSection from "@/components/summary/list/MonthSection";
 import SummaryCard from "@/components/summary/list/SummaryCard";
 import { ChatCategory } from "@/types/summaryList";
 import { useSummaryList } from "@/hooks/useSummaryList";
+import { CATEGORY_LABEL_MAP } from "@/utils/categoryLabelUtil";
 
 export default function SummaryWrapper() {
   const { data, isLoading, error } = useSummaryList();
@@ -25,13 +26,18 @@ export default function SummaryWrapper() {
 
   let prevMonth: number | null = null;
 
+  const selectedLabel = CATEGORY_LABEL_MAP[category];
   // 카테고리 별 데이터
   const filteredData =
     category === ChatCategory.ALL
-      ? data
-      : data.filter((item) => item.category === category);
+      ? [...data]
+      : data.filter((item) => item.category === selectedLabel);
 
-  const yearFilteredData = filteredData.filter(
+  const sortedData = filteredData.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
+  const yearFilteredData = sortedData.filter(
     (item) => getYear(item.date) === year
   );
 
