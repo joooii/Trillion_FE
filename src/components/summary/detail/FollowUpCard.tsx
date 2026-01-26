@@ -1,16 +1,28 @@
 "use client";
 
+import { useAdditionalQuestion } from "@/hooks/useAdditionalQuestion";
 import { MessageSquarePlus, Send } from "lucide-react";
 import { useState } from "react";
 
-export default function FollowUpCard() {
+interface FollowUpCardProps {
+  counselId: number;
+}
+
+export default function FollowUpCard({ counselId }: FollowUpCardProps) {
   const [isFollowUpChat, setIsFollowUpChat] = useState<boolean>(false);
   const [followUpText, setFollowUpText] = useState<string>("");
 
+  const { mutate, isPending } = useAdditionalQuestion({ counselId });
+
   const handleSendFollowUp = () => {
     if (!followUpText.trim()) return;
-    console.log("추가질문 보내기", followUpText);
-    setFollowUpText("");
+
+    mutate(followUpText, {
+      onSuccess: () => {
+        setFollowUpText("");
+        setIsFollowUpChat(false);
+      },
+    });
   };
 
   return (
@@ -42,11 +54,19 @@ export default function FollowUpCard() {
               placeholder="추가 질문을 입력하세요"
               value={followUpText}
               onChange={(e) => setFollowUpText(e.target.value)}
+              disabled={isPending}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  handleSendFollowUp();
+                }
+              }}
               className="rounded-lg w-[262px] h-[26px] text-[10px] border border-text-muted bg-white px-[10px] py-[5px] focus:border-primary-200 focus:outline-none"
             />
             <button
               className="w-[25px] h-[25px] rounded-lg bg-primary-200 flex items-center justify-center"
               onClick={handleSendFollowUp}
+              disabled={isPending}
             >
               <Send className="w-[12px] h-[12px] stroke-white" />
             </button>

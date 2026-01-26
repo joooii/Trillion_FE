@@ -56,7 +56,7 @@ export default async function SummaryDetailPage({
       )}
 
       {/* 추가 질문 */}
-      <FollowUpCard />
+      <FollowUpCard counselId={counselId} />
     </div>
   );
 }
