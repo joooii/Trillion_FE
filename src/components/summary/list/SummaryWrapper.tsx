@@ -14,16 +14,14 @@ export default function SummaryWrapper() {
   const [category, setCategory] = useState<ChatCategory>(ChatCategory.ALL);
 
   // 데이터 연도
-  const getYear = (date?: string) => (date ? Number(date.split(".")[0]) : null);
-  // FIXME: . -> - 로 데이터구조 바꾼 뒤 수정하기
+  const getYear = (date?: string) => (date ? Number(date.split("-")[0]) : null);
 
   const initialYear = getYear(data[0]?.date) ?? new Date().getFullYear();
   const [year, setYear] = useState<number>(initialYear);
 
   // 데이터 월
   const getMonth = (date?: string) =>
-    date ? Number(date.split(".")[1]) : null;
-  // FIXME: . -> - 로 데이터구조 바꾼 뒤 수정하기
+    date ? Number(date.split("-")[1]) : null;
 
   let prevMonth: number | null = null;
 
