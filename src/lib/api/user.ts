@@ -1,11 +1,7 @@
+import { ApiResponse } from "@/types/api";
+
 interface UserProfile {
   nickname: string;
-}
-
-interface ApiResponse<T> {
-  success: boolean;
-  message: string;
-  data: T;
 }
 
 export const userApi = {

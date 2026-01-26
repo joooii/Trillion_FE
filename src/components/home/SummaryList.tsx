@@ -1,38 +1,29 @@
+"use client";
+
 import { SummaryHome } from "@/types/summaryList";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import Summary from "@/components/home/Summary";
 import EmptyState from "@/components/home/EmptySummary";
-
-const mockData: SummaryHome[] = [
-  {
-    id: 1,
-    title: "온라인 결제 시스템 도입",
-    date: "2025.07.30",
-    content: "QR 코드 기반 결제 시스템 도입 희망",
-  },
-  {
-    id: 2,
-    title: "온라인 결제 시스템 도입",
-    date: "2025.07.30",
-    content: "QR 코드 기반 결제 시스템 도입",
-  },
-];
+import { useSummaryList } from "@/hooks/useSummaryList";
+import ErrorContent from "@/components/summary/list/ErrorContent";
 
 interface SummaryListProps {
   nickname: string;
 }
 
 export default function SummaryList({ nickname }: SummaryListProps) {
+  const { data, isLoading, error } = useSummaryList();
+
   return (
     <div className="pt-8">
       <div className="flex justify-between items-center mb-[15px] px-[29px]">
         <h2 className="text-lg font-bold text-text-darkgray">
           {nickname || "김소유"}님의 요약내용
         </h2>
-        {mockData.length > 0 && (
-          <Link 
-            href="/summary" 
+        {!isLoading && data.length > 0 && (
+          <Link
+            href="/summary"
             className="text-xs text-text-lightgray hover:text-text-darkgray transition-colors"
           >
             더보기
@@ -40,14 +31,22 @@ export default function SummaryList({ nickname }: SummaryListProps) {
         )}
       </div>
 
-      {mockData.length > 0 ? (
+      {isLoading ? (
+        <p className="text-center text-sm text-text-lightgray py-6">
+          요약 내역을 불러오는 중입니다.
+        </p>
+      ) : error ? (
+        <p className="text-center text-sm text-text-lightgray py-6">
+          요약 내역을 불러오지 못했습니다.
+        </p>
+      ) : data.length > 0 ? (
         <div className="flex flex-col gap-[10px]">
-          {mockData.map((item) => (
-            <SummaryCard key={item.id} {...item} />
+          {data.slice(0, 2).map((item) => (
+            <SummaryCard key={item.counselId} {...item} />
           ))}
         </div>
       ) : (
-        <EmptyState 
+        <EmptyState
           text="요약된 상담이 없습니다"
           buttonText="요약 시작하기"
           buttonLink="/chat"
@@ -57,9 +56,15 @@ export default function SummaryList({ nickname }: SummaryListProps) {
   );
 }
 
-function SummaryCard({ id, title, date, content }: SummaryHome) {
+function SummaryCard({
+  counselId,
+  title,
+  date,
+  summaryPreview,
+  status,
+}: SummaryHome) {
   return (
-    <Link href={`/summary/${id}`}>
+    <Link href={`/summary/${counselId}`}>
       <div className="relative z-20 flex flex-col mx-auto w-[335px] min-h-[117px] rounded-[10px] shadow-card bg-white p-3 active:bg-gray-100 transition-all duration-200">
         <div className="flex justify-between items-center mb-3">
           <div className="flex items-center gap-2">
@@ -68,8 +73,11 @@ function SummaryCard({ id, title, date, content }: SummaryHome) {
           </div>
           <ChevronRight className="w-6 h-4 stroke-text-lightgray" />
         </div>
-
-        <Summary content={content ?? ""} />
+        {status === "FAILED" ? (
+          <ErrorContent variant="home" />
+        ) : (
+          <Summary summaryPreview={summaryPreview ?? ""} status={status} />
+        )}
       </div>
     </Link>
   );

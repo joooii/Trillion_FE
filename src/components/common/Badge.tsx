@@ -1,23 +1,25 @@
-type BadgeStatus = "success" | "pending" | "error";
+import { SummaryStatus } from "@/types/summaryList";
 
-const BADGE_CONFIG: Record<BadgeStatus, { label: string; className: string }> =
-  {
-    success: {
-      label: "성공",
-      className: "w-[34px] bg-success-gradient",
-    },
-    pending: {
-      label: "요약 중",
-      className: "w-[44px] bg-pending-gradient",
-    },
-    error: {
-      label: "실패",
-      className: "w-[34px] bg-error-gradient",
-    },
-  };
+const BADGE_CONFIG: Record<
+  SummaryStatus,
+  { label: string; className: string }
+> = {
+  COMPLETED: {
+    label: "성공",
+    className: "w-[34px] bg-success-gradient",
+  },
+  PENDING: {
+    label: "요약 중",
+    className: "w-[44px] bg-pending-gradient",
+  },
+  FAILED: {
+    label: "실패",
+    className: "w-[34px] bg-error-gradient",
+  },
+};
 
 interface BadgeProps {
-  status: BadgeStatus;
+  status: SummaryStatus;
 }
 
 export default function Badge({ status }: BadgeProps) {
