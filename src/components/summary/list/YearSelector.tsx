@@ -7,7 +7,7 @@ interface YearSelectorProps {
 }
 export default function YearSelector({ year, onChange }: YearSelectorProps) {
   return (
-    <div className="text-secondary-800 text-[26px] font-extrabold pt-[12px] pb-1 flex items-center justify-center gap-5 ">
+    <div className="text-secondary-800 text-[26px] font-extrabold pt-[18px] pb-1 flex items-center justify-center gap-5 ">
       <button onClick={() => onChange(year - 1)}>
         <ChevronLeft className="w-[20px] h-[20px] stroke-[1.67px] stroke-secondary-700" />
       </button>

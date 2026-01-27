@@ -1,5 +1,6 @@
 import { AdditionalQuestion } from "@/types/summaryDetail";
 import { CircleCheck, CirclePlus } from "lucide-react";
+import MarkupTextRenderer from "@/components/summary/detail/MarkupTextRenderer";
 
 interface AdditionalQuestionSectionProps {
   questions: AdditionalQuestion[];
@@ -28,7 +29,9 @@ export default function AdditionalQuestionSection({
             {q.answer && (
               <li className="w-[299px] min-h-[42px] bg-[#F5F1EB] rounded-[14px] flex items-start p-[11px] gap-[10px]">
                 <CircleCheck className="w-[20px] h-[20px] stroke-[1.67px] stroke-primary-500 shrink-0" />
-                <span className="text-sm text-text-darkgray">{q.answer}</span>
+                <span className="text-sm text-text-darkgray">
+                  <MarkupTextRenderer content={q.answer} />
+                </span>
               </li>
             )}
           </ul>
