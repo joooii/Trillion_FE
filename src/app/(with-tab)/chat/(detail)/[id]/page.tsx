@@ -16,6 +16,22 @@ export default async function ChatDetailPage({ params }: ChatDetailPageProps) {
     return <div className="mt-[32px]">존재하지 않는 채팅입니다.</div>;
   }
 
+  const formattedChat = mockData.messages
+    .map((msg) => `${msg.speaker}: ${msg.message}`)
+    .join("\n");
+
+  const safeDate = (dateString?: string) => {
+    if (!dateString) return new Date().toISOString().split("T")[0];
+    return new Date(dateString).toISOString().split("T")[0];
+  };
+
+  const requestData = {
+    counselId: undefined,
+    title: mockData.title || `상담 ID: ${id} 요약`,
+    date: safeDate(mockData.createdAt),
+    chat: formattedChat,
+  };
+
   return (
     <div className="mt-[32px] h-[549px]">
       <div className="h-full overflow-y-auto flex flex-col gap-4 pr-2">
@@ -49,8 +65,10 @@ export default async function ChatDetailPage({ params }: ChatDetailPageProps) {
           );
         })}
       </div>
+      
       <div className="mt-6 border border-text-muted/50 scale-y-50 origin-top"></div>
-      <ChatActionButtons chatId={mockData.id} />
+      
+      <ChatActionButtons requestData={requestData} />
     </div>
   );
 }
