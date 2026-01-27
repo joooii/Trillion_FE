@@ -122,6 +122,10 @@ export default function HighlightedText({ text }: HighlightedTextProps) {
 }
 
 function parseHighlightedText(text: string): TextParts[] {
+  if (!text) {
+    return [];
+  }
+
   const textParts: TextParts[] = [];
 
   // **로 감싸진 부분과 완전한 {{...::...}} 패턴만 매칭
