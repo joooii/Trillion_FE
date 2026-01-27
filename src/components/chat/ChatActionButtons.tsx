@@ -4,48 +4,46 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Button from "@/components/common/Button";
 import ErrorToast from "@/components/common/ErrorToast";
-
+import { useCreateSummary } from "@/hooks/useCreateSummary";
 interface ChatActionButtonsProps {
-  chatId: number | string;
+  requestData: {
+    counselId?: number;
+    title: string;
+    date: string;
+    chat: string;
+  };
 }
 
-export default function ChatActionButtons({ chatId }: ChatActionButtonsProps) {
+export default function ChatActionButtons({ requestData }: ChatActionButtonsProps) {
   const router = useRouter();
-  const [isSummarizing, setIsSummarizing] = useState<boolean>(false);
+  
+  const { mutateAsync, isPending } = useCreateSummary();
   const [showErrorToast, setShowErrorToast] = useState<boolean>(false);
 
   const handleCancel = () => {
-    if (isSummarizing) return;
-    router.push("/");
+    if (isPending) return;
+    router.push("/summary");
   };
 
   const handleStartSummary = async () => {
-    if (isSummarizing) return;
-
-    setIsSummarizing(true);
+    if (isPending) return;
 
     try {
-      // fetch(`${`process.env.NEXT_PUBLIC_API_URL`}/api/counsel/summary`, {
-      //   method: "POST",
-      //   credentials: "include",
-      // })
-      router.push(`/summary/${chatId}`);
+      await mutateAsync({
+        counselId: requestData.counselId,
+        title: requestData.title,
+        date: requestData.date,
+        chat: requestData.chat,
+      });
     } catch (error) {
       console.error("요약 실패", error);
       setShowErrorToast(true);
-      setIsSummarizing(false);
-    } finally {
-      setIsSummarizing(false);
     }
   };
 
   useEffect(() => {
     if (!showErrorToast) return;
-
-    const timer = setTimeout(() => {
-      setShowErrorToast(false);
-    }, 3000);
-
+    const timer = setTimeout(() => setShowErrorToast(false), 3000);
     return () => clearTimeout(timer);
   }, [showErrorToast]);
 
@@ -56,11 +54,13 @@ export default function ChatActionButtons({ chatId }: ChatActionButtonsProps) {
           <ErrorToast onClose={() => setShowErrorToast(false)} />
         </div>
       )}
+      
       <div className="mt-4 flex flex-row gap-[11px]">
         <Button
           size="small"
           className="text-secondary-800 bg-white active:bg-gray-100"
           onClick={handleCancel}
+          disabled={isPending}
         >
           취소
         </Button>
@@ -68,9 +68,9 @@ export default function ChatActionButtons({ chatId }: ChatActionButtonsProps) {
         <Button
           size="small"
           onClick={handleStartSummary}
-          disabled={isSummarizing}
+          disabled={isPending}
         >
-          {isSummarizing ? "요약 중..." : "요약 시작"}
+          {isPending ? "요약 중..." : "요약 시작"}
         </Button>
       </div>
     </div>
