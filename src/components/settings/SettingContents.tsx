@@ -1,4 +1,3 @@
-// components/settings/SettingsContent.tsx
 "use client";
 
 import Call from "@/assets/images/call.svg";
@@ -12,12 +11,8 @@ import AccountActions from "@/components/settings/AccountActions";
 import { useUserProfile } from "@/hooks/useProfile";
 
 export default function SettingsContent() {
-  console.log("🟢🟢🟢 SettingsContent 렌더링");
-  
   const { nickname, isLoading } = useUserProfile();
   
-  console.log("🟢 프로필 상태:", { nickname, isLoading });
-
   return (
     <div className="flex flex-col items-center">
       <div className="w-[80px] h-[80px] rounded-2xl bg-secondary-800 flex items-center justify-center mb-[9px]">

@@ -6,12 +6,10 @@ import { queryKeys } from "@/lib/queryKeys";
 import { userApi } from "@/lib/api/user";
 
 export function useUserProfile() {
-  console.log("🟡🟡🟡 useUserProfile 호출");
-
   const result = useQuery({
     queryKey: queryKeys.user.profile(),
     queryFn: async () => {
-      console.log("⚡⚡⚡ queryFn 실행!");
+      console.log("queryFn 실행!");
       return await userApi.getProfile();
     },
     staleTime: 0,
@@ -19,12 +17,6 @@ export function useUserProfile() {
     refetchOnWindowFocus: false,
     refetchOnMount: true,
     retry: false,
-  });
-
-  console.log("🟡 useQuery 결과:", {
-    data: result.data?.nickname,
-    isLoading: result.isLoading,
-    status: result.status
   });
 
   return {
