@@ -34,9 +34,9 @@ export default function AnswerCard({ answer }: AnswerCardProps) {
 
             return (
               <ol key={idx} className="ml-[12px] flex flex-col gap-[10px]">
-                {stepContent.map((step) => (
+                {stepContent.map((step, stepIndex) => (
                   <li
-                    key={`${idx}-${step.step}`}
+                    key={`${idx}-${stepIndex}-${step.step}`}
                     className="flex items-start p-[10px] w-[247px] min-h-[33px] border border-[#eee7dd] bg-[#fffefc] rounded-[10px] gap-[10px]"
                   >
                     <span className="font-bold w-[15px] h-[15px] rounded-full border border-secondary-800 text-secondary-800 text-[8px] flex items-center justify-center shrink-0">
