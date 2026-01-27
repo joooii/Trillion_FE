@@ -95,6 +95,9 @@
   --color-error-800: #660000;
   --color-error-900: #330000;
 
+  --color-table-border: #e3dccf;
+  --color-table-header: #faf7f2;
+
   /* Shadow */
   --shadow-card: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
   --shadow-btn: 1px 3px 7px 0px rgba(0, 0, 0, 0.1);
