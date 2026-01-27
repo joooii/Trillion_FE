@@ -61,10 +61,10 @@ export default function FollowUpCard({ counselId }: FollowUpCardProps) {
                   handleSendFollowUp();
                 }
               }}
-              className="rounded-lg w-[262px] h-[26px] text-[10px] border border-text-muted bg-white px-[10px] py-[5px] focus:border-primary-200 focus:outline-none"
+              className="rounded-lg w-[262px] h-[26px] text-[10px] border border-text-muted bg-white px-[10px] py-[5px] focus:border-primary-200 focus:outline-none disabled:bg-gray-100 disabled:text-text-lightgray"
             />
             <button
-              className="w-[25px] h-[25px] rounded-lg bg-primary-200 flex items-center justify-center"
+              className="w-[25px] h-[25px] rounded-lg bg-primary-200 flex items-center justify-center disabled:bg-gray-300"
               onClick={handleSendFollowUp}
               disabled={isPending}
             >

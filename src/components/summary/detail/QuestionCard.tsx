@@ -22,7 +22,7 @@ export default function QuestionCard({ question }: QuestionCardProps) {
         }`}
         onClick={() => setIsSummaryOpen(!isSummaryOpen)}
       >
-        <div className="bg-summary-primary-gradient w-[20px] h-[20px] rounded-full flex justify-center items-center mr-[10px] flex-shrink-0">
+        <div className="bg-summary-primary-gradient w-[20px] h-[20px] rounded-full flex justify-center items-center mr-[10px] shrink-0">
           <p className="text-xs font-bold text-white">Q</p>
         </div>
         <div className="text-text-darkgray text-sm font-bold text-left">
