@@ -15,11 +15,13 @@ export default function AdditionalQuestionSection({
           key={idx}
           className="max-w-[335px] p-[18px] border border-[#d7d7d7] bg-[#FCFAF8] rounded-2xl"
         >
-          <div className="flex items-center gap-3 mb-[12px]">
-            <div className="w-[32px] h-[32px] rounded-[10px] bg-summary-secondary-gradient flex justify-center items-center">
+          <div className="flex items-start gap-3 mb-[12px]">
+            <div className="w-[32px] h-[32px] rounded-[10px] bg-summary-secondary-gradient flex justify-center items-center shrink-0">
               <CirclePlus className="w-[20px] h-[20px]" />
             </div>
-            <p className="text-lg text-text-darkgray font-bold">{q.question}</p>
+            <p className="text-lg text-text-darkgray font-bold pt-[2px]">
+              {q.question}
+            </p>
           </div>
 
           <ul className="flex flex-col gap-[10px]">
