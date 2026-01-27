@@ -1,3 +1,4 @@
+// hooks/useProfile.ts
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
@@ -5,20 +6,25 @@ import { queryKeys } from "@/lib/queryKeys";
 import { userApi } from "@/lib/api/user";
 
 export function useUserProfile() {
-  const { data, isLoading, error, isFetching, refetch } = useQuery({
+  const result = useQuery({
     queryKey: queryKeys.user.profile(),
-    queryFn: userApi.getProfile,
-    staleTime: 60 * 5 * 1000, // 5분
-    gcTime: 60 * 10 * 1000, // 10분
+    queryFn: async () => {
+      console.log("queryFn 실행!");
+      return await userApi.getProfile();
+    },
+    staleTime: 0,
+    gcTime: 0,
     refetchOnWindowFocus: false,
-    retry: 1,
+    refetchOnMount: true,
+    retry: false,
   });
 
   return {
-    nickname: data?.nickname || "",
-    isLoading,
-    isFetching,
-    error: error?.message || null,
-    refetch,
+    nickname: result.data?.nickname || "",
+    email: result.data?.email,
+    isLoading: result.isLoading,
+    isFetching: result.isFetching,
+    error: result.error?.message || null,
+    refetch: result.refetch,
   };
 }

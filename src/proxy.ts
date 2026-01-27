@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const PUBLIC_PATHS = ["/auth/onboard"];
+const PUBLIC_PATHS = ["/auth/onboard", "/auth/refresh"];
 
 async function checkAuthentication(request: NextRequest) {
   const refreshToken = request.cookies.get("refreshToken");
-  const accessToken = request.cookies.get("accessToken");
+  //const accessToken = request.cookies.get("accessToken");
 
   // 둘 중 하나라도 없으면 인증 실패
-  if (!refreshToken || !accessToken) {
+  if (!refreshToken) {
     return false;
   }
   return true;

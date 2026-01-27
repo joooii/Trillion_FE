@@ -3,3 +3,7 @@ export interface ApiResponse<T> {
   message: string;
   data: T;
 }
+export interface RefreshResponse {
+  success: boolean;
+  message: string;
+}
