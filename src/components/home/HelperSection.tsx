@@ -9,7 +9,7 @@ export default function HelperSection() {
         도움이 필요하신가요?
       </p>
 
-      <div className="mx-[29px] grid grid-cols-2 gap-3">
+      <div className="mx-[29px] grid grid-cols-2 gap-[5px]">
         <HelperCard
           image={FAQ}
           title="자주하는 질문"
