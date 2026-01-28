@@ -10,9 +10,9 @@ export default function OnboardPage() {
     const redirectUri = encodeURIComponent(
       `${process.env.NEXT_PUBLIC_BASE_URL}/auth/logincheck`
     );
-    
+
     const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}/oauth2/authorization/kakao?redirect_uri=${redirectUri}`;
-    
+
     window.location.href = fullUrl;
   };
 
@@ -60,7 +60,7 @@ export default function OnboardPage() {
 
           <div className="flex gap-4">
             <Link
-              href="https://www.notion.so/2e8b3190d6008048a7bdfbd17011d460"
+              href="/policy/privacy"
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs font-suite-medium text-text-lightgray underline hover:text-text-darkgray transition-colors"
@@ -68,7 +68,7 @@ export default function OnboardPage() {
               개인정보 처리방침
             </Link>
             <Link
-              href="https://www.notion.so/2e8b3190d600806bbc49c659069629d3"
+              href="/policy/terms"
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs font-suite-medium text-text-lightgray underline hover:text-text-darkgray transition-colors"

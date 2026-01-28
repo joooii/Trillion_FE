@@ -1,16 +1,14 @@
-// src/components/common/CheckBox.tsx
-import { ChevronRight } from 'lucide-react';
-import Image from 'next/image';
-import check from '@/assets/images/checkbox.svg';
-
+import { ChevronRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import check from "@/assets/images/checkbox.svg";
 
 interface CheckboxProps {
   checked: boolean;
   onChange: (checked: boolean) => void;
   label: string;
   required?: boolean;
-  hasLink?: boolean;
-  onLinkClick?: () => void;
+  href?: string;
   className?: string;
   labelClassName?: string;
 }
@@ -20,25 +18,22 @@ export default function Checkbox({
   onChange,
   label,
   required = false,
-  hasLink = false,
-  onLinkClick,
-  className = '',
-  labelClassName = 'text-text-darkgray',
+  href,
+  className = "",
+  labelClassName = "text-text-darkgray",
 }: CheckboxProps) {
   return (
-    <div className={`flex items-center justify-between py-4 last:border-b-0 ${className}`}>
+    <div
+      className={`flex items-center justify-between py-4 last:border-b-0 ${className}`}
+    >
       <div className="flex items-center gap-2 flex-1">
         <button
+          type="button"
           onClick={() => onChange(!checked)}
           className="flex-shrink-0"
         >
           {checked ? (
-            <Image
-              src={check}
-              alt="checked"
-              width={18}
-              height={18}
-            />
+            <Image src={check} alt="checked" width={18} height={18} />
           ) : (
             <div className="w-[18px] h-[18px] bg-white border border-gray-400 rounded" />
           )}
@@ -53,16 +48,14 @@ export default function Checkbox({
         </label>
       </div>
 
-      {hasLink && (
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            onLinkClick?.();
-          }}
+      {href && (
+        <Link
+          href={href}
+          onClick={(e) => e.stopPropagation()}
           className="flex-shrink-0 w-6 h-6 flex items-center justify-center text-gray-400 hover:text-gray-600 transition-colors"
         >
           <ChevronRight size={16} />
-        </button>
+        </Link>
       )}
     </div>
   );
