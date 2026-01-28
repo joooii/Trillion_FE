@@ -74,7 +74,12 @@ function SummaryCard({
           <ChevronRight className="w-6 h-4 stroke-text-lightgray" />
         </div>
         {status === "FAILED" ? (
-          <ErrorContent variant="home" />
+          <ErrorContent 
+            variant="home"
+            counselId={counselId} 
+            title={title ?? ""} 
+            date={date} 
+          />
         ) : (
           <Summary summaryPreview={summaryPreview ?? ""} status={status} />
         )}
