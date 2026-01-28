@@ -7,5 +7,6 @@ export const queryKeys = {
   summary: {
     all: ["summary"] as const,
     list: () => [...queryKeys.summary.all, "list"] as const,
+    detail: (counselId: number) => [...queryKeys.summary.all, 'detail', counselId] as const,
   },
 } as const;
