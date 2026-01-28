@@ -4,12 +4,12 @@ import SelfGuide from "@/assets/images/self_guide.png";
 
 export default function HelperSection() {
   return (
-    <div className="mt-[33px]">
+    <div className="mt-[32px]">
       <p className="ml-[29px] mb-4 text-lg font-semibold text-text-darkgray">
         도움이 필요하신가요?
       </p>
 
-      <div className="mx-[29px] grid grid-cols-2 gap-3">
+      <div className="mx-[29px] grid grid-cols-2 gap-[5px]">
         <HelperCard
           image={FAQ}
           title="자주하는 질문"

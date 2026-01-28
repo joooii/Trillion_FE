@@ -20,7 +20,7 @@ export default function SummaryStartCard() {
         </div>
       </div>
 
-      <div className="mt-auto mb-4 flex justify-center">
+      <div className="mt-[27px] mb-4 flex justify-center">
         <Link href="/chat">
           <Button size="medium" className="shadow-btn">
             요약 시작

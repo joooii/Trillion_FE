@@ -1,10 +1,10 @@
 import { CounselCreateRequest, CounselCreateResponse } from '../../types/counsel';
-
+import { fetchWithAuth } from "@/lib/api/fetchAuth";
 
 export const postCounselSummary = async (
   payload: CounselCreateRequest
 ): Promise<CounselCreateResponse> => {
-  const response = await fetch(
+  const response = await fetchWithAuth(
     `${process.env.NEXT_PUBLIC_API_URL}/api/counsels/summary`,
     {
       method: "POST",

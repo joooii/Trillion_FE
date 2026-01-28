@@ -1,8 +1,9 @@
 import { ChevronRight } from "lucide-react";
 import { StaticImageData } from "next/image";
 import Image from "next/image";
+import Link from "next/link";
 
-export default function ExternalItem({
+export default function InternalItem({
   icon,
   label,
   href,
@@ -12,12 +13,7 @@ export default function ExternalItem({
   href: string;
 }) {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="h-[48px] flex items-center"
-    >
+    <Link href={href} className="h-[48px] flex items-center">
       <Image
         src={icon}
         alt={label}
@@ -27,6 +23,6 @@ export default function ExternalItem({
       />
       <p className="font-suite-medium">{label}</p>
       <ChevronRight className="ml-auto w-[24px] h-[24px] text-text-darkgray" />
-    </a>
+    </Link>
   );
 }
