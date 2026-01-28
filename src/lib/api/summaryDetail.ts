@@ -1,6 +1,6 @@
 import { ApiResponse } from "@/types/api";
 import { SummaryDetail, SummaryDetailApi } from "@/types/summaryDetail";
-import { fetchWithAuth } from "./fetchAuth";
+import { fetchWithAuth } from "@/lib/api/fetchAuth";
 
 export async function getSummaryDetailApi(
   counselId: number

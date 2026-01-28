@@ -1,6 +1,6 @@
 import { ApiResponse } from "@/types/api";
 import { AdditionalQuestion } from "@/types/summaryDetail";
-import { fetchWithAuth } from "./fetchAuth";
+import { fetchWithAuth } from "@/lib/api/fetchAuth";
 
 
 interface PostAdditionalQuestionParams {

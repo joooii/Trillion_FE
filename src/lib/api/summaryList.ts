@@ -1,7 +1,6 @@
 import { ApiResponse } from "@/types/api";
 import { SummaryCardData, CounselCursorResponse } from "@/types/summaryList";
-import { fetchWithAuth } from "./fetchAuth";
-
+import { fetchWithAuth } from "@/lib/api/fetchAuth";
 
 export const summaryListApi = {
   getSummaryList: async (): Promise<SummaryCardData[]> => {

@@ -1,5 +1,5 @@
 import { CounselCreateRequest, CounselCreateResponse } from '../../types/counsel';
-import { fetchWithAuth } from "./fetchAuth";
+import { fetchWithAuth } from "@/lib/api/fetchAuth";
 
 export const postCounselSummary = async (
   payload: CounselCreateRequest

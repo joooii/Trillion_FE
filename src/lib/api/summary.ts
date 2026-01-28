@@ -1,6 +1,5 @@
 import { ApiResponse } from "@/types/api";
-import { fetchWithAuth } from "./fetchAuth";
-
+import { fetchWithAuth } from "@/lib/api/fetchAuth";
 
 export interface CounselCreateRequest {
   counselId?: number;
