@@ -16,12 +16,12 @@
 ## 📌 WE ARE TEAM OF SO:U+
 
 
-|                  이름                   | 역할               |
-| :——————————————————: | :———————— |
+| 이름 | 역할 |
+| :---: | :--- |
 | [강현우](https://github.com/hyunw-kang) | TL, Design, FE, BE |
-|   [김주희](https://github.com/joooii)   | Design, FE, BE         |
-|   [김채원](https://github.com/0dimen)   | FE, BE, AI         |
-| [나원빈](https://github.com/tray0244) | FE, BE, AI     |
+| [김주희](https://github.com/joooii) | Design, FE, BE |
+| [김채원](https://github.com/0dimen) | FE, BE, AI |
+| [나원빈](https://github.com/tray0244) | FE, BE, AI |
 <br/>
 
 ## 📌 기술 스택 (Tech Stack)
