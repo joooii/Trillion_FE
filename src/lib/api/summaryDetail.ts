@@ -32,6 +32,7 @@ export async function getSummaryDetailApi(
       counsel_id: result.data.counselId,
       counsel_date: result.data.counselDate,
       summary: summaryJson?.data?.summary ?? null,
+      chat: result.data.chat,
     };
   } catch (error) {
     console.error("getSummaryDetailApi 요청 에러", { counselId, error });
