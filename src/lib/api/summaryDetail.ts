@@ -1,6 +1,7 @@
 import { ApiResponse } from "@/types/api";
 import { SummaryDetail, SummaryDetailApi } from "@/types/summaryDetail";
 import { cookies } from "next/headers";
+import { fetchWithAuth } from "./fetchAuth";
 
 export async function getSummaryDetailApi(
   counselId: number
@@ -13,7 +14,7 @@ export async function getSummaryDetailApi(
     .join("; ");
 
   try {
-    const response = await fetch(
+    const response = await fetchWithAuth(
       `${process.env.NEXT_PUBLIC_API_URL}/api/counsels/${counselId}`,
       {
         headers: {

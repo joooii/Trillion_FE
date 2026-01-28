@@ -1,5 +1,7 @@
 import { ApiResponse } from "@/types/api";
 import { AdditionalQuestion } from "@/types/summaryDetail";
+import { fetchWithAuth } from "./fetchAuth";
+
 
 interface PostAdditionalQuestionParams {
   counselId: number;
@@ -10,7 +12,7 @@ export const postAdditionalQuestion = async ({
   counselId,
   question,
 }: PostAdditionalQuestionParams): Promise<AdditionalQuestion> => {
-  const response = await fetch(
+  const response = await fetchWithAuth(
     `${process.env.NEXT_PUBLIC_API_URL}/api/counsels/${counselId}/question`,
     {
       method: "POST",
