@@ -1,9 +1,10 @@
 import { ApiResponse } from "@/types/api";
 import { SummaryCardData, CounselCursorResponse } from "@/types/summaryList";
+import { fetchWithAuth } from "@/lib/api/fetchAuth";
 
 export const summaryListApi = {
   getSummaryList: async (): Promise<SummaryCardData[]> => {
-    const response = await fetch(
+    const response = await fetchWithAuth(
       `${process.env.NEXT_PUBLIC_API_URL}/api/counsels`,
       {
         method: "GET",

@@ -1,4 +1,5 @@
 import { ApiResponse } from "@/types/api";
+import { fetchWithAuth } from "@/lib/api/fetchAuth";
 
 export interface CounselCreateRequest {
   counselId?: number;
@@ -12,7 +13,7 @@ type CounselCreateResponse = ApiResponse<null>;
 export const postCounselSummary = async (
   payload: CounselCreateRequest
 ): Promise<CounselCreateResponse> => {
-  const response = await fetch(
+  const response = await fetchWithAuth(
     `${process.env.NEXT_PUBLIC_API_URL}/api/counsels/summary`,
     {
       method: "POST",
