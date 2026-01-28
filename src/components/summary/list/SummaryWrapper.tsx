@@ -8,8 +8,10 @@ import SummaryCard from "@/components/summary/list/SummaryCard";
 import { ChatCategory } from "@/types/summaryList";
 import { useSummaryList } from "@/hooks/useSummaryList";
 import { CATEGORY_LABEL_MAP } from "@/utils/categoryLabelUtil";
+import { useCounselStatusSse } from "@/hooks/useCounselStatusSse";
 
 export default function SummaryWrapper() {
+  useCounselStatusSse(); // SSE 연결
   const { data, isLoading, error } = useSummaryList();
 
   const [category, setCategory] = useState<ChatCategory>(ChatCategory.ALL);
