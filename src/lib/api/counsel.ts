@@ -22,3 +22,17 @@ export const postCounselSummary = async (
 
   return response.json();
 }; 
+
+export const getCounselDetail = async (counselId: number) => {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/counsels/${counselId}`, {
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+  });
+
+  if (!response.ok) {
+    throw new Error(`상세 조회 실패: ${response.status}`);
+  }
+
+  const result = await response.json();
+  return result.data;
+};
