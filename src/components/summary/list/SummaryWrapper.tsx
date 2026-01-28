@@ -76,14 +76,14 @@ export default function SummaryWrapper() {
   }
 
   return (
-    <div className="flex flex-col w-[335px] h-[calc(100dvh-300px)] overflow-hidden">
+    <div className="flex flex-col w-[335px] h-[calc(100dvh-220px)] overflow-hidden">
       <div className="flex flex-col flex-none z-10"> 
         <CategorySection category={category} onChange={setCategory} />
         <YearSelector year={year} onChange={setYear} />
       </div>
 
     <div className="flex flex-col flex-1 overflow-y-auto scrollbar-hide">
-        <div className="flex flex-col gap-y-3 pb-10">
+        <div className="flex flex-col gap-y-3 pb-5">
         {yearFilteredData.length === 0 ? (
           <p className="text-center text-sm text-text-lightgray py-6">
             해당 연도의 상담 내역이 없습니다.
