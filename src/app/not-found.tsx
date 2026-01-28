@@ -25,11 +25,12 @@ export default function NotFound() {
           요청하신 페이지가 존재하지 않거나 이동되었습니다.
         </p>
 
-        <Link href="/">
-          <div className="flex items-center justify-center bg-primary-500 active:bg-primary-700 text-white py-3 rounded-lg">
-            <Home className="h-4 w-4 mr-2" />
-            홈으로 돌아가기
-          </div>
+        <Link
+          href="/"
+          className="flex items-center justify-center bg-primary-500 active:bg-primary-700 text-white py-3 rounded-lg"
+        >
+          <Home className="h-4 w-4 mr-2" />
+          홈으로 돌아가기
         </Link>
       </div>
     </div>
