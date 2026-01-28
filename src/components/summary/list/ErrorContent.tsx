@@ -33,8 +33,7 @@ export default function ErrorContent({
       const chatOriginal = detailData?.chat; 
 
        if (!chatOriginal) {
-        alert("재생성할 대화 내용이 없습니다.");
-        return;
+        throw new Error("재생성할 대화 내용이 없습니다.");
       }
 
       await postCounselSummary({
