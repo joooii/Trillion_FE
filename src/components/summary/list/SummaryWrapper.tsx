@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 import CategorySection from "@/components/summary/list/CategorySection";
 import YearSelector from "@/components/summary/list/YearSelector";
 import MonthSection from "@/components/summary/list/MonthSection";
@@ -8,9 +9,26 @@ import SummaryCard from "@/components/summary/list/SummaryCard";
 import { ChatCategory } from "@/types/summaryList";
 import { useSummaryList } from "@/hooks/useSummaryList";
 import { CATEGORY_LABEL_MAP } from "@/utils/categoryLabelUtil";
+import { useCounselStatusSse } from "@/hooks/useCounselStatusSse";
 
 export default function SummaryWrapper() {
-  const { data, isLoading, error } = useSummaryList();
+  useCounselStatusSse(); // SSE 연결
+
+  const { 
+    data, 
+    isLoading, 
+    error,
+    hasNextPage,
+    fetchNextPage,
+    isFetchingNextPage
+  } = useSummaryList();
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView && hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  }, [inView, hasNextPage, isFetchingNextPage, fetchNextPage]);
 
   const [category, setCategory] = useState<ChatCategory>(ChatCategory.ALL);
 
@@ -58,13 +76,14 @@ export default function SummaryWrapper() {
   }
 
   return (
-    <div className="mb-8 w-[335px]">
-      <div className="flex flex-col">
+    <div className="flex flex-col w-[335px] h-[calc(100dvh-300px)] overflow-hidden">
+      <div className="flex flex-col flex-none z-10"> 
         <CategorySection category={category} onChange={setCategory} />
         <YearSelector year={year} onChange={setYear} />
       </div>
 
-      <div className="flex flex-col gap-y-3">
+    <div className="flex flex-col flex-1 overflow-y-auto scrollbar-hide">
+        <div className="flex flex-col gap-y-3 pb-10">
         {yearFilteredData.length === 0 ? (
           <p className="text-center text-sm text-text-lightgray py-6">
             해당 연도의 상담 내역이 없습니다.
@@ -84,6 +103,14 @@ export default function SummaryWrapper() {
             );
           })
         )}
+
+        {/* 무한 스크롤 트리거 */}
+        {hasNextPage && (
+          <div ref={ref} className="h-10 flex justify-center items-center w-full">
+              {isFetchingNextPage && <span className="text-xs text-gray-400">로딩 중...</span>}
+          </div>
+        )}
+        </div>
       </div>
     </div>
   );

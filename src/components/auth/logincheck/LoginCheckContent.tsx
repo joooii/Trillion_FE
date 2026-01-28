@@ -64,20 +64,6 @@ export default function LoginCheckContent() {
     }
   };
 
-  const openTermsLink = () => {
-    window.open(
-      "https://www.notion.so/2e8b3190d600806bbc49c659069629d3",
-      "_blank"
-    );
-  };
-
-  const openPrivacyLink = () => {
-    window.open(
-      "https://www.notion.so/2e8b3190d6008048a7bdfbd17011d460",
-      "_blank"
-    );
-  };
-
   return (
     <div className="min-h-screen bg-text-inverse flex flex-col items-center px-[29px] pt-[57px] pb-[73px]">
       <div className="w-full max-w-[335px] flex flex-col gap-8">
@@ -131,8 +117,7 @@ export default function LoginCheckContent() {
             }
             label="서비스 이용 약관 동의"
             required
-            hasLink
-            onLinkClick={openTermsLink}
+            href="/policy/terms"
             labelClassName="text-text-lightgray"
           />
 
@@ -143,8 +128,7 @@ export default function LoginCheckContent() {
             }
             label="개인정보 처리방침 동의"
             required
-            hasLink
-            onLinkClick={openPrivacyLink}
+            href="/policy/privacy"
             labelClassName="text-text-lightgray"
           />
         </div>

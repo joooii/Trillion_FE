@@ -35,12 +35,12 @@ export default function MarkupTextRenderer({
             </table>
           ),
           th: ({ children }) => (
-            <th className="px-1 py-2 text-center font-semibold text-[11px] bg-[#FAF7F2] border-[#DED6C9] text-text-black">
+            <th className="px-1 py-2 text-center font-semibold text-[11px] bg-table-header border-[#DED6C9] text-text-black">
               <HighlightMarkdown>{children}</HighlightMarkdown>
             </th>
           ),
           td: ({ children }) => (
-            <td className="px-1 py-2 text-center text-[10px] text-text-darkgray border-t border-[#E3DCCF]">
+            <td className="px-1 py-2 text-center text-[10px] text-text-darkgray border-t border-table-border">
               <HighlightMarkdown>{children}</HighlightMarkdown>
             </td>
           ),
