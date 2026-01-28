@@ -1,6 +1,6 @@
 ## 📌 (SO:U+)
 
-<img width="1920" height="1080" alt="Slide 16_9 - 560" src="https://github.com/user-attachments/assets/23355b43-cf61-4b63-9ece-778ce0cd3036" />
+<img width="1920" height="1080" alt="Slide 16_9 - 560" src="https://github.com/user-attachments/assets/683567e3-ceda-43f8-a297-a67a49ad7d48"/>
 <img width="1920" height="1080" alt="Slide 16_9 - 551" src="https://github.com/user-attachments/assets/c8bd46a6-78fd-4b3d-886a-30cdb4f367da" />
 
 ## 📌 서비스 소개 
@@ -16,9 +16,12 @@
 ## 📌 WE ARE TEAM OF SO:U+
 
 
-| 강현우 | 김주희 | 김채원 | 김채원 |
-|--------|--------|--------|--------|
-| <img src="https://github.com/user-attachments/assets/5507921a-2b9c-437c-ac3a-41989c0f7a27" width="350"><br><strong>강현우</strong><br><em>TL, FE&BE developer</em> | <img src="https://github.com/user-attachments/assets/c1703b3f-b037-4180-aff1-7e966e92157b" width="350"><br><strong>김주희</strong><br><em>Design, FE & BE developer</em> | <img src="https://github.com/user-attachments/assets/c1703b3f-b037-4180-aff1-7e966e92157b" width="350"><br><strong>김채원</strong><br><em>FE & AI developer</em> | <img src="https://github.com/user-attachments/assets/c1703b3f-b037-4180-aff1-7e966e92157b" width="350"><br><strong>나원빈</strong><br><em>FE & BE developer</em> |
+|                  이름                   | 역할               |
+| :——————————————————: | :———————— |
+| [강현우](https://github.com/hyunw-kang) | TL, Design, FE, BE |
+|   [김주희](https://github.com/joooii)   | Design, FE, BE         |
+|   [김채원](https://github.com/0dimen)   | FE, BE, AI         |
+| [나원빈](https://github.com/tray0244) | FE, BE, AI     |
 <br/>
 
 ## 📌 기술 스택 (Tech Stack)
@@ -27,7 +30,6 @@
 > `trade-off` 사이에서 팀에 `fit`한 근거만 있으면 그것이 정답이다.
 
 <br/>
-### 📍 도입 기술 스택
 
 | 역할                        | 스택                                                                                                                                                                                                               |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
