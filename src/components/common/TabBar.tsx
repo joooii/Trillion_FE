@@ -29,7 +29,10 @@ export default function TabBar() {
                   aria-label="채팅"
                 >
                   <div className="relative w-14 h-14 rounded-full flex items-center justify-center bg-gradient-to-br from-primary-500 to-[#FF1493] before:absolute before:inset-0 before:rounded-full before:bg-gradient-to-br before:from-[#E30084] before:to-[#FF1493] before:blur-lg before:opacity-50 transition-all duration-200 hover:scale-105">
-                    <Icon className="w-7 h-7 text-white z-20" strokeWidth={2} />
+                    <Icon
+                      className="w-7 h-7 text-white z-20"
+                      strokeWidth={isActive ? 2 : 1.7}
+                    />
                   </div>
                 </Link>
               );
@@ -44,10 +47,10 @@ export default function TabBar() {
               >
                 <Icon
                   className={`w-6 h-6 mb-1 transition-colors ${isActive ? "text-primary-500" : "text-gray-400"}`}
-                  strokeWidth={2}
+                  strokeWidth={isActive ? 2.3 : 2}
                 />
                 <span
-                  className={`text-xs font-medium transition-colors ${isActive ? "text-primary-500" : "text-gray-400"}`}
+                  className={`text-xs  transition-colors ${isActive ? "text-primary-500 font-bold" : "text-gray-400 font-medium"}`}
                 >
                   {label}
                 </span>
