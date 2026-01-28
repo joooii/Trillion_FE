@@ -7,6 +7,7 @@ import Summary from "@/components/home/Summary";
 import EmptyState from "@/components/home/EmptySummary";
 import { useSummaryList } from "@/hooks/useSummaryList";
 import ErrorContent from "@/components/summary/list/ErrorContent";
+import { SkeletonCard, SkeletonLine } from "../common/SkeletonCard";
 
 interface SummaryListProps {
   nickname: string;
@@ -32,9 +33,17 @@ export default function SummaryList({ nickname }: SummaryListProps) {
       </div>
 
       {isLoading ? (
-        <p className="text-center text-sm text-text-lightgray py-6">
-          요약 내역을 불러오는 중입니다.
-        </p>
+        <div className="w-[335px] flex flex-col gap-3 items-center mx-auto">
+          {[...Array(1)].map(() => (
+            <SkeletonCard
+              className="relative z-20 mx-auto min-h[141px]
+        rounded-[10px] shadow-card p-3 transition-all duration-200 "
+            >
+              <SkeletonLine className="mb-4 h-4 " />
+              <SkeletonLine className="p-[12px] h-[62px]" />
+            </SkeletonCard>
+          ))}
+        </div>
       ) : error ? (
         <p className="text-center text-sm text-text-lightgray py-6">
           요약 내역을 불러오지 못했습니다.

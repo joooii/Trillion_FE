@@ -1,5 +1,4 @@
 import { SkeletonCard, SkeletonLine } from "@/components/common/SkeletonCard";
-import SummaryHeader from "@/components/summary/detail/SummaryHeader";
 
 const QuestionBlock = () => (
   <div className="w-full h-10 bg-gray-100 rounded-lg border border-gray-100" />

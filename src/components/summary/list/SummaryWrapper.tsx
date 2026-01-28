@@ -8,6 +8,7 @@ import SummaryCard from "@/components/summary/list/SummaryCard";
 import { ChatCategory } from "@/types/summaryList";
 import { useSummaryList } from "@/hooks/useSummaryList";
 import { CATEGORY_LABEL_MAP } from "@/utils/categoryLabelUtil";
+import { SkeletonCard, SkeletonLine } from "@/components/common/SkeletonCard";
 
 export default function SummaryWrapper() {
   const { data, isLoading, error } = useSummaryList();
@@ -43,9 +44,26 @@ export default function SummaryWrapper() {
 
   if (isLoading) {
     return (
-      <p className="text-center text-sm text-text-lightgray py-6">
-        상담 내역을 불러오는 중입니다.
-      </p>
+      <div className="mb-8 w-[335px]">
+        {/* 필터 섹션 */}
+        <div className="flex flex-col">
+          <CategorySection category={category} onChange={setCategory} />
+          <YearSelector year={year} onChange={setYear} />
+        </div>
+        <div className="flex flex-col gap-y-3"></div>
+        <MonthSection month={0} />
+        <div className="flex flex-col gap-3">
+          {[...Array(2)].map((_, index) => (
+            <SkeletonCard
+              className="relative z-20 flex flex-col mx-auto w-[335px] min-h-[141px]
+        rounded-[10px] shadow-card p-3 transition-all duration-200 "
+            >
+              <SkeletonLine className="mb-4 h-[38px] " />
+              <SkeletonLine className="p-[12px] h-[73px]" />
+            </SkeletonCard>
+          ))}
+        </div>
+      </div>
     );
   }
 
