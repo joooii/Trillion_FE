@@ -4,6 +4,7 @@ import { CircleAlert, RotateCcw } from "lucide-react";
 import { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { postCounselSummary } from "@/lib/api/summary"; 
+import { getCounselDetail } from "@/lib/api/counsel";
 
 interface ErrorContentProps {
   variant?: "home" | "summary";
@@ -28,18 +29,10 @@ export default function ErrorContent({
     try {
       setIsRetrying(true);
 
-      const targetUrl = `${process.env.NEXT_PUBLIC_API_URL}/api/counsels/${counselId}`;
-      const detailRes = await fetch(targetUrl, {
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-      });
-      
-      if (!detailRes.ok) throw new Error("데이터를 불러오지 못했습니다.");
-      
-      const detailData = await detailRes.json();
-      const chatOriginal = detailData.data?.chat; 
+      const detailData = await getCounselDetail(counselId);
+      const chatOriginal = detailData?.chat; 
 
-      if (!chatOriginal) {
+       if (!chatOriginal) {
         alert("재생성할 대화 내용이 없습니다.");
         return;
       }
@@ -52,7 +45,6 @@ export default function ErrorContent({
       });
 
       await queryClient.invalidateQueries({ queryKey: ["summary", "list"] });
-      alert("재생성이 시작되었습니다.");
 
     } catch (error) {
       console.error("재시도 실패:", error);
