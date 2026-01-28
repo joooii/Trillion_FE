@@ -1,12 +1,15 @@
 import { summaryListApi } from "@/lib/api/summaryList";
 import { queryKeys } from "@/lib/queryKeys";
-import { SummaryCardData } from "@/types/summaryList";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
 export function useSummaryList() {
-  const query = useQuery<SummaryCardData[]>({
+  const query = useInfiniteQuery({
     queryKey: queryKeys.summary.list(),
-    queryFn: summaryListApi.getSummaryList,
+    queryFn: ({ pageParam }) => summaryListApi.getInfiniteList(pageParam, 3), 
+    initialPageParam: undefined as number | undefined,
+    getNextPageParam: (lastPage) => {
+      return lastPage.hasNext ? lastPage.nextCursorId : undefined;
+    },
     staleTime: 60 * 1000, // 1분
     gcTime: 5 * 60 * 1000, // 5분
     refetchOnWindowFocus: false,
@@ -14,9 +17,11 @@ export function useSummaryList() {
   });
 
   return {
-    data: query.data ?? [],
+    data: query.data?.pages.flatMap((page) => page.content) ?? [],
     isLoading: query.isLoading,
-    isFetching: query.isFetching,
+    isFetchingNextPage: query.isFetchingNextPage,
+    hasNextPage: query.hasNextPage,
+    fetchNextPage: query.fetchNextPage,
     error: query.error instanceof Error ? query.error.message : null,
     refetch: query.refetch,
   };

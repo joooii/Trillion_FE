@@ -24,3 +24,9 @@ export interface SummaryHome {
 export interface SummaryCardData extends SummaryHome {
   category: ChatCategory;
 }
+
+export interface CounselCursorResponse {
+  content: SummaryCardData[];
+  hasNext: boolean;
+  nextCursorId: number | null;
+}
