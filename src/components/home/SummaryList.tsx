@@ -20,7 +20,7 @@ export default function SummaryList({ nickname }: SummaryListProps) {
     <div className="pt-8">
       <div className="flex justify-between items-center mb-[15px] px-[29px]">
         <h2 className="text-lg font-bold text-text-darkgray">
-          {nickname || "김소유"}님의 요약내용
+          {nickname || "게스트"}님의 요약내용
         </h2>
         {!isLoading && data.length > 0 && (
           <Link
@@ -37,7 +37,7 @@ export default function SummaryList({ nickname }: SummaryListProps) {
           {[...Array(2)].map((_, index) => (
             <SkeletonCard
               key={index}
-              className="relative z-20 mx-auto min-h[141px]
+              className="relative z-20 mx-auto min-h-[141px]
         rounded-[10px] shadow-card p-3 transition-all duration-200 "
             >
               <SkeletonLine className="mb-4 h-4 " />
