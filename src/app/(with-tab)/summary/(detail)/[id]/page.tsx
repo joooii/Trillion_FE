@@ -1,14 +1,11 @@
-"use client";
-
-import { use } from "react";
 import SummaryDetailContent from "@/components/summary/detail/SummaryDetailContent";
 
-export default function SummaryDetailPage({
+export default async function SummaryDetailPage({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const { id } = use(params);
+  const { id } = await params;
   const counselId = Number(id);
 
   if (Number.isNaN(counselId)) {
