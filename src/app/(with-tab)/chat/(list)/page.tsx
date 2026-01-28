@@ -13,9 +13,11 @@ export default function ChatPage() {
     <div className="flex flex-col items-center gap-y-3">
       {mockData.map((chat) => (
         <Link key={chat.id} href={`/chat/${chat.id}`}>
-          <div className="flex items-center justify-between w-[335px] min-h-[70px] bg-white rounded-[10px] shadow-card px-[16px] py-[20px]">
+          <div className="flex items-center justify-between w-[335px] min-h-[70px] bg-white rounded-[10px] shadow-card px-[16px] py-[17px]">
             <div>
-              <p className="text-text-darkgray text-[16px]">{chat.title}</p>
+              <p className="text-text-darkgray text-[16px] pb-[4px]">
+                {chat.title}
+              </p>
               <p className="text-[10px] text-text-lightgray">
                 {chat.createdAt}
               </p>

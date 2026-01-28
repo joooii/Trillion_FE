@@ -65,9 +65,9 @@ export default async function ChatDetailPage({ params }: ChatDetailPageProps) {
           );
         })}
       </div>
-      
+
       <div className="mt-6 border border-text-muted/50 scale-y-50 origin-top"></div>
-      
+
       <ChatActionButtons requestData={requestData} />
     </div>
   );
