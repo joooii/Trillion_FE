@@ -9,18 +9,19 @@ import SummaryCard from "@/components/summary/list/SummaryCard";
 import { ChatCategory } from "@/types/summaryList";
 import { useSummaryList } from "@/hooks/useSummaryList";
 import { CATEGORY_LABEL_MAP } from "@/utils/categoryLabelUtil";
+import { SkeletonCard, SkeletonLine } from "@/components/common/SkeletonCard";
 import { useCounselStatusSse } from "@/hooks/useCounselStatusSse";
 
 export default function SummaryWrapper() {
   useCounselStatusSse(); // SSE 연결
 
-  const { 
-    data, 
-    isLoading, 
+  const {
+    data,
+    isLoading,
     error,
     hasNextPage,
     fetchNextPage,
-    isFetchingNextPage
+    isFetchingNextPage,
   } = useSummaryList();
   const { ref, inView } = useInView();
 
@@ -61,9 +62,30 @@ export default function SummaryWrapper() {
 
   if (isLoading) {
     return (
-      <p className="text-center text-sm text-text-lightgray py-6">
-        상담 내역을 불러오는 중입니다.
-      </p>
+      <div className="mb-8 w-[335px]">
+        {/* 필터 섹션 */}
+        <div className="flex flex-col">
+          <CategorySection category={category} onChange={setCategory} />
+          <YearSelector year={year} onChange={setYear} />
+        </div>
+        <div className="flex flex-col gap-y-3"></div>
+        <div className="flex items-center gap-3 mb-3 mt-[30px] ">
+          <SkeletonLine className="h-[30px] w-[40px] " />
+          <div className="flex-1 h-px bg-secondary-800/40" />
+        </div>
+        <div className="flex flex-col gap-3">
+          {[...Array(2)].map((_, index) => (
+            <SkeletonCard
+              key={index}
+              className="relative z-20 flex flex-col mx-auto w-[335px] min-h-[141px]
+        rounded-[10px] shadow-card p-3 transition-all duration-200 "
+            >
+              <SkeletonLine className="mb-4 h-[38px] " />
+              <SkeletonLine className="p-[12px] h-[73px]" />
+            </SkeletonCard>
+          ))}
+        </div>
+      </div>
     );
   }
 
@@ -77,39 +99,44 @@ export default function SummaryWrapper() {
 
   return (
     <div className="flex flex-col w-[335px] h-[calc(100dvh-220px)] overflow-hidden">
-      <div className="flex flex-col flex-none z-10"> 
+      <div className="flex flex-col flex-none z-10">
         <CategorySection category={category} onChange={setCategory} />
         <YearSelector year={year} onChange={setYear} />
       </div>
 
-    <div className="flex flex-col flex-1 overflow-y-auto scrollbar-hide">
+      <div className="flex flex-col flex-1 overflow-y-auto scrollbar-hide">
         <div className="flex flex-col gap-y-3 pb-5">
-        {yearFilteredData.length === 0 ? (
-          <p className="text-center text-sm text-text-lightgray py-6">
-            해당 연도의 상담 내역이 없습니다.
-          </p>
-        ) : (
-          yearFilteredData.map((item) => {
-            const month = getMonth(item.date);
-            const showMonth = month !== prevMonth;
+          {yearFilteredData.length === 0 ? (
+            <p className="text-center text-sm text-text-lightgray py-6">
+              해당 연도의 상담 내역이 없습니다.
+            </p>
+          ) : (
+            yearFilteredData.map((item) => {
+              const month = getMonth(item.date);
+              const showMonth = month !== prevMonth;
 
-            if (showMonth) prevMonth = month;
+              if (showMonth) prevMonth = month;
 
-            return (
-              <div key={item.counselId}>
-                {showMonth && month && <MonthSection month={month} />}
-                <SummaryCard {...item} />
-              </div>
-            );
-          })
-        )}
+              return (
+                <div key={item.counselId}>
+                  {showMonth && month && <MonthSection month={month} />}
+                  <SummaryCard {...item} />
+                </div>
+              );
+            })
+          )}
 
-        {/* 무한 스크롤 트리거 */}
-        {hasNextPage && (
-          <div ref={ref} className="h-10 flex justify-center items-center w-full">
-              {isFetchingNextPage && <span className="text-xs text-gray-400">로딩 중...</span>}
-          </div>
-        )}
+          {/* 무한 스크롤 트리거 */}
+          {hasNextPage && (
+            <div
+              ref={ref}
+              className="h-10 flex justify-center items-center w-full"
+            >
+              {isFetchingNextPage && (
+                <span className="text-xs text-gray-400">로딩 중...</span>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

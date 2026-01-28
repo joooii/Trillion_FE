@@ -14,9 +14,11 @@ interface ChatActionButtonsProps {
   };
 }
 
-export default function ChatActionButtons({ requestData }: ChatActionButtonsProps) {
+export default function ChatActionButtons({
+  requestData,
+}: ChatActionButtonsProps) {
   const router = useRouter();
-  
+
   const { mutateAsync, isPending } = useCreateSummary();
   const [showErrorToast, setShowErrorToast] = useState<boolean>(false);
 
@@ -54,7 +56,7 @@ export default function ChatActionButtons({ requestData }: ChatActionButtonsProp
           <ErrorToast onClose={() => setShowErrorToast(false)} />
         </div>
       )}
-      
+
       <div className="mt-4 flex flex-row gap-[11px]">
         <Button
           size="small"
@@ -65,11 +67,7 @@ export default function ChatActionButtons({ requestData }: ChatActionButtonsProp
           취소
         </Button>
 
-        <Button
-          size="small"
-          onClick={handleStartSummary}
-          disabled={isPending}
-        >
+        <Button size="small" onClick={handleStartSummary} disabled={isPending}>
           {isPending ? "요약 중..." : "요약 시작"}
         </Button>
       </div>

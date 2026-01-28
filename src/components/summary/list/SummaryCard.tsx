@@ -18,7 +18,7 @@ export default function SummaryCard({
   const CardContent = (
     <div
       className={`relative z-20 flex flex-col mx-auto w-[335px] min-h-[141px]
-        rounded-[10px] shadow-card bg-white p-3 transition-all duration-200
+        rounded-[10px] shadow-card bg-white p-3 transition-all duration-200 
         ${isClickable ? "active:bg-gray-100" : "cursor-default"}`}
     >
       <div className="flex justify-between items-center">
