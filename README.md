@@ -1,8 +1,9 @@
-## 📌 서비스 소개 (SO:U+)
+## 📌 (SO:U+)
 
 <img width="1920" height="1080" alt="Slide 16_9 - 560" src="https://github.com/user-attachments/assets/23355b43-cf61-4b63-9ece-778ce0cd3036" />
 <img width="1920" height="1080" alt="Slide 16_9 - 551" src="https://github.com/user-attachments/assets/c8bd46a6-78fd-4b3d-886a-30cdb4f367da" />
 
+## 📌 서비스 소개 
 ### 📍 “LG U+고객 대상으로 통신사 상담 요약&관리 웹 서비스"
 
 > SO:U+는 Summarize(요약)&Organization(구조화)을 결합한 이름으로,
@@ -18,6 +19,7 @@
 | 강현우 | 김주희 | 김채원 | 김채원 |
 |--------|--------|--------|--------|
 | <img src="https://github.com/user-attachments/assets/5507921a-2b9c-437c-ac3a-41989c0f7a27" width="350"><br><strong>강현우</strong><br><em>TL, FE&BE developer</em> | <img src="https://github.com/user-attachments/assets/c1703b3f-b037-4180-aff1-7e966e92157b" width="350"><br><strong>김주희</strong><br><em>Design, FE & BE developer</em> | <img src="https://github.com/user-attachments/assets/c1703b3f-b037-4180-aff1-7e966e92157b" width="350"><br><strong>김채원</strong><br><em>FE & AI developer</em> | <img src="https://github.com/user-attachments/assets/c1703b3f-b037-4180-aff1-7e966e92157b" width="350"><br><strong>나원빈</strong><br><em>FE & BE developer</em> |
+<br/>
 
 ## 📌 기술 스택 (Tech Stack)
 
@@ -37,6 +39,7 @@
 | **Version Control**         | ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)   |
 | **Deployment (초기 ver1)**  | ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)                                                                                                              |
 
+<br/>
 
 ### 📍 Commit Naming Convention
 
