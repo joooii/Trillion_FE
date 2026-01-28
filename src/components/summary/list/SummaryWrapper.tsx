@@ -51,10 +51,14 @@ export default function SummaryWrapper() {
           <YearSelector year={year} onChange={setYear} />
         </div>
         <div className="flex flex-col gap-y-3"></div>
-        <MonthSection month={0} />
+        <div className="flex items-center gap-3 mb-3 mt-[30px] ">
+          <SkeletonLine className="h-[30px] w-[40px] " />
+          <div className="flex-1 h-px bg-secondary-800/40" />
+        </div>
         <div className="flex flex-col gap-3">
           {[...Array(2)].map((_, index) => (
             <SkeletonCard
+              key={index}
               className="relative z-20 flex flex-col mx-auto w-[335px] min-h-[141px]
         rounded-[10px] shadow-card p-3 transition-all duration-200 "
             >

@@ -1,6 +1,6 @@
-// 글자 부분
+// 글자 라인 부분
 const SkeletonLine = ({ className = "" }: { className?: string }) => (
-  <div className={`h-8 bg-gray-200/40 rounded ${className}`} />
+  <div className={`h-8 bg-gray-200/50 rounded ${className}`} />
 );
 
 // 카드 부분

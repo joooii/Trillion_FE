@@ -34,8 +34,9 @@ export default function SummaryList({ nickname }: SummaryListProps) {
 
       {isLoading ? (
         <div className="w-[335px] flex flex-col gap-3 items-center mx-auto">
-          {[...Array(1)].map(() => (
+          {[...Array(2)].map((_, index) => (
             <SkeletonCard
+              key={index}
               className="relative z-20 mx-auto min-h[141px]
         rounded-[10px] shadow-card p-3 transition-all duration-200 "
             >
