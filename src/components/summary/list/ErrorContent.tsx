@@ -4,7 +4,7 @@ import { CircleAlert, RotateCcw } from "lucide-react";
 import { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { postCounselSummary } from "@/lib/api/summary"; 
-import { getCounselDetail } from "@/lib/api/counsel";
+import { getSummaryDetailApi } from "@/lib/api/summaryDetail";
 
 interface ErrorContentProps {
   variant?: "home" | "summary";
@@ -29,7 +29,7 @@ export default function ErrorContent({
     try {
       setIsRetrying(true);
 
-      const detailData = await getCounselDetail(counselId);
+      const detailData = await getSummaryDetailApi(counselId);
       const chatOriginal = detailData?.chat; 
 
        if (!chatOriginal) {
@@ -42,6 +42,7 @@ export default function ErrorContent({
         date,
         chat: chatOriginal,
       });
+      
 
       await queryClient.invalidateQueries({ queryKey: ["summary", "list"] });
 
