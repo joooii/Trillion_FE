@@ -13,9 +13,9 @@ export default function Summary({
 }: SummaryContentProps) {
   return (
     <div
-      className={`w-[311px] rounded-[10px] p-3 flex flex-col gap-y-2 ${bgMap[status]}`}
+      className={`w-[311px] rounded-[10px] p-3 flex flex-col  ${bgMap[status]}`}
     >
-      <div className="flex items-center gap-[3px]">
+      <div className="flex items-center gap-[3px] pb-2">
         <Calendar className="w-3 h-3 stroke-primary-500" />
         <p className="text-xs font-bold text-primary-500">AI 요약</p>
       </div>
