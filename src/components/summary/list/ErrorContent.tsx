@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { postCounselSummary } from "@/lib/api/summary"; 
 import { getSummaryDetailApi } from "@/lib/api/summaryDetail";
+import { queryKeys } from "@/lib/queryKeys";
 
 interface ErrorContentProps {
   variant?: "home" | "summary";
@@ -44,7 +45,7 @@ export default function ErrorContent({
       });
       
 
-      await queryClient.invalidateQueries({ queryKey: ["summary", "list"] });
+      await queryClient.invalidateQueries({ queryKey: queryKeys.summary.list() });
 
     } catch (error) {
       console.error("재시도 실패:", error);
