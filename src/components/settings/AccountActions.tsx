@@ -13,10 +13,8 @@ export default function AccountActions() {
 
   const handleLogout = async () => {
     try {
-      const response = await postLogoutApi();
-      if (response.ok) {
-        router.push("/auth/onboard");
-      }
+      await postLogoutApi();
+      router.push("/auth/onboard");
     } catch (error) {
       console.error("로그아웃 실패", error);
       alert("오류가 발생했습니다.");
@@ -25,10 +23,8 @@ export default function AccountActions() {
 
   const handleWithdraw = async () => {
     try {
-      const response = await postWithdrawApi();
-      if (response.ok) {
-        router.push("/auth/onboard");
-      }
+      await postWithdrawApi();
+      router.push("/auth/onboard");
     } catch (error) {
       console.error("회원 탈퇴 실패", error);
     } finally {
