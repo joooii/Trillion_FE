@@ -19,14 +19,6 @@ export async function getSummaryDetailApi(
   const result: ApiResponse<SummaryDetailApi> = await response.json();
   const summaryJson = result.data.summaryJson;
 
-  if (!summaryJson?.data?.summary) {
-    console.error(`getSummaryDetailApi summary is null`, {
-      counselId,
-      summaryJson,
-    });
-    return null;
-  }
-
   return {
     counsel_id: result.data.counselId,
     counsel_date: result.data.counselDate,
