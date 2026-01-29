@@ -1,4 +1,4 @@
-import { ApiResponse } from "./api";
+import { ApiResponse } from "@/types/api";
 
 export interface Message {
   speaker: "상담사" | "고객";
@@ -6,7 +6,7 @@ export interface Message {
 }
 
 export interface CounselCreateRequest {
-  counselId?: number; 
+  counselId?: number;
   title: string;
   date: string;
   chat: string;

@@ -15,7 +15,7 @@ export async function getSummaryDetailApi(
 
     if (!response.ok) {
       console.error("API status:", response.status);
-      throw new Error("상담 요약 상세 내용을 불러올 수 없습니다");
+      return null;
     }
 
     const result: ApiResponse<SummaryDetailApi> = await response.json();
@@ -26,8 +26,9 @@ export async function getSummaryDetailApi(
         counselId,
         summaryJson,
       });
+      return null;
     }
-    
+
     return {
       counsel_id: result.data.counselId,
       counsel_date: result.data.counselDate,

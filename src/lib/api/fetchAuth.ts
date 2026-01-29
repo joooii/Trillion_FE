@@ -1,4 +1,4 @@
-import { refreshApi } from "./refresh";
+import { refreshApi } from "@/lib/api/refresh";
 
 let isRefreshing = false;
 let refreshSubscribers: Array<(error?: Error) => void> = [];
@@ -16,55 +16,45 @@ export async function fetchWithAuth(
   url: string,
   options: RequestInit = {}
 ): Promise<Response> {
-  console.log("fetchWithAuth 시작:", url);
-
   const config: RequestInit = {
     ...options,
     credentials: "include",
   };
 
   let response = await fetch(url, config);
-  
+
   if (response.status !== 401) {
-    console.log("정상 응답 반환");
     return response;
   }
 
-  console.log("401 감지!");
-
   if (isRefreshing) {
-    console.log("다른 요청이 갱신 중 - 대기");
     return new Promise((resolve, reject) => {
       addRefreshSubscriber((error) => {
         if (error) {
           reject(error);
         } else {
-          console.log("갱신 완료 - 재시도");
           fetch(url, config).then(resolve).catch(reject);
         }
       });
     });
   }
 
-  console.log("토큰 갱신 시작");
   isRefreshing = true;
 
   try {
     await refreshApi.refresh();
 
     onRefreshed();
-    await new Promise(resolve => setTimeout(resolve, 100));
-
+    await new Promise((resolve) => setTimeout(resolve, 100));
 
     response = await fetch(url, config);
-    
+
     if (!response.ok) {
-      console.error("재시도도 실패:", response.status);
+      throw new Error("Token 재발급에 실패했습니다.");
     }
 
     return response;
   } catch (error) {
-
     onRefreshed(error as Error);
 
     if (typeof window !== "undefined") {

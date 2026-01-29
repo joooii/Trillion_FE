@@ -128,7 +128,6 @@ function parseHighlightedText(text: string): TextParts[] {
 
   const textParts: TextParts[] = [];
 
-  // **로 감싸진 부분과 완전한 {{...::...}} 패턴만 매칭
   const regex = /(\*\*.*?\*\*|{{[^}]+::[^}]+}})/g;
   let lastIndex = 0;
   let match;
@@ -141,11 +140,10 @@ function parseHighlightedText(text: string): TextParts[] {
 
     const matched = match[0];
 
-    // ** bold 처리
+    // ** : bold체
     if (matched.startsWith("**") && matched.endsWith("**")) {
       const innerText = matched.slice(2, -2);
 
-      // bold 안에 완전한 {{...::...}} 있는지 확인
       const termMatch = innerText.match(/^{{([^}]+)::([^}]+)}}$/);
       if (termMatch) {
         const [, word, meaning] = termMatch;
@@ -157,15 +155,12 @@ function parseHighlightedText(text: string): TextParts[] {
       } else {
         textParts.push({ word: innerText, bold: true });
       }
-    }
-    // 완전한 {{...::...}} 처리
-    else if (matched.startsWith("{{") && matched.endsWith("}}")) {
+    } else if (matched.startsWith("{{") && matched.endsWith("}}")) {
       const innerText = matched.slice(2, -2);
       if (innerText.includes("::")) {
         const [word, meaning] = innerText.split("::").map((s) => s.trim());
         textParts.push({ word, meaning });
       } else {
-        // :: 없으면 일반 텍스트로 처리
         textParts.push({ word: matched });
       }
     }

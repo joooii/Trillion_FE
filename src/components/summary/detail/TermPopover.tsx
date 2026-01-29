@@ -1,7 +1,7 @@
 "use client";
 
 import { X } from "lucide-react";
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef } from "react";
 import { createPortal } from "react-dom";
 
 interface TermPopoverProps {
@@ -36,7 +36,6 @@ export const TermPopover = forwardRef<HTMLDivElement, TermPopoverProps>(
         (screenWidth + innerScreenWidth) / 2 - margin - popupWidth - minPadding;
     }
 
-    // TODO : 화면 아래 넘치는지 확인
     const popoverContent = (
       <div
         ref={ref}

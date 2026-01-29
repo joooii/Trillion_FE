@@ -30,20 +30,23 @@ export const summaryListApi = {
     return result.data.content;
   },
 
-  getInfiniteList: async (cursorId?: number, size: number = 3): Promise<CounselCursorResponse> => {
+  getInfiniteList: async (
+    cursorId?: number,
+    size: number = 3
+  ): Promise<CounselCursorResponse> => {
     const params = new URLSearchParams();
     params.append("size", size.toString());
     if (cursorId) {
       params.append("cursorId", cursorId.toString());
     }
 
-    const response = await fetch(
+    const response = await fetchWithAuth(
       `${process.env.NEXT_PUBLIC_API_URL}/api/counsels?${params.toString()}`,
       {
         method: "GET",
         credentials: "include",
         headers: {
-          "Cache-Control": "no-cache", 
+          "Cache-Control": "no-cache",
         },
       }
     );
@@ -55,7 +58,7 @@ export const summaryListApi = {
     const result: ApiResponse<CounselCursorResponse> = await response.json();
 
     if (!result.data) {
-       throw new Error("데이터가 없습니다.");
+      throw new Error("데이터가 없습니다.");
     }
 
     return result.data;

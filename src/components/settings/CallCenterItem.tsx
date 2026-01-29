@@ -8,7 +8,7 @@ interface CallCenterItemProps {
 }
 
 // 실제 고객센터 번호: 휴대폰에서 114(무료), 1544-0010(유료), 080-019-7000(무료)
-const CALL_NUMBER = "1588-0000";
+const CALL_NUMBER = "080-019-7000";
 
 export default function CallCenterItem({ icon, label }: CallCenterItemProps) {
   return (
