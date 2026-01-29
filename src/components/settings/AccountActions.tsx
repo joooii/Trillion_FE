@@ -3,6 +3,8 @@
 import { useState } from "react";
 import AlertModal from "@/components/common/AlertModal";
 import { useRouter } from "next/navigation";
+import { postLogoutApi } from "@/lib/api/logout";
+import { postWithdrawApi } from "@/lib/api/withdraw";
 
 export default function AccountActions() {
   const router = useRouter();
@@ -11,34 +13,20 @@ export default function AccountActions() {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/users/member/logout`,
-        {
-          method: 'POST',
-          credentials: 'include',
-        }
-      );
-      if (response.ok) { 
-        console.log("로그아웃 성공");
+      const response = await postLogoutApi();
+      if (response.ok) {
         router.push("/auth/onboard");
       }
     } catch (error) {
       console.error("로그아웃 실패", error);
-      alert('오류가 발생했습니다.');
+      alert("오류가 발생했습니다.");
     }
   };
 
   const handleWithdraw = async () => {
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/users/member/withdraw`,
-        {
-          method: 'POST',
-          credentials: 'include',
-        }
-      );
-      if (response.ok) { 
-        console.log("회원 탈퇴 처리 예정");
+      const response = await postWithdrawApi();
+      if (response.ok) {
         router.push("/auth/onboard");
       }
     } catch (error) {
