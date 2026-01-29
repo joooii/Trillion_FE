@@ -44,18 +44,12 @@ export default function LoginCheckContent() {
       alert("필수 약관에 모두 동의하셔야 서비스 이용 가능합니다!");
       return;
     }
-
     try {
-      const response = await postLoginCheckApi();
-
-      if (response.ok) {
-        router.push("/");
-      } else {
-        alert("회원가입 실패했습니다");
-      }
+      await postLoginCheckApi();
+      router.push("/");
     } catch (error) {
       console.error("회원가입 에러", error);
-      alert("오류가 발생했습니다!");
+      alert("회원가입 실패했습니다");
     }
   };
 

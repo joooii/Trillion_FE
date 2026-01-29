@@ -9,6 +9,4 @@ export async function postLoginCheckApi() {
   if (!response.ok) {
     throw new Error("회원가입에 실패했습니다.");
   }
-
-  return response.json();
 }
