@@ -1,17 +1,20 @@
 import { postAdditionalQuestion } from "@/lib/api/additionalQuestion";
-import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
+import { queryKeys } from "@/lib/queryKeys";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 interface AdditionalQuestionParams {
   counselId: number;
 }
 export function useAdditionalQuestion({ counselId }: AdditionalQuestionParams) {
-  const router = useRouter();
+  const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: (question: string) =>
       postAdditionalQuestion({ counselId, question }),
     onSuccess: () => {
-      router.refresh();
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.summary.detail(counselId),
+      });
     },
   });
 }
