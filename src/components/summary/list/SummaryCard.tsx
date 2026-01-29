@@ -38,7 +38,11 @@ export default function SummaryCard({
       </div>
 
       {status === "FAILED" ? (
-        <ErrorContent />
+        <ErrorContent 
+          counselId={counselId} 
+          title={title ?? ""} 
+          date={date} 
+        />
       ) : (
         <SummaryContent status={status} summaryPreview={summaryPreview ?? ""} />
       )}

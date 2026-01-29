@@ -41,6 +41,7 @@ export interface Answer {
 export interface SummaryDetail {
   counsel_id: number;
   counsel_date: string;
+  chat: string;
   summary: {
     counsel_title: string;
     topics: Topic[];
@@ -57,6 +58,7 @@ export interface AdditionalQuestion {
 export interface SummaryDetailApi {
   counselId: number;
   counselDate: string;
+  chat: string;
   summaryJson: {
     data: {
       summary: {
