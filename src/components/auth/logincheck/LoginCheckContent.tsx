@@ -6,6 +6,7 @@ import Checkbox from "@/components/common/CheckBox";
 import logo from "@/assets/images/logo.svg";
 import Button from "@/components/common/Button";
 import { useState } from "react";
+import { postLoginCheckApi } from "@/lib/api/loginCheck";
 
 export default function LoginCheckContent() {
   const router = useRouter();
@@ -45,13 +46,7 @@ export default function LoginCheckContent() {
     }
 
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/users/auth/logincheck`,
-        {
-          method: "POST",
-          credentials: "include", // 쿠키 자동 전송
-        }
-      );
+      const response = await postLoginCheckApi();
 
       if (response.ok) {
         router.push("/");
