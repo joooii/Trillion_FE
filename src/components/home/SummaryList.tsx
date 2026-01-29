@@ -7,7 +7,7 @@ import Summary from "@/components/home/Summary";
 import EmptyState from "@/components/home/EmptySummary";
 import { useSummaryList } from "@/hooks/useSummaryList";
 import ErrorContent from "@/components/summary/list/ErrorContent";
-import { SkeletonCard, SkeletonLine } from "../common/SkeletonCard";
+import { SkeletonCard, SkeletonLine } from "@/components/common/SkeletonCard";
 
 interface SummaryListProps {
   nickname: string;
@@ -84,11 +84,11 @@ function SummaryCard({
           <ChevronRight className="w-6 h-4 stroke-text-lightgray" />
         </div>
         {status === "FAILED" ? (
-          <ErrorContent 
+          <ErrorContent
             variant="home"
-            counselId={counselId} 
-            title={title ?? ""} 
-            date={date} 
+            counselId={counselId}
+            title={title ?? ""}
+            date={date}
           />
         ) : (
           <Summary summaryPreview={summaryPreview ?? ""} status={status} />

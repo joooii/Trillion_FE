@@ -1,4 +1,4 @@
-import { CounselCreateRequest, CounselCreateResponse } from '../../types/counsel';
+import { CounselCreateRequest, CounselCreateResponse } from "@/types/counsel";
 import { fetchWithAuth } from "@/lib/api/fetchAuth";
 
 export const postCounselSummary = async (
@@ -21,4 +21,4 @@ export const postCounselSummary = async (
   }
 
   return response.json();
-}; 
+};

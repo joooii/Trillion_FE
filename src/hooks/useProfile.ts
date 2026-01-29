@@ -1,4 +1,3 @@
-// hooks/useProfile.ts
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
@@ -9,7 +8,6 @@ export function useUserProfile() {
   const result = useQuery({
     queryKey: queryKeys.user.profile(),
     queryFn: async () => {
-      console.log("queryFn 실행!");
       return await userApi.getProfile();
     },
     staleTime: 0,

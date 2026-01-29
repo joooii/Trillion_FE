@@ -11,7 +11,7 @@ interface MarkupTextRendererProps {
 export default function MarkupTextRenderer({
   content,
 }: MarkupTextRendererProps) {
-  // ※ 앞에 줄바꿈 추가 (단, 맨 앞의 ※는 제외)
+  // ※ 앞에 줄바꿈 (맨 앞 ※는 제외)
   const processedContent = content.replace(/(?<!^)\s*※/g, "\n\n※");
 
   return (

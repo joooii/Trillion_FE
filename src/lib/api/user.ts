@@ -1,15 +1,9 @@
-// lib/api/user.ts
 import { fetchWithAuth } from "@/lib/api/fetchAuth";
+import { ApiResponse } from "@/types/api";
 
 interface UserProfile {
   nickname: string;
   email?: string;
-}
-
-interface ApiResponse<T> {
-  success: boolean;
-  message: string;
-  data: T;
 }
 
 export const userApi = {
@@ -31,7 +25,6 @@ export const userApi = {
       throw new Error("닉네임 정보가 없습니다");
     }
 
-    console.log("프로필 로드:", result.data.nickname);
     return result.data;
   },
 };

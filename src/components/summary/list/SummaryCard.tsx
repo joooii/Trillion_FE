@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Calendar, ChevronRight } from "lucide-react";
-
 import Badge from "@/components/common/Badge";
 import ErrorContent from "@/components/summary/list/ErrorContent";
 import SummaryContent from "@/components/summary/list/SummaryContent";
@@ -38,11 +37,7 @@ export default function SummaryCard({
       </div>
 
       {status === "FAILED" ? (
-        <ErrorContent 
-          counselId={counselId} 
-          title={title ?? ""} 
-          date={date} 
-        />
+        <ErrorContent counselId={counselId} title={title ?? ""} date={date} />
       ) : (
         <SummaryContent status={status} summaryPreview={summaryPreview ?? ""} />
       )}

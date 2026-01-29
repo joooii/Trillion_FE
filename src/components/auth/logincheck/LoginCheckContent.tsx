@@ -6,6 +6,7 @@ import Checkbox from "@/components/common/CheckBox";
 import logo from "@/assets/images/logo.svg";
 import Button from "@/components/common/Button";
 import { useState } from "react";
+import { postLoginCheckApi } from "@/lib/api/loginCheck";
 
 export default function LoginCheckContent() {
   const router = useRouter();
@@ -43,24 +44,12 @@ export default function LoginCheckContent() {
       alert("필수 약관에 모두 동의하셔야 서비스 이용 가능합니다!");
       return;
     }
-
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/users/auth/logincheck`,
-        {
-          method: "POST",
-          credentials: "include", // 쿠키 자동 전송
-        }
-      );
-
-      if (response.ok) {
-        router.push("/");
-      } else {
-        alert("회원가입 실패했습니다");
-      }
+      await postLoginCheckApi();
+      router.push("/");
     } catch (error) {
       console.error("회원가입 에러", error);
-      alert("오류가 발생했습니다!");
+      alert("회원가입 실패했습니다");
     }
   };
 
