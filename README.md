@@ -206,6 +206,12 @@
 
 <br/>
 
+## <span id="video">📹 시연 영상</span>
+
+[https://youtu.be/JYzL3i6O7VU](https://www.youtube.com/watch?v=JYzL3i6O7VU)
+
+<br/>
+
 ## <span id="convention">📍 Commit Convention</span>
 
 **Commit 메시지 종류 설명**
@@ -220,12 +226,6 @@
 | `remove`   | 파일 삭제 작업만 수행                                           |
 | `docs`     | 문서 수정                                                       |
 | `HOTFIX`   | 치명적인 버그 수정                                              |
-
-<br/>
-
-## <span id="video">📹 시연 영상</span>
-
-[https://youtu.be/JYzL3i6O7VU](https://www.youtube.com/watch?v=JYzL3i6O7VU)
 
 <br/>
 
